@@ -64,11 +64,34 @@ invoice_create_result = Nfe::ServiceInvoice.create(customer_params.merge(service
 
 ```
 
-
 ## Contribuir
 
 Envio de bugs e pull requests são muito bem vindos no https://github.com/nfe/client-ruby.
 
+### Como atualizar o pacote
+
+- Alterar versão do pacote no arquivo /lib/nfe/version.rb
+- Comitar nova versão, com uma descrição como abaixo
+```bash
+git add lib/nfe/version.rb
+git commit -m'Bump version 0.2.4'
+```
+- Criar git tag
+```bash
+git tag 0.2.4
+```
+- Executar gem build
+```bash
+gem build nfe.gemspec
+```
+- Executar gem build, repare que um novo arquivo será criado, com a versão do pacote alterada acima
+```bash
+gem build nfe.gemspec
+```
+- Executar gem push do pacote gem criado
+```ruby
+gem push nfe-io-0.2.4.gem
+```
 
 ## License
 
