@@ -1,6 +1,5 @@
 module Nfe
   module ApiResource
-    BASE_URL = 'http://api.nfe.io'
     SSL_BUNDLE_PATH = File.dirname(__FILE__) + '/../data/ssl-bundle.crt'
 
     def url_encode(key)
@@ -12,7 +11,7 @@ module Nfe
     end
 
     def api_request(url, method, params=nil)
-      url = "#{BASE_URL}#{url}"
+      url = "#{Nfe.configuration.url}#{url}"
       api_key = Nfe.access_keys
 
       if method == :get && params
@@ -23,10 +22,16 @@ module Nfe
 
       begin
         payload = params.to_json
-        response = RestClient::Request.new(method: method, url: url, payload: payload,
-                                           headers: {authorization: api_key,
-                                                        content_type: 'application/json',
-                                                        accept: '*/*'}).execute
+        response = RestClient::Request.new(
+                    method: method,
+                    url: url,
+                    payload: payload,
+                    headers: {
+                      content_type: 'application/json',
+                      accept: '*/*',
+                      authorization: api_key,
+                      user_agent: Nfe.configuration.user_agent
+                    }).execute
 
       rescue RestClient::ExceptionWithResponse => e
         if rcode = e.http_code and rbody = e.http_body

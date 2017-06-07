@@ -1,6 +1,7 @@
 require "rest-client"
 require "json"
 require "nfe/version"
+require "nfe/configuration"
 
 require "nfe/api_resource"
 require "nfe/api_operations/create"
@@ -28,5 +29,13 @@ module Nfe
 
   def self.access_keys
     "#{@@api_key}"
+  end
+
+  def self.configuration
+    @configuration ||= Configuration.new
+  end
+
+  def self.configure
+    yield(configuration) if block_given?
   end
 end
