@@ -80,10 +80,6 @@ git commit -m'Bump version 0.2.4'
 ```bash
 git tag 0.2.4
 ```
-- Executar gem build
-```bash
-gem build nfe.gemspec
-```
 - Executar gem build, repare que um novo arquivo será criado, com a versão do pacote alterada acima
 ```bash
 gem build nfe.gemspec
