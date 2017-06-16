@@ -64,23 +64,47 @@ describe Nfe::ServiceInvoice do
     skip "To be implemented"
   end
 
-  it 'should retrieve a ServiceInvoice pdf file' do
-    skip "To be implemented"
+  it 'should retrieve a ServiceInvoice XML file' do
     service_invoices_list = Nfe::ServiceInvoice.list_all
     service_invoice_params = service_invoices_list["serviceInvoices"].first
-    response = Nfe::ServiceInvoice.download(service_invoice_params["id"], :pdf)
-    expect(response.headers["Content-Type"]).to eq("application/pdf")
-    expect(response.headers["Content-Disposition"]).to eq("attachment; filename=\"<invoice_name>.pdf\"")
+    
+    response = Nfe::ServiceInvoice.download(service_invoice_params["id"], :xml)
+    
+    expect(response.headers[:content_type]).to eq("application/xml")
+    expect(response.headers[:content_length].size).to be >= 1    
+    expect(response.size).to be >= 1
   end
 
-  it 'should get a ServiceInvoice xml file' do
-    # skip "To be implemented"
+  it 'should retrieve a ServiceInvoice PDF file' do
     service_invoices_list = Nfe::ServiceInvoice.list_all
     service_invoice_params = service_invoices_list["serviceInvoices"].first
-    response = Nfe::ServiceInvoice.download(service_invoice_params["id"], :xml)
-    expect(response.headers["Content-Type"]).to eq("application/xml")
-    expect(response.headers["Content-Disposition"]).to eq("attachment; filename=\"<invoice_name>.xml\"")
+    
+    response = Nfe::ServiceInvoice.download(service_invoice_params["id"], :pdf)
+    
+    expect(response.headers[:content_type]).to eq("application/pdf")
+    expect(response.headers[:content_length].size).to be >= 1    
+    expect(response.size).to be >= 1
   end
+
+  it 'should not retrieve a ServiceInvoice PDF file when API Key is not valid' do
+    service_invoices_list = Nfe::ServiceInvoice.list_all
+    service_invoice_params = service_invoices_list["serviceInvoices"].first
+        
+    Nfe.api_key('not_valid_api_keycont')
+      expect {
+        Nfe::ServiceInvoice.download(service_invoice_params["id"], :pdf)
+      }.to raise_error(Nfe::NfeError)
+  end
+
+  it 'should not retrieve a ServiceInvoice XML file when API Key is not valid' do
+    service_invoices_list = Nfe::ServiceInvoice.list_all
+    service_invoice_params = service_invoices_list["serviceInvoices"].first
+        
+    Nfe.api_key('not_valid_api_keycont')
+      expect {
+        Nfe::ServiceInvoice.download(service_invoice_params["id"], :xml)
+      }.to raise_error(Nfe::NfeError)
+    end
 
   it 'should retrieve Service Invoices from Prefeitura' do
     skip "To be implemented"

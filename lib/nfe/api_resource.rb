@@ -53,5 +53,37 @@ module Nfe
     def self.included(base)
       base.extend(ApiResource)
     end
+
+    def api_request_file(url, method, params=nil)
+      api_key = Nfe.access_keys
+      url = "#{Nfe.configuration.url}#{url}?api_key=#{api_key}"
+
+     request = RestClient::Request.new(
+        method: method,
+        url: url,
+        headers: {
+          user_agent: Nfe.configuration.user_agent
+        }
+      )
+
+      begin
+        response = request.execute
+      rescue RestClient::ExceptionWithResponse => e
+        byebug
+        if rcode = e.http_code and rbody = e.http_body
+          rbody = JSON.parse(rbody)
+          rbody = Util.symbolize_names(rbody)
+
+         raise NfeError.new(rcode, rbody, rbody, rbody[:message])
+        else
+          raise e
+        end
+      rescue RestClient::Exception => e
+        raise e
+      end
+
+     response
+    end
+
   end
 end
