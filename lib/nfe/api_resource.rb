@@ -69,7 +69,7 @@ module Nfe
       begin
         response = request.execute
       rescue RestClient::ExceptionWithResponse => e
-        byebug
+        # byebug
         if rcode = e.http_code and rbody = e.http_body
           rbody = JSON.parse(rbody)
           rbody = Util.symbolize_names(rbody)
