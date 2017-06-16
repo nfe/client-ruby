@@ -104,7 +104,7 @@ describe Nfe::ServiceInvoice do
       expect {
         Nfe::ServiceInvoice.download(service_invoice_params["id"], :xml)
       }.to raise_error(Nfe::NfeError)
-    end
+  end
 
   it 'should retrieve Service Invoices from Prefeitura' do
     skip "To be implemented"

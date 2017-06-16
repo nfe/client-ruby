@@ -12,7 +12,7 @@ module Nfe
         else
           url = "#{self.url}/#{nfe_id}/#{file_format}"
           method = :get
-          api_request(url, method)
+          api_request_file(url, method)
         end
       end
 

@@ -58,7 +58,7 @@ module Nfe
       api_key = Nfe.access_keys
       url = "#{Nfe.configuration.url}#{url}?api_key=#{api_key}"
 
-     request = RestClient::Request.new(
+      request = RestClient::Request.new(
         method: method,
         url: url,
         headers: {
