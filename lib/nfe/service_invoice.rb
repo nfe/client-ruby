@@ -6,6 +6,7 @@ module Nfe
     include ApiOperations::Retrieve
     include ApiOperations::Delete
     include ApiOperations::Update
+    include ApiOperations::Download
 
     def self.company_id(company_id)
       @company_id = company_id

@@ -9,6 +9,7 @@ require "nfe/api_operations/delete"
 require "nfe/api_operations/list"
 require "nfe/api_operations/retrieve"
 require "nfe/api_operations/update"
+require "nfe/api_operations/download"
 
 require "nfe/nfe_object"
 require "nfe/service_invoice"

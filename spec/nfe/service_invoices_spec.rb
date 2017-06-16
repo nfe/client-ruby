@@ -66,10 +66,20 @@ describe Nfe::ServiceInvoice do
 
   it 'should retrieve a ServiceInvoice pdf file' do
     skip "To be implemented"
+    service_invoices_list = Nfe::ServiceInvoice.list_all
+    service_invoice_params = service_invoices_list["serviceInvoices"].first
+    response = Nfe::ServiceInvoice.download(service_invoice_params["id"], :pdf)
+    expect(response.headers["Content-Type"]).to eq("application/pdf")
+    expect(response.headers["Content-Disposition"]).to eq("attachment; filename=\"<invoice_name>.pdf\"")
   end
 
   it 'should get a ServiceInvoice xml file' do
-    skip "To be implemented"
+    # skip "To be implemented"
+    service_invoices_list = Nfe::ServiceInvoice.list_all
+    service_invoice_params = service_invoices_list["serviceInvoices"].first
+    response = Nfe::ServiceInvoice.download(service_invoice_params["id"], :xml)
+    expect(response.headers["Content-Type"]).to eq("application/xml")
+    expect(response.headers["Content-Disposition"]).to eq("attachment; filename=\"<invoice_name>.xml\"")
   end
 
   it 'should retrieve Service Invoices from Prefeitura' do
