@@ -35,7 +35,6 @@ module Nfe
       begin
         response = request.execute
       rescue RestClient::ExceptionWithResponse => e
-        # byebug
         if rcode = e.http_code and rbody = e.http_body
           rbody = JSON.parse(rbody)
           rbody = Util.symbolize_names(rbody)
@@ -61,15 +60,12 @@ module Nfe
       request = RestClient::Request.new(
         method: method,
         url: url,
-        headers: {
-          user_agent: Nfe.configuration.user_agent
-        }
+        headers: { user_agent: Nfe.configuration.user_agent }
       )
 
       begin
         response = request.execute
       rescue RestClient::ExceptionWithResponse => e
-        # byebug
         if rcode = e.http_code and rbody = e.http_body
           rbody = JSON.parse(rbody)
           rbody = Util.symbolize_names(rbody)
@@ -84,6 +80,5 @@ module Nfe
 
      response
     end
-
   end
 end

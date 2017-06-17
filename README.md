@@ -21,8 +21,8 @@ Ou instale diretamente via comando:
 ## Exemplos de uso
 
 ### Emitir nota fiscal
-```ruby
 
+```ruby
 # Define a API Key, conforme está no painel
 Nfe.api_key('c73d49f9649046eeba36dcf69f6334fd')
 
@@ -61,7 +61,23 @@ service_params = {
 
 # Emite a nota fiscal
 invoice_create_result = Nfe::ServiceInvoice.create(customer_params.merge(service_params))
+```
 
+### Download da Nota Fiscal
+
+```ruby
+# Define a API Key, conforme está no painel
+Nfe.api_key('c73d49f9649046eeba36dcf69f6334fd')
+# ID da empresa, você encontra no painel
+Nfe::ServiceInvoice.company_id("55df4dc6b6cd9007e4f13ee8")
+# Os formatos suportados são :pdf e :xml, e o primeiro parâmetro é o ID da nota
+invoice = Nfe::ServiceInvoice.download("59443a0e2a8b6806986d7a2d", :pdf)
+# O conteúdo do PDF/XML pode ser acessado da seguinte forma
+invoice.body
+# Caso você esteja utilizando Rails, pode usar o método send_data para retornar
+# o conteúdo da Nota Fiscal diretamente para o usuário
+# Note que neste caso o arquivo é o PDF, mas poderia ser o XML, mude se necessário
+send_data(invoice.body, filename: 'invoice.pdf', type: 'application/pdf')
 ```
 
 ## Contribuir
@@ -72,21 +88,27 @@ Envio de bugs e pull requests são muito bem vindos no https://github.com/nfe/cl
 
 - Alterar versão do pacote no arquivo /lib/nfe/version.rb
 - Comitar nova versão, com uma descrição como abaixo
+
 ```bash
 git add lib/nfe/version.rb
-git commit -m'Bump version 0.2.4'
+git commit -m 'Bump version 0.3.0'
 ```
 - Criar git tag
+
 ```bash
-git tag 0.2.4
+git tag 0.3.0
 ```
+
 - Executar gem build, repare que um novo arquivo será criado, com a versão do pacote alterada acima
+
 ```bash
 gem build nfe.gemspec
 ```
+
 - Executar gem push do pacote gem criado
+
 ```ruby
-gem push nfe-io-0.2.4.gem
+gem push nfe-io-0.3.0.gem
 ```
 
 ## License
