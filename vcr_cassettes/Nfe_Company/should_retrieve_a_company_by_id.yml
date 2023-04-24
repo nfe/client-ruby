@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.nfe.io/v1/companies/55df4dc6b6cd9007e4f13ee8
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - NFe.io Ruby Client v0.3.2
+      Content-Type:
+      - application/json
+      Authorization:
+      - e12cmDevG5iLhSd9Y7BOpxynL86Detjd2R1D5jsP5UGXA8gwxug0Vojl3H9TIzBpbhI
+      Content-Length:
+      - '0'
+      Host:
+      - api.nfe.io
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 24 Apr 2023 15:53:38 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '1018'
+      Connection:
+      - keep-alive
+      X-Request-Id:
+      - 0HMPSPD1UDT35:00000003
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ew0KICAiY29tcGFuaWVzIjogew0KICAgICJpZCI6ICI1NWRmNGRjNmI2Y2Q5MDA3ZTRmMTNlZTgiLA0KICAgICJuYW1lIjogIkVtcHJlc2EgZGUgVGVzdGUiLA0KICAgICJ0cmFkZU5hbWUiOiAiU21hcnRjb2luIiwNCiAgICAiZmVkZXJhbFRheE51bWJlciI6IDM0OTE5NDIwMDAxMDgsDQogICAgImFkZHJlc3MiOiB7DQogICAgICAiY291bnRyeSI6ICIiLA0KICAgICAgInBvc3RhbENvZGUiOiAiMDEzMTEtMzAwIiwNCiAgICAgICJzdHJlZXQiOiAiQXZlbmlkYSBQYXVsaXN0YSIsDQogICAgICAibnVtYmVyIjogIjM2IiwNCiAgICAgICJhZGRpdGlvbmFsSW5mb3JtYXRpb24iOiAiIiwNCiAgICAgICJkaXN0cmljdCI6ICJCZWxhIFZpc3RhIiwNCiAgICAgICJjaXR5Ijogew0KICAgICAgICAiY29kZSI6ICIzNTUwMzA4IiwNCiAgICAgICAgIm5hbWUiOiAiU8OjbyBQYXVsbyINCiAgICAgIH0sDQogICAgICAic3RhdGUiOiAiU1AiDQogICAgfSwNCiAgICAidGF4UmVnaW1lIjogIk1pY3JvZW1wcmVlbmRlZG9ySW5kaXZpZHVhbCIsDQogICAgInNwZWNpYWxUYXhSZWdpbWUiOiAiTmVuaHVtIiwNCiAgICAibGVnYWxOYXR1cmUiOiAiU29jaWVkYWRlRWNvbm9taWFNaXN0YSIsDQogICAgImVjb25vbWljQWN0aXZpdGllcyI6IFtdLA0KICAgICJyZWdpb25hbFRheE51bWJlciI6IDMsDQogICAgIm11bmljaXBhbFRheE51bWJlciI6ICIyIiwNCiAgICAicnBzU2VyaWFsTnVtYmVyIjogIklPIiwNCiAgICAicnBzTnVtYmVyIjogNDA2MywNCiAgICAiaXNzUmF0ZSI6IDAuMCwNCiAgICAiZW52aXJvbm1lbnQiOiAiRGV2ZWxvcG1lbnQiLA0KICAgICJmaXNjYWxTdGF0dXMiOiAiUGVuZGluZyIsDQogICAgImNlcnRpZmljYXRlIjogew0KICAgICAgInN0YXR1cyI6ICJQZW5kaW5nIg0KICAgIH0sDQogICAgImNyZWF0ZWRPbiI6ICIyMDE1LTA4LTI3VDE3OjQ5OjU4LjE1MjM5MTgrMDA6MDAiLA0KICAgICJtb2RpZmllZE9uIjogIjIwMTUtMDgtMjdUMTg6NTc6MzYuMjUxNDIyOCswMDowMCINCiAgfQ0KfQ==
+  recorded_at: Mon, 24 Apr 2023 15:53:38 GMT
+recorded_with: VCR 6.0.0

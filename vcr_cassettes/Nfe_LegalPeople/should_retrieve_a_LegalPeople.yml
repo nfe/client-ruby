@@ -1,0 +1,89 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.nfe.io/v1/companies/55df4dc6b6cd9007e4f13ee8/serviceinvoices
+    body:
+      encoding: UTF-8
+      string: '{"borrower":{"federalTaxNumber":"69919334000160","name":"Empresa Teste","email":"ricardo.nezz@mailinator.com","postalCode":"21231110","street":"Rua
+        Do Cliente","number":"1310","additionalInformation":"AP 202","district":"Centro","city_code":4204202,"city_name":"Chapecó","city_state":"SC"},"cityServiceCode":"0107","description":"Manutenção
+        e suporte técnico.","servicesAmount":0.15}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - NFe.io Ruby Client v0.3.2
+      Content-Type:
+      - application/json
+      Authorization:
+      - e12cmDevG5iLhSd9Y7BOpxynL86Detjd2R1D5jsP5UGXA8gwxug0Vojl3H9TIzBpbhI
+      Content-Length:
+      - '387'
+      Host:
+      - api.nfe.io
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Date:
+      - Mon, 24 Apr 2023 15:53:40 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '2379'
+      Connection:
+      - keep-alive
+      Location:
+      - http://api.nfe.io/v1/companies/55df4dc6b6cd9007e4f13ee8/serviceinvoices/6446a604289da803983c32e8
+      X-Request-Id:
+      - 0HMPSPD1UDT38:00000002
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ew0KICAiaWQiOiAiNjQ0NmE2MDQyODlkYTgwMzk4M2MzMmU4IiwNCiAgImVudmlyb25tZW50IjogIkRldmVsb3BtZW50IiwNCiAgImZsb3dTdGF0dXMiOiAiV2FpdGluZ0NhbGN1bGF0ZVRheGVzIiwNCiAgInByb3ZpZGVyIjogew0KICAgICJ0cmFkZU5hbWUiOiAiU21hcnRjb2luIiwNCiAgICAidGF4UmVnaW1lIjogIk1pY3JvZW1wcmVlbmRlZG9ySW5kaXZpZHVhbCIsDQogICAgInNwZWNpYWxUYXhSZWdpbWUiOiAiQXV0b21hdGljbyIsDQogICAgImxlZ2FsTmF0dXJlIjogIlNvY2llZGFkZUVjb25vbWlhTWlzdGEiLA0KICAgICJlY29ub21pY0FjdGl2aXRpZXMiOiBbXSwNCiAgICAicmVnaW9uYWxUYXhOdW1iZXIiOiAzLA0KICAgICJtdW5pY2lwYWxUYXhOdW1iZXIiOiAiMiIsDQogICAgImlzc1JhdGUiOiAwLjAsDQogICAgInBhcmVudElkIjogIjU1ZGY0ZDAwYjZjZDkwMDdlNGYxM2VkZCIsDQogICAgImlkIjogIjU1ZGY0ZGM2YjZjZDkwMDdlNGYxM2VlOCIsDQogICAgIm5hbWUiOiAiRW1wcmVzYSBkZSBUZXN0ZSIsDQogICAgImZlZGVyYWxUYXhOdW1iZXIiOiAzNDkxOTQyMDAwMTA4LA0KICAgICJhZGRyZXNzIjogew0KICAgICAgImNvdW50cnkiOiAiIiwNCiAgICAgICJwb3N0YWxDb2RlIjogIjAxMzExLTMwMCIsDQogICAgICAic3RyZWV0IjogIkF2ZW5pZGEgUGF1bGlzdGEiLA0KICAgICAgIm51bWJlciI6ICIzNiIsDQogICAgICAiYWRkaXRpb25hbEluZm9ybWF0aW9uIjogIiIsDQogICAgICAiZGlzdHJpY3QiOiAiQmVsYSBWaXN0YSIsDQogICAgICAiY2l0eSI6IHsNCiAgICAgICAgImNvZGUiOiAiMzU1MDMwOCIsDQogICAgICAgICJuYW1lIjogIlPDo28gUGF1bG8iDQogICAgICB9LA0KICAgICAgInN0YXRlIjogIlNQIg0KICAgIH0sDQogICAgInN0YXR1cyI6ICJBY3RpdmUiLA0KICAgICJ0eXBlIjogIkxlZ2FsUGVyc29uLCBDb21wYW55IiwNCiAgICAiY3JlYXRlZE9uIjogIjIwMTUtMDgtMjdUMTc6NDk6NTguMTUyMzkxOCswMDowMCIsDQogICAgIm1vZGlmaWVkT24iOiAiMjAxNS0wOC0yN1QxODo1NzozNi4yNTE0MjI4KzAwOjAwIg0KICB9LA0KICAiYm9ycm93ZXIiOiB7DQogICAgInRheFJlZ2ltZSI6IDAsDQogICAgImxlZ2FsTmF0dXJlIjogMCwNCiAgICAiZWNvbm9taWNBY3Rpdml0aWVzIjogW10sDQogICAgImlzc1JhdGUiOiAwLjAsDQogICAgImlkIjogIjY0NDZhNjA0Mjg5ZGE4MDM5ODNjMzJlYSIsDQogICAgIm5hbWUiOiAiRW1wcmVzYSBUZXN0ZSIsDQogICAgImZlZGVyYWxUYXhOdW1iZXIiOiA2OTkxOTMzNDAwMDE2MCwNCiAgICAiZW1haWwiOiAicmljYXJkby5uZXp6QG1haWxpbmF0b3IuY29tIiwNCiAgICAic3RhdHVzIjogIkFjdGl2ZSIsDQogICAgInR5cGUiOiAiTGVnYWxQZXJzb24iLA0KICAgICJjcmVhdGVkT24iOiAiMjAyMy0wNC0yNFQxNTo1Mzo0MC42Njg3MzUxKzAwOjAwIg0KICB9LA0KICAiYmF0Y2hOdW1iZXIiOiAwLA0KICAibnVtYmVyIjogMCwNCiAgInN0YXR1cyI6ICJDcmVhdGVkIiwNCiAgInJwc1R5cGUiOiAiUnBzIiwNCiAgInJwc1N0YXR1cyI6ICJOb3JtYWwiLA0KICAidGF4YXRpb25UeXBlIjogIldpdGhpbkNpdHkiLA0KICAiaXNzdWVkT24iOiAiMjAyMy0wNC0yNFQxMjo1Mzo0MC42Njg3Mzk4LTAzOjAwIiwNCiAgInJwc1NlcmlhbE51bWJlciI6ICJJTyIsDQogICJycHNOdW1iZXIiOiAwLA0KICAiY2l0eVNlcnZpY2VDb2RlIjogIjAxMDciLA0KICAiZGVzY3JpcHRpb24iOiAiTWFudXRlbsOnw6NvIGUgc3Vwb3J0ZSB0w6ljbmljby4iLA0KICAic2VydmljZXNBbW91bnQiOiAwLjE1LA0KICAicGFpZEFtb3VudCI6IDAuMCwNCiAgInBheW1lbnRNZXRob2QiOiAiTm9uZSIsDQogICJkZWR1Y3Rpb25zQW1vdW50IjogMC4wLA0KICAiZGlzY291bnRVbmNvbmRpdGlvbmVkQW1vdW50IjogMC4wLA0KICAiZGlzY291bnRDb25kaXRpb25lZEFtb3VudCI6IDAuMCwNCiAgImJhc2VUYXhBbW91bnQiOiAwLjE1LA0KICAiaXNzUmF0ZSI6IDAuMCwNCiAgImlzc1RheEFtb3VudCI6IDAuMCwNCiAgImlyQW1vdW50V2l0aGhlbGQiOiAwLjAsDQogICJwaXNBbW91bnRXaXRoaGVsZCI6IDAuMCwNCiAgImNvZmluc0Ftb3VudFdpdGhoZWxkIjogMC4wLA0KICAiY3NsbEFtb3VudFdpdGhoZWxkIjogMC4wLA0KICAiaW5zc0Ftb3VudFdpdGhoZWxkIjogMC4wLA0KICAiaXNzQW1vdW50V2l0aGhlbGQiOiAwLjAsDQogICJvdGhlcnNBbW91bnRXaXRoaGVsZCI6IDAuMCwNCiAgImFtb3VudFdpdGhoZWxkIjogMC4wLA0KICAiYW1vdW50TmV0IjogMC4xNSwNCiAgImFwcHJveGltYXRlVGF4Ijogew0KICAgICJ0b3RhbFJhdGUiOiAwLjANCiAgfSwNCiAgImNyZWF0ZWRPbiI6ICIyMDIzLTA0LTI0VDE1OjUzOjQwLjY2ODcyMzMrMDA6MDAiDQp9
+  recorded_at: Mon, 24 Apr 2023 15:53:40 GMT
+- request:
+    method: get
+    uri: https://api.nfe.io/v1/companies/55df4dc6b6cd9007e4f13ee8/legalpeople/55ef27f8440c3b0b84cebc2d
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - NFe.io Ruby Client v0.3.2
+      Content-Type:
+      - application/json
+      Authorization:
+      - e12cmDevG5iLhSd9Y7BOpxynL86Detjd2R1D5jsP5UGXA8gwxug0Vojl3H9TIzBpbhI
+      Content-Length:
+      - '0'
+      Host:
+      - api.nfe.io
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 24 Apr 2023 15:53:41 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '725'
+      Connection:
+      - keep-alive
+      X-Request-Id:
+      - 0HMPSPD1UDT39:00000002
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ew0KICAibGVnYWxQZW9wbGUiOiB7DQogICAgImlkIjogIjU1ZWYyN2Y4NDQwYzNiMGI4NGNlYmMyZCIsDQogICAgIm5hbWUiOiAiTm9tZSBkYSBFbXByZXNhIiwNCiAgICAiZmVkZXJhbFRheE51bWJlciI6IDY5OTE5MzM0MDAwMTYwLA0KICAgICJlbWFpbCI6ICJyaWNhcmRvLm5lenpAZ21haWwuY29tIiwNCiAgICAiYWRkcmVzcyI6IHsNCiAgICAgICJjb3VudHJ5IjogIkJSQSIsDQogICAgICAicG9zdGFsQ29kZSI6ICIyMjIzMTExMCIsDQogICAgICAic3RyZWV0IjogIlJ1YSBEbyBDbGllbnRlIiwNCiAgICAgICJudW1iZXIiOiAiMTMxMCIsDQogICAgICAiYWRkaXRpb25hbEluZm9ybWF0aW9uIjogIkFQIDIwMiIsDQogICAgICAiZGlzdHJpY3QiOiAiQ2VudHJvIiwNCiAgICAgICJjaXR5Ijogew0KICAgICAgICAiY29kZSI6ICI0MjA0MjAyIiwNCiAgICAgICAgIm5hbWUiOiAiQ2hhcGVjw7MiDQogICAgICB9LA0KICAgICAgInN0YXRlIjogIlNDIg0KICAgIH0sDQogICAgInRheFJlZ2ltZSI6ICJMdWNyb1ByZXN1bWlkbyIsDQogICAgImxlZ2FsTmF0dXJlIjogMCwNCiAgICAiZWNvbm9taWNBY3Rpdml0aWVzIjogW10sDQogICAgInN0YXR1cyI6ICJBY3RpdmUiLA0KICAgICJjcmVhdGVkT24iOiAiMjAxNS0wOS0wOFQxODoyNDo1Ni40NDU2ODUxKzAwOjAwIiwNCiAgICAibW9kaWZpZWRPbiI6ICIyMDIzLTA0LTI0VDE1OjUzOjQxLjMyNzMxMTcrMDA6MDAiDQogIH0NCn0=
+  recorded_at: Mon, 24 Apr 2023 15:53:41 GMT
+recorded_with: VCR 6.0.0

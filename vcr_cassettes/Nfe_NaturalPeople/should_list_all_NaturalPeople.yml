@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.nfe.io/v1/companies/55e8a2c9440c3b0b84ceaa12/naturalpeople
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - NFe.io Ruby Client v0.3.2
+      Content-Type:
+      - application/json
+      Authorization:
+      - e12cmDevG5iLhSd9Y7BOpxynL86Detjd2R1D5jsP5UGXA8gwxug0Vojl3H9TIzBpbhI
+      Content-Length:
+      - '0'
+      Host:
+      - api.nfe.io
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 24 Apr 2023 15:53:42 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '285'
+      Connection:
+      - keep-alive
+      X-Request-Id:
+      - 0HMPSPD1UDT37:00000004
+    body:
+      encoding: UTF-8
+      string: "{\r\n  \"naturalPeople\": [\r\n    {\r\n      \"id\": \"55eeebf8440c3b0b84ceb1a8\",\r\n
+        \     \"name\": \"Ricardo Caldeira\",\r\n      \"federalTaxNumber\": 1946377198,\r\n
+        \     \"email\": \"ricardo.nezz@gmail.com\",\r\n      \"status\": \"Active\",\r\n
+        \     \"createdOn\": \"2015-09-08T14:08:56.5000084+00:00\"\r\n    }\r\n  ]\r\n}"
+  recorded_at: Mon, 24 Apr 2023 15:53:42 GMT
+recorded_with: VCR 6.0.0

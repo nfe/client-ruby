@@ -1,6 +1,6 @@
 require_relative '../rspec_helper'
 
-describe Nfe::Company do
+describe Nfe::Company, :vcr do
   before(:each) do
     Nfe.api_key('e12cmDevG5iLhSd9Y7BOpxynL86Detjd2R1D5jsP5UGXA8gwxug0Vojl3H9TIzBpbhI')
   end

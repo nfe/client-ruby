@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.nfe.io/v1/companies/55df4dc6b6cd9007e4f13ee8/serviceinvoices
+    body:
+      encoding: UTF-8
+      string: '{"borrower":{"federalTaxNumber":"01946377198","name":"Ricardo Caldeira","email":"ricardo.nezz@mailinator.com","address":{"country":"BRA","postalCode":"22231110","street":"Rua
+        Do Cliente","number":"1310","additionalInformation":"AP 202","district":"Centro","city":{"code":4204202,"name":"Chapecó"},"state":"SC"}},"cityServiceCode":"2690","description":"Manutenção
+        e suporte técnico.","servicesAmount":0.15}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - NFe.io Ruby Client v0.3.2
+      Content-Type:
+      - application/json
+      Authorization:
+      - e12cmDevG5iLhSd9Y7BOpxynL86Detjd2R1D5jsP5UGXA8gwxug0Vojl3H9TIzBpbhI
+      Content-Length:
+      - '409'
+      Host:
+      - api.nfe.io
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Date:
+      - Mon, 24 Apr 2023 15:46:21 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '2603'
+      Connection:
+      - keep-alive
+      Location:
+      - http://api.nfe.io/v1/companies/55df4dc6b6cd9007e4f13ee8/serviceinvoices/6446a44d289da803983c279f
+      X-Request-Id:
+      - 0HMPSPD1UDSUF:00000002
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ew0KICAiaWQiOiAiNjQ0NmE0NGQyODlkYTgwMzk4M2MyNzlmIiwNCiAgImVudmlyb25tZW50IjogIkRldmVsb3BtZW50IiwNCiAgImZsb3dTdGF0dXMiOiAiV2FpdGluZ0NhbGN1bGF0ZVRheGVzIiwNCiAgInByb3ZpZGVyIjogew0KICAgICJ0cmFkZU5hbWUiOiAiU21hcnRjb2luIiwNCiAgICAidGF4UmVnaW1lIjogIk1pY3JvZW1wcmVlbmRlZG9ySW5kaXZpZHVhbCIsDQogICAgInNwZWNpYWxUYXhSZWdpbWUiOiAiQXV0b21hdGljbyIsDQogICAgImxlZ2FsTmF0dXJlIjogIlNvY2llZGFkZUVjb25vbWlhTWlzdGEiLA0KICAgICJlY29ub21pY0FjdGl2aXRpZXMiOiBbXSwNCiAgICAicmVnaW9uYWxUYXhOdW1iZXIiOiAzLA0KICAgICJtdW5pY2lwYWxUYXhOdW1iZXIiOiAiMiIsDQogICAgImlzc1JhdGUiOiAwLjAsDQogICAgInBhcmVudElkIjogIjU1ZGY0ZDAwYjZjZDkwMDdlNGYxM2VkZCIsDQogICAgImlkIjogIjU1ZGY0ZGM2YjZjZDkwMDdlNGYxM2VlOCIsDQogICAgIm5hbWUiOiAiRW1wcmVzYSBkZSBUZXN0ZSIsDQogICAgImZlZGVyYWxUYXhOdW1iZXIiOiAzNDkxOTQyMDAwMTA4LA0KICAgICJhZGRyZXNzIjogew0KICAgICAgImNvdW50cnkiOiAiIiwNCiAgICAgICJwb3N0YWxDb2RlIjogIjAxMzExLTMwMCIsDQogICAgICAic3RyZWV0IjogIkF2ZW5pZGEgUGF1bGlzdGEiLA0KICAgICAgIm51bWJlciI6ICIzNiIsDQogICAgICAiYWRkaXRpb25hbEluZm9ybWF0aW9uIjogIiIsDQogICAgICAiZGlzdHJpY3QiOiAiQmVsYSBWaXN0YSIsDQogICAgICAiY2l0eSI6IHsNCiAgICAgICAgImNvZGUiOiAiMzU1MDMwOCIsDQogICAgICAgICJuYW1lIjogIlPDo28gUGF1bG8iDQogICAgICB9LA0KICAgICAgInN0YXRlIjogIlNQIg0KICAgIH0sDQogICAgInN0YXR1cyI6ICJBY3RpdmUiLA0KICAgICJ0eXBlIjogIkxlZ2FsUGVyc29uLCBDb21wYW55IiwNCiAgICAiY3JlYXRlZE9uIjogIjIwMTUtMDgtMjdUMTc6NDk6NTguMTUyMzkxOCswMDowMCIsDQogICAgIm1vZGlmaWVkT24iOiAiMjAxNS0wOC0yN1QxODo1NzozNi4yNTE0MjI4KzAwOjAwIg0KICB9LA0KICAiYm9ycm93ZXIiOiB7DQogICAgImlkIjogIjY0NDZhNDRkMjg5ZGE4MDM5ODNjMjdhMSIsDQogICAgIm5hbWUiOiAiUmljYXJkbyBDYWxkZWlyYSIsDQogICAgImZlZGVyYWxUYXhOdW1iZXIiOiAxOTQ2Mzc3MTk4LA0KICAgICJlbWFpbCI6ICJyaWNhcmRvLm5lenpAbWFpbGluYXRvci5jb20iLA0KICAgICJhZGRyZXNzIjogew0KICAgICAgImNvdW50cnkiOiAiQlJBIiwNCiAgICAgICJwb3N0YWxDb2RlIjogIjIyMjMxMTEwIiwNCiAgICAgICJzdHJlZXQiOiAiUnVhIERvIENsaWVudGUiLA0KICAgICAgIm51bWJlciI6ICIxMzEwIiwNCiAgICAgICJhZGRpdGlvbmFsSW5mb3JtYXRpb24iOiAiQVAgMjAyIiwNCiAgICAgICJkaXN0cmljdCI6ICJDZW50cm8iLA0KICAgICAgImNpdHkiOiB7DQogICAgICAgICJjb2RlIjogIjQyMDQyMDIiLA0KICAgICAgICAibmFtZSI6ICJDaGFwZWPDsyINCiAgICAgIH0sDQogICAgICAic3RhdGUiOiAiU0MiDQogICAgfSwNCiAgICAic3RhdHVzIjogIkFjdGl2ZSIsDQogICAgInR5cGUiOiAiTmF0dXJhbFBlcnNvbiIsDQogICAgImNyZWF0ZWRPbiI6ICIyMDIzLTA0LTI0VDE1OjQ2OjIxLjU1ODQzMzcrMDA6MDAiDQogIH0sDQogICJiYXRjaE51bWJlciI6IDAsDQogICJudW1iZXIiOiAwLA0KICAic3RhdHVzIjogIkNyZWF0ZWQiLA0KICAicnBzVHlwZSI6ICJScHMiLA0KICAicnBzU3RhdHVzIjogIk5vcm1hbCIsDQogICJ0YXhhdGlvblR5cGUiOiAiV2l0aGluQ2l0eSIsDQogICJpc3N1ZWRPbiI6ICIyMDIzLTA0LTI0VDEyOjQ2OjIxLjU1ODQzNjEtMDM6MDAiLA0KICAicnBzU2VyaWFsTnVtYmVyIjogIklPIiwNCiAgInJwc051bWJlciI6IDAsDQogICJjaXR5U2VydmljZUNvZGUiOiAiMjY5MCIsDQogICJkZXNjcmlwdGlvbiI6ICJNYW51dGVuw6fDo28gZSBzdXBvcnRlIHTDqWNuaWNvLiIsDQogICJzZXJ2aWNlc0Ftb3VudCI6IDAuMTUsDQogICJwYWlkQW1vdW50IjogMC4wLA0KICAicGF5bWVudE1ldGhvZCI6ICJOb25lIiwNCiAgImRlZHVjdGlvbnNBbW91bnQiOiAwLjAsDQogICJkaXNjb3VudFVuY29uZGl0aW9uZWRBbW91bnQiOiAwLjAsDQogICJkaXNjb3VudENvbmRpdGlvbmVkQW1vdW50IjogMC4wLA0KICAiYmFzZVRheEFtb3VudCI6IDAuMTUsDQogICJpc3NSYXRlIjogMC4wLA0KICAiaXNzVGF4QW1vdW50IjogMC4wLA0KICAiaXJBbW91bnRXaXRoaGVsZCI6IDAuMCwNCiAgInBpc0Ftb3VudFdpdGhoZWxkIjogMC4wLA0KICAiY29maW5zQW1vdW50V2l0aGhlbGQiOiAwLjAsDQogICJjc2xsQW1vdW50V2l0aGhlbGQiOiAwLjAsDQogICJpbnNzQW1vdW50V2l0aGhlbGQiOiAwLjAsDQogICJpc3NBbW91bnRXaXRoaGVsZCI6IDAuMCwNCiAgIm90aGVyc0Ftb3VudFdpdGhoZWxkIjogMC4wLA0KICAiYW1vdW50V2l0aGhlbGQiOiAwLjAsDQogICJhbW91bnROZXQiOiAwLjE1LA0KICAiYXBwcm94aW1hdGVUYXgiOiB7DQogICAgInRvdGFsUmF0ZSI6IDAuMA0KICB9LA0KICAiY3JlYXRlZE9uIjogIjIwMjMtMDQtMjRUMTU6NDY6MjEuNTU4NDMwOCswMDowMCINCn0=
+  recorded_at: Mon, 24 Apr 2023 15:46:21 GMT
+recorded_with: VCR 6.0.0

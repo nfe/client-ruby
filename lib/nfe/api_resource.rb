@@ -38,8 +38,8 @@ module Nfe
         if rcode = e.http_code and rbody = e.http_body
           rbody = JSON.parse(rbody)
           rbody = Util.symbolize_names(rbody)
-
-          raise NfeError.new(rcode, rbody, rbody, rbody[:message])
+          message = rbody.respond_to?(:message) ? rbody[:message] : rbody
+          raise NfeError.new(rcode, rbody, rbody, message)
         else
           raise e
         end
@@ -56,7 +56,6 @@ module Nfe
     def api_request_file(url, method, params=nil)
       api_key = Nfe.access_keys
       url = "#{Nfe.configuration.url}#{url}?api_key=#{api_key}"
-
       request = RestClient::Request.new(
         method: method,
         url: url,
@@ -67,10 +66,10 @@ module Nfe
         response = request.execute
       rescue RestClient::ExceptionWithResponse => e
         if rcode = e.http_code and rbody = e.http_body
-          rbody = JSON.parse(rbody)
+          rbody = JSON.parse(rbody.to_json) unless rbody.empty?
           rbody = Util.symbolize_names(rbody)
-
-         raise NfeError.new(rcode, rbody, rbody, rbody[:message])
+          message = rbody.respond_to?(:message) ? rbody[:message] : rbody
+         raise NfeError.new(rcode, rbody, rbody, message)
         else
           raise e
         end

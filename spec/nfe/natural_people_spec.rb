@@ -1,6 +1,6 @@
 require_relative '../rspec_helper'
 
-describe Nfe::NaturalPeople do
+describe Nfe::NaturalPeople, :vcr do
   before(:each) do
     Nfe.api_key('e12cmDevG5iLhSd9Y7BOpxynL86Detjd2R1D5jsP5UGXA8gwxug0Vojl3H9TIzBpbhI')
     Nfe::NaturalPeople.company_id("55e8a2c9440c3b0b84ceaa12")

@@ -29,8 +29,10 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "rest-client", "~> 2.0.2"
 
-  spec.add_development_dependency "bundler", "~> 1.10"
+  spec.add_development_dependency "bundler", "~> 2.1.4"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "byebug"
+  spec.add_development_dependency "vcr", "~> 6.0.0"
+  spec.add_development_dependency "webmock"
 end
