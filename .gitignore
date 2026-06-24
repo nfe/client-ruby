@@ -9,3 +9,7 @@
 /spec/reports/
 /tmp/
 /nfe-io-*.gem
+/openspec/
+/nfeio-docs
+/client-nodejs
+/client-php
