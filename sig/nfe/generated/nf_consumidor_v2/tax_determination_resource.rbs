@@ -1,0 +1,20 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/nf-consumidor-v2.yaml
+# Hash: sha256:8c39e692ff794ccb2587ebe142be040e44d76cbf970f45e65b28d56a6165bdb5
+
+module Nfe
+  module Generated
+    module NfConsumidorV2
+      class TaxDeterminationResource < Data
+        attr_reader acquisition_purpose: String?
+        attr_reader buyer_tax_profile: String?
+        attr_reader issuer_tax_profile: String?
+        attr_reader operation_code: Integer?
+        attr_reader origin: String?
+        def self.new: (?acquisition_purpose: String?, ?buyer_tax_profile: String?, ?issuer_tax_profile: String?, ?operation_code: Integer?, ?origin: String?) -> instance
+        def initialize: (?acquisition_purpose: String?, ?buyer_tax_profile: String?, ?issuer_tax_profile: String?, ?operation_code: Integer?, ?origin: String?) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

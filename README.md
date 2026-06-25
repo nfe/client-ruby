@@ -1,115 +1,88 @@
-# Cliente Ruby para emissão de notas fiscais - NFe.io
+# nfe-io — SDK Ruby oficial da NFE.io
 
-## Onde acessar a documentação da API?
+[![CI](https://github.com/nfe/client-ruby/actions/workflows/ci.yml/badge.svg)](https://github.com/nfe/client-ruby/actions/workflows/ci.yml)
 
-> Acesse a [nossa documentação](https://nfe.io/doc/rest-api/nfe-v1) para mais detalhes e referências.
+> ⚠️ **v1 em desenvolvimento.** A `v1.0.0` é uma reescrita greenfield, com quebra
+> total de compatibilidade em relação à série `0.x`. A versão legada (`0.3.2`,
+> baseada em `rest-client`) está **congelada** no branch [`0.x-legacy`](https://github.com/nfe/client-ruby/tree/0.x-legacy)
+> e não recebe manutenção. Para fixá-la: `gem "nfe-io", "~> 0.3"`.
 
-## Como realizar a instalação do pacote?
+SDK oficial da [NFE.io](https://nfe.io) para Ruby — emissão e gestão de documentos
+fiscais eletrônicos brasileiros (NFS-e, NF-e, NFC-e, CT-e).
 
-Para executar a instalação do nosso pacote, você deverá incluir essa linha no Gemfile da sua aplicação:
+- **Ruby 3.2+** (CI em 3.2, 3.3 e 3.4).
+- **Zero dependências de runtime** — apenas a stdlib do Ruby (`net/http`, `json`, `openssl`, ...).
+- **Ergonomia estilo Stripe** — um único `Nfe::Client` com acessores de recurso `snake_case`.
+- **Tipado** — assinaturas RBS em `sig/`, type-check com Steep.
+- **Modelos imutáveis** gerados a partir das specs OpenAPI da documentação oficial.
+
+## Instalação
 
 ```ruby
-gem 'nfe-io'
+# Gemfile
+gem "nfe-io", "~> 1.0"
 ```
 
-E depois executar:
+```sh
+bundle install
+```
 
-    $ bundle
-
-Ou se preferir, instale diretamente via comando:
-
-    $ gem install nfe-io
-
-## Exemplos de uso
-
-> Em construção!
-
-### Como emitir uma Nota Fiscal de Serviço?
-Abaixo, temos um código-exemplo para realizar uma Emissão de Nota Fiscal de Serviço:
+## Uso
 
 ```ruby
-# Define a API Key, conforme está no painel
-Nfe.api_key('c73d49f9649046eeba36dcf69f6334fd')
+require "nfe"
 
-# ID da empresa, você encontra no painel
-Nfe::ServiceInvoice.company_id("55df4dc6b6cd9007e4f13ee8")
+client = Nfe::Client.new(api_key: "sua-api-key")
 
-# Dados do Tomador dos Serviços
-customer_params = {
-  borrower: {
-    federalTaxNumber: '191', # CNPJ ou CPF (opcional para tomadores no exterior)
-    name: 'BANCO DO BRASIL SA', # Nome da pessoa física ou Razão Social da Empresa
-    email: 'nfe-io@mailinator.com', # Email para onde deverá ser enviado a nota fiscal
-    # Endereço do tomador
-    address: {
-      country: 'BRA', # Código do pais com três letras
-      postalCode: '70073901', # CEP do endereço (opcional para tomadores no exterior)
-      street: 'Rua Do Cliente', # Logradouro
-      number: 'S/N', # Número (opcional)
-      additionalInformation: 'QUADRA 01 BLOCO G', # Complemento (opcional)
-      district: 'Asa Sul', # Bairro
-      city: { # Cidade é opcional para tomadores no exterior
-        code: 4204202, # Código do IBGE para a Cidade
-        name: 'Brasilia' # Nome da Cidade
-      },
-      state: 'DF'
-    }
+# Emissão de NFS-e (exemplo projetado para a v1)
+result = client.service_invoices.create(
+  company_id: "55df4dc6b6cd9007e4f13ee8",
+  data: {
+    city_service_code: "2690",
+    description: "Manutenção e suporte técnico",
+    services_amount: 100.0,
+    borrower: { federal_tax_number: "191", name: "Banco do Brasil SA" }
   }
-}
-
-# Dados da nota fiscal de serviço
-service_params = {
-  cityServiceCode: '2690', # Código do serviço de acordo com o a cidade
-  description: 'Teste, para manutenção e suporte técnico.', # Descrição dos serviços prestados
-  servicesAmount: 0.1 # Valor total do serviços
-}
-
-# Emite a nota fiscal
-invoice_create_result = Nfe::ServiceInvoice.create(customer_params.merge(service_params))
+)
 ```
 
-### Como cancelar uma nota?
-Abaixo, temos um código-exemplo para efetuar o cancelamento de uma nota: 
+> A configuração também aceita `data_api_key:`, `environment:` (`:production` |
+> `:development`), `timeout:` e overrides de host. O `environment` seleciona a
+> **chave**, não a URL.
 
-```ruby
-# Define a API Key, conforme está no painel
-Nfe.api_key('c73d49f9649046eeba36dcf69f6334fd')
-# ID da empresa, você encontra no painel
-Nfe::ServiceInvoice.company_id("55df4dc6b6cd9007e4f13ee8")
-# O parâmetro é o ID da nota
-invoice = Nfe::ServiceInvoice.cancel("59443a0e2a8b6806986d7a2d")
-# A resposta são os dados da nota com a mudança de estado para "WaitingSendCancel"
+## Recursos
+
+A `v1` expõe **17 recursos** no `Nfe::Client`, organizados por família:
+
+| Grupo | Acessores |
+|---|---|
+| **Entidades** (`api.nfe.io`) | `companies`, `legal_people`, `natural_people`, `webhooks` |
+| **Emissão** | `service_invoices` (NFS-e), `product_invoices` (NF-e), `consumer_invoices` (NFC-e), `transportation_invoices` (CT-e inbound), `inbound_product_invoices` |
+| **Consulta / dados** | `product_invoice_query`, `consumer_invoice_query`, `addresses`, `legal_entity_lookup`, `natural_person_lookup`, `tax_calculation`, `tax_codes`, `state_taxes` |
+
+Emissão no layout da **Reforma Tributária (RTC)** é exposta opcionalmente via
+`service_invoices_rtc` (NFS-e) e `product_invoices_rtc` (NF-e/NFC-e).
+
+> Os corpos dos recursos são entregues nas etapas seguintes do desenvolvimento da
+> v1; esta versão estabelece a fundação (gem, namespace, configuração, tooling e CI).
+
+## Desenvolvimento
+
+```sh
+bin/setup            # instala dependências
+bundle exec rspec    # testes (gate de cobertura SimpleCov >= 80%)
+bundle exec rubocop  # lint
+bundle exec steep check  # type-check
+bundle exec rbs validate # valida as assinaturas
+bundle exec rake     # spec + rubocop + steep + rbs
 ```
 
-### Criar uma Empresa para Emissão de Notas
->Em construção!
+## Migração da `0.x`
 
-### Como efetuar o download de uma nota em PDF?
-Abaixo, temos um código exemplo para baixar uma nota em PDF:
+Veja [`MIGRATION.md`](MIGRATION.md). Em resumo: a API global (`Nfe.api_key(...)`,
+`Nfe::ServiceInvoice.create`) dá lugar a `Nfe::Client.new(api_key:)` +
+`client.service_invoices.create`, sem `rest-client` e com value objects imutáveis.
 
-```ruby
-# Define a API Key, conforme está no painel
-Nfe.api_key('c73d49f9649046eeba36dcf69f6334fd')
-# ID da empresa, você encontra no painel
-Nfe::ServiceInvoice.company_id("55df4dc6b6cd9007e4f13ee8")
-# Os formatos suportados são :pdf e :xml, e o primeiro parâmetro é o ID da nota
-invoice = Nfe::ServiceInvoice.download("59443a0e2a8b6806986d7a2d", :pdf)
-# O conteúdo do PDF/XML pode ser acessado da seguinte forma
-invoice.body
-# Caso você esteja utilizando Rails, pode usar o método send_data para retornar
-# o conteúdo da Nota Fiscal diretamente para o usuário
-# Note que neste caso o arquivo é o PDF, mas poderia ser o XML, mude se necessário
-send_data(invoice.body, filename: 'invoice.pdf', type: 'application/pdf')
-```
+## Licença
 
-### Como validar o Webhook?
-```ruby
-def request_is_authentic?
-  body = request.body.read
-  signature = request.headers['X-NFEIO-Signature']
-
-  hash = 'sha1=' + Base64.strict_encode64(OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha1'), ENV.fetch("NFEIO_WEBHOOK_SECRET"), body))
-
-  ActiveSupport::SecurityUtils.secure_compare(hash, signature)
-end
-```
+MIT. Veja [`LICENSE.txt`](LICENSE.txt).

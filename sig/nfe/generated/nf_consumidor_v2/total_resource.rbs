@@ -1,0 +1,21 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/nf-consumidor-v2.yaml
+# Hash: sha256:8c39e692ff794ccb2587ebe142be040e44d76cbf970f45e65b28d56a6165bdb5
+
+module Nfe
+  module Generated
+    module NfConsumidorV2
+      class TotalResource < Data
+        attr_reader ibs_cbs_totals: IBSCBSTotalsResource
+        attr_reader icms: ICMSTotalResource
+        attr_reader is_totals: ISTotalsResource
+        attr_reader issqn: ISSQNTotalResource
+        attr_reader total_invoice_amount: Float?
+        attr_reader withheld_taxes: TotalsWithholdings
+        def self.new: (?ibs_cbs_totals: IBSCBSTotalsResource, ?icms: ICMSTotalResource, ?is_totals: ISTotalsResource, ?issqn: ISSQNTotalResource, ?total_invoice_amount: Float?, ?withheld_taxes: TotalsWithholdings) -> instance
+        def initialize: (?ibs_cbs_totals: IBSCBSTotalsResource, ?icms: ICMSTotalResource, ?is_totals: ISTotalsResource, ?issqn: ISSQNTotalResource, ?total_invoice_amount: Float?, ?withheld_taxes: TotalsWithholdings) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

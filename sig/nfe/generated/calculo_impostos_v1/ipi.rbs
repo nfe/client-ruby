@@ -1,0 +1,22 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/calculo-impostos-v1.yaml
+# Hash: sha256:39f6c3a1112ff3c98d842e172be5007eaa4d0c5f63d300ad263b96c9299ece99
+
+module Nfe
+  module Generated
+    module CalculoImpostosV1
+      class Ipi < Data
+        attr_reader c_enq: String?
+        attr_reader cst: String?
+        attr_reader p_ipi: String?
+        attr_reader q_unid: String?
+        attr_reader v_bc: String?
+        attr_reader v_ipi: String?
+        attr_reader v_unid: String?
+        def self.new: (?c_enq: String?, ?cst: String?, ?p_ipi: String?, ?q_unid: String?, ?v_bc: String?, ?v_ipi: String?, ?v_unid: String?) -> instance
+        def initialize: (?c_enq: String?, ?cst: String?, ?p_ipi: String?, ?q_unid: String?, ?v_bc: String?, ?v_ipi: String?, ?v_unid: String?) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

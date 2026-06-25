@@ -1,0 +1,33 @@
+module Nfe
+  module Http
+    class NetHttp
+      KEEP_ALIVE_TIMEOUT: Integer
+
+      @default_open_timeout: Integer
+      @default_read_timeout: Integer
+      @ca_file: String?
+      @pool: Hash[String, Array[untyped]]
+      @mutex: Thread::Mutex
+
+      def initialize: (?default_open_timeout: Integer, ?default_read_timeout: Integer, ?ca_file: String?) -> void
+
+      def call: (Nfe::Http::Request request) -> Nfe::Http::Response
+
+      private
+
+      def checkout: (String key, URI::Generic uri, Nfe::Http::Request request) -> untyped
+      def checkin: (String key, untyped http) -> void
+      def discard: (untyped http) -> void
+      def build_connection: (URI::Generic uri) -> untyped
+      def configure_tls: (untyped http, URI::Generic uri) -> void
+      def apply_timeouts: (untyped http, Nfe::Http::Request request) -> void
+      def origin_key: (URI::Generic uri) -> String
+      def build_net_request: (URI::Generic uri, Nfe::Http::Request request) -> untyped
+      def accept_encoding_set?: (Hash[untyped, untyped] headers) -> bool
+      def request_class: (untyped method) -> untyped
+      def build_response: (untyped net_response) -> Nfe::Http::Response
+      def normalize_headers: (untyped net_response) -> Hash[String, String]
+      def decompress: (String body, Hash[String, String] headers) -> [ String, Hash[String, String] ]
+    end
+  end
+end

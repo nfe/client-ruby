@@ -1,0 +1,60 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/calculo-impostos-v1.yaml
+# Hash: sha256:39f6c3a1112ff3c98d842e172be5007eaa4d0c5f63d300ad263b96c9299ece99
+
+module Nfe
+  module Generated
+    module CalculoImpostosV1
+      class Icms < Data
+        attr_reader c_benef_rbc: String?
+        attr_reader csosn: String?
+        attr_reader cst: String?
+        attr_reader ind_deduz_deson: String?
+        attr_reader mod_bc: String?
+        attr_reader mod_bcst: String?
+        attr_reader mot_des_icms: String?
+        attr_reader mot_des_icmsst: String?
+        attr_reader orig: String?
+        attr_reader p_cred_sn: String?
+        attr_reader p_dif: String?
+        attr_reader p_fcp: String?
+        attr_reader p_fcpdif: String?
+        attr_reader p_fcpst: String?
+        attr_reader p_fcpstret: String?
+        attr_reader p_icms: String?
+        attr_reader p_icmsefet: String?
+        attr_reader p_icmsst: String?
+        attr_reader p_mvast: String?
+        attr_reader p_red_bc: String?
+        attr_reader p_red_bcefet: String?
+        attr_reader p_red_bcst: String?
+        attr_reader p_st: String?
+        attr_reader v_bc: String?
+        attr_reader v_bcefet: String?
+        attr_reader v_bcfcp: String?
+        attr_reader v_bcfcpst: String?
+        attr_reader v_bcfcpstret: String?
+        attr_reader v_bcst: String?
+        attr_reader v_bcstret: String?
+        attr_reader v_cred_icmssn: String?
+        attr_reader v_fcp: String?
+        attr_reader v_fcpdif: String?
+        attr_reader v_fcpefet: String?
+        attr_reader v_fcpst: String?
+        attr_reader v_fcpstret: String?
+        attr_reader v_icms: String?
+        attr_reader v_icmsdeson: String?
+        attr_reader v_icmsdif: String?
+        attr_reader v_icmsefet: String?
+        attr_reader v_icmsop: String?
+        attr_reader v_icmsst: String?
+        attr_reader v_icmsstdeson: String?
+        attr_reader v_icmsstret: String?
+        attr_reader v_icmssubstituto: String?
+        def self.new: (?c_benef_rbc: String?, ?csosn: String?, ?cst: String?, ?ind_deduz_deson: String?, ?mod_bc: String?, ?mod_bcst: String?, ?mot_des_icms: String?, ?mot_des_icmsst: String?, ?orig: String?, ?p_cred_sn: String?, ?p_dif: String?, ?p_fcp: String?, ?p_fcpdif: String?, ?p_fcpst: String?, ?p_fcpstret: String?, ?p_icms: String?, ?p_icmsefet: String?, ?p_icmsst: String?, ?p_mvast: String?, ?p_red_bc: String?, ?p_red_bcefet: String?, ?p_red_bcst: String?, ?p_st: String?, ?v_bc: String?, ?v_bcefet: String?, ?v_bcfcp: String?, ?v_bcfcpst: String?, ?v_bcfcpstret: String?, ?v_bcst: String?, ?v_bcstret: String?, ?v_cred_icmssn: String?, ?v_fcp: String?, ?v_fcpdif: String?, ?v_fcpefet: String?, ?v_fcpst: String?, ?v_fcpstret: String?, ?v_icms: String?, ?v_icmsdeson: String?, ?v_icmsdif: String?, ?v_icmsefet: String?, ?v_icmsop: String?, ?v_icmsst: String?, ?v_icmsstdeson: String?, ?v_icmsstret: String?, ?v_icmssubstituto: String?) -> instance
+        def initialize: (?c_benef_rbc: String?, ?csosn: String?, ?cst: String?, ?ind_deduz_deson: String?, ?mod_bc: String?, ?mod_bcst: String?, ?mot_des_icms: String?, ?mot_des_icmsst: String?, ?orig: String?, ?p_cred_sn: String?, ?p_dif: String?, ?p_fcp: String?, ?p_fcpdif: String?, ?p_fcpst: String?, ?p_fcpstret: String?, ?p_icms: String?, ?p_icmsefet: String?, ?p_icmsst: String?, ?p_mvast: String?, ?p_red_bc: String?, ?p_red_bcefet: String?, ?p_red_bcst: String?, ?p_st: String?, ?v_bc: String?, ?v_bcefet: String?, ?v_bcfcp: String?, ?v_bcfcpst: String?, ?v_bcfcpstret: String?, ?v_bcst: String?, ?v_bcstret: String?, ?v_cred_icmssn: String?, ?v_fcp: String?, ?v_fcpdif: String?, ?v_fcpefet: String?, ?v_fcpst: String?, ?v_fcpstret: String?, ?v_icms: String?, ?v_icmsdeson: String?, ?v_icmsdif: String?, ?v_icmsefet: String?, ?v_icmsop: String?, ?v_icmsst: String?, ?v_icmsstdeson: String?, ?v_icmsstret: String?, ?v_icmssubstituto: String?) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

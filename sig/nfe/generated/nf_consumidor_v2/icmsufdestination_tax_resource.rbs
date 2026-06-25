@@ -1,0 +1,24 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/nf-consumidor-v2.yaml
+# Hash: sha256:8c39e692ff794ccb2587ebe142be040e44d76cbf970f45e65b28d56a6165bdb5
+
+module Nfe
+  module Generated
+    module NfConsumidorV2
+      class ICMSUFDestinationTaxResource < Data
+        attr_reader p_fcpufdest: Float?
+        attr_reader p_icmsinter: Float?
+        attr_reader p_icmsinter_part: Float?
+        attr_reader p_icmsufdest: Float?
+        attr_reader v_bcfcpufdest: Float?
+        attr_reader v_bcufdest: Float?
+        attr_reader v_fcpufdest: Float?
+        attr_reader v_icmsufdest: Float?
+        attr_reader v_icmsufremet: Float?
+        def self.new: (?p_fcpufdest: Float?, ?p_icmsinter: Float?, ?p_icmsinter_part: Float?, ?p_icmsufdest: Float?, ?v_bcfcpufdest: Float?, ?v_bcufdest: Float?, ?v_fcpufdest: Float?, ?v_icmsufdest: Float?, ?v_icmsufremet: Float?) -> instance
+        def initialize: (?p_fcpufdest: Float?, ?p_icmsinter: Float?, ?p_icmsinter_part: Float?, ?p_icmsufdest: Float?, ?v_bcfcpufdest: Float?, ?v_bcufdest: Float?, ?v_fcpufdest: Float?, ?v_icmsufdest: Float?, ?v_icmsufremet: Float?) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

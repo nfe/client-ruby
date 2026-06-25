@@ -1,0 +1,64 @@
+openapi: "3.0.3"
+info:
+  title: Minimal Fixture API
+  version: "1.0.0"
+paths: {}
+components:
+  schemas:
+    Borrower:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: Legal name of the borrower.
+        federalTaxNumber:
+          type: integer
+        email:
+          type: string
+          nullable: true
+        address:
+          $ref: "#/components/schemas/Address"
+        documents:
+          type: array
+          items:
+            $ref: "#/components/schemas/Document"
+        externalId:
+          oneOf:
+            - type: integer
+            - type: string
+    Address:
+      type: object
+      required:
+        - city
+      properties:
+        city:
+          type: string
+        postalCode:
+          type: string
+          nullable: true
+    Document:
+      type: object
+      required:
+        - kind
+      properties:
+        kind:
+          type: string
+        number:
+          type: string
+    InvoiceStatus:
+      type: string
+      enum:
+        - Issued
+        - Cancelled
+        - WaitingCalculateTaxes
+    Priority:
+      type: integer
+      enum:
+        - 1
+        - 2
+        - 3
+    FreeForm:
+      type: object
+      additionalProperties: true

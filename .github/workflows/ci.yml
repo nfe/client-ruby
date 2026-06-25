@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Ruby ${{ matrix.ruby }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby: ["3.2", "3.3", "3.4"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Ruby ${{ matrix.ruby }}
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+
+      - name: RSpec (fails if coverage < 80%)
+        run: bundle exec rspec
+
+      - name: RuboCop
+        run: bundle exec rubocop
+
+      - name: RBS validate
+        run: bundle exec rbs validate
+
+      - name: Steep type-check
+        run: bundle exec steep check
+
+      - name: OpenAPI generated code is in sync
+        run: bundle exec rake generate:check

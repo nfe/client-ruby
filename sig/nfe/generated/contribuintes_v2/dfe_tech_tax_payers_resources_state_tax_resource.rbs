@@ -1,0 +1,16 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/contribuintes-v2.json
+# Hash: sha256:e2d215a19f5dc85c08067d51644e807aae32b6c4754390872670f2e18a938102
+
+module Nfe
+  module Generated
+    module ContribuintesV2
+      class DFeTech_TaxPayers_Resources_StateTaxResource < Data
+        attr_reader state_tax: DFeTech_TaxPayers_Resources_StateTaxResourceItem
+        def self.new: (?state_tax: DFeTech_TaxPayers_Resources_StateTaxResourceItem) -> instance
+        def initialize: (?state_tax: DFeTech_TaxPayers_Resources_StateTaxResourceItem) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

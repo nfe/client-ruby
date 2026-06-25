@@ -1,0 +1,21 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/nf-consumidor-v2.yaml
+# Hash: sha256:8c39e692ff794ccb2587ebe142be040e44d76cbf970f45e65b28d56a6165bdb5
+
+module Nfe
+  module Generated
+    module NfConsumidorV2
+      class CardResource < Data
+        attr_reader authorization: String?
+        attr_reader federal_tax_number: String?
+        attr_reader federal_tax_number_recipient: String?
+        attr_reader flag: untyped
+        attr_reader id_payment_terminal: String?
+        attr_reader integration_payment_type: untyped
+        def self.new: (?authorization: String?, ?federal_tax_number: String?, ?federal_tax_number_recipient: String?, ?flag: untyped, ?id_payment_terminal: String?, ?integration_payment_type: untyped) -> instance
+        def initialize: (?authorization: String?, ?federal_tax_number: String?, ?federal_tax_number_recipient: String?, ?flag: untyped, ?id_payment_terminal: String?, ?integration_payment_type: untyped) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

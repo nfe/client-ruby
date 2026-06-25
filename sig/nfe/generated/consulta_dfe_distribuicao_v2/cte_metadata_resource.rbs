@@ -1,0 +1,16 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/consulta-dfe-distribuicao-v2.yaml
+# Hash: sha256:f607124386b9d5210012cd4ac84ed7a0e359939e4176cebe4103b5a525321bdd
+
+module Nfe
+  module Generated
+    module ConsultaDfeDistribuicaoV2
+      class CTeMetadataResource < Data
+        attr_reader issued_on: String
+        def self.new: (?issued_on: String) -> instance
+        def initialize: (?issued_on: String) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

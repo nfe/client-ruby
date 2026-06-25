@@ -1,0 +1,24 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/product-invoice-rtc-v1.yaml
+# Hash: sha256:4327ad141eeace6219dc4267678c44a134ae1fdde93f7dd69cf4c9ae9418415a
+
+module Nfe
+  module Generated
+    module ProductInvoiceRtcV1
+      class AddressResource < Data
+        attr_reader additional_information: String?
+        attr_reader city: CityResource
+        attr_reader country: String?
+        attr_reader district: String
+        attr_reader number: String
+        attr_reader phone: String?
+        attr_reader postal_code: String?
+        attr_reader state: String
+        attr_reader street: String
+        def self.new: (?additional_information: String?, city: CityResource, ?country: String?, district: String, number: String, ?phone: String?, ?postal_code: String?, state: String, street: String) -> instance
+        def initialize: (?additional_information: String?, city: CityResource, ?country: String?, district: String, number: String, ?phone: String?, ?postal_code: String?, state: String, street: String) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

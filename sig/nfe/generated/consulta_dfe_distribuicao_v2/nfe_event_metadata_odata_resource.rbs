@@ -1,0 +1,24 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/consulta-dfe-distribuicao-v2.yaml
+# Hash: sha256:f607124386b9d5210012cd4ac84ed7a0e359939e4176cebe4103b5a525321bdd
+
+module Nfe
+  module Generated
+    module ConsultaDfeDistribuicaoV2
+      class NFeEventMetadataODataResource < Data
+        attr_reader access_key: String
+        attr_reader company: InboundCompanyResource
+        attr_reader created_on: String
+        attr_reader description: String
+        attr_reader id: String
+        attr_reader nsu: Integer
+        attr_reader receipt_on: String
+        attr_reader type: String
+        attr_reader xml_url: String
+        def self.new: (?access_key: String, ?company: InboundCompanyResource, ?created_on: String, ?description: String, ?id: String, ?nsu: Integer, ?receipt_on: String, ?type: String, ?xml_url: String) -> instance
+        def initialize: (?access_key: String, ?company: InboundCompanyResource, ?created_on: String, ?description: String, ?id: String, ?nsu: Integer, ?receipt_on: String, ?type: String, ?xml_url: String) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

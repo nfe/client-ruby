@@ -1,0 +1,18 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/nfeio.yaml
+# Hash: sha256:813bda287538f8599c3565485eb523d1b1311b26b5be94ead62ba0b7a17f6af3
+
+module Nfe
+  module Generated
+    module Nfeio
+      class ZipRequest < Data
+        attr_reader blob_name: String?
+        attr_reader id: String
+        attr_reader type: untyped
+        def self.new: (?blob_name: String?, ?id: String, ?type: untyped) -> instance
+        def initialize: (?blob_name: String?, ?id: String, ?type: untyped) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

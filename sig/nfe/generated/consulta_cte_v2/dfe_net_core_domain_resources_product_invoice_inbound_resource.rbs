@@ -1,0 +1,22 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/consulta-cte-v2.yaml
+# Hash: sha256:6424379a8ca8cdf8129f24ec19b84b260208fc049a7d1d9cb8c45763c07af1a9
+
+module Nfe
+  module Generated
+    module ConsultaCteV2
+      class DFe_NetCore_Domain_Resources_ProductInvoiceInboundResource < Data
+        attr_reader automatic_manifesting: DFe_NetCore_Domain_Resources_ManifestAutomaticRulesResource
+        attr_reader company_id: String?
+        attr_reader created_on: String
+        attr_reader modified_on: String?
+        attr_reader start_from_date: String
+        attr_reader start_from_nsu: Integer
+        attr_reader status: untyped
+        def self.new: (?automatic_manifesting: DFe_NetCore_Domain_Resources_ManifestAutomaticRulesResource, ?company_id: String?, ?created_on: String, ?modified_on: String?, ?start_from_date: String, ?start_from_nsu: Integer, ?status: untyped) -> instance
+        def initialize: (?automatic_manifesting: DFe_NetCore_Domain_Resources_ManifestAutomaticRulesResource, ?company_id: String?, ?created_on: String, ?modified_on: String?, ?start_from_date: String, ?start_from_nsu: Integer, ?status: untyped) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

@@ -1,0 +1,23 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/nf-produto-v2.yaml
+# Hash: sha256:e565b47e4d8b17255f99efc2b6354d589d2903c4ba9b97caabd74f84de59e4e2
+
+module Nfe
+  module Generated
+    module NfProdutoV2
+      class PaymentDetailResource < Data
+        attr_reader amount: Float?
+        attr_reader card: CardResource
+        attr_reader federal_tax_number_pag: String?
+        attr_reader method: untyped
+        attr_reader method_description: String?
+        attr_reader payment_date: String?
+        attr_reader payment_type: untyped
+        attr_reader state_pag: String?
+        def self.new: (?amount: Float?, ?card: CardResource, ?federal_tax_number_pag: String?, method: untyped, ?method_description: String?, ?payment_date: String?, ?payment_type: untyped, ?state_pag: String?) -> instance
+        def initialize: (?amount: Float?, ?card: CardResource, ?federal_tax_number_pag: String?, method: untyped, ?method_description: String?, ?payment_date: String?, ?payment_type: untyped, ?state_pag: String?) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

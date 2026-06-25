@@ -1,0 +1,12 @@
+module Nfe
+  module Http
+    module Redactor
+      REDACTED: String
+      SENSITIVE_NAMES: Array[String]
+      SENSITIVE_PATTERN: Regexp
+
+      def self?.headers: (untyped hash) -> Hash[untyped, untyped]
+      def self?.sensitive?: (untyped key) -> bool
+    end
+  end
+end

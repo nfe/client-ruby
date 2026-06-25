@@ -1,0 +1,29 @@
+module Nfe
+  class Configuration
+    HOSTS: Hash[Symbol, String]
+    DEFAULT_TIMEOUT: Integer
+    DEFAULT_OPEN_TIMEOUT: Integer
+    DEFAULT_MAX_RETRIES: Integer
+
+    attr_reader api_key: String?
+    attr_reader data_api_key: String?
+    attr_reader environment: Symbol
+    attr_reader timeout: Integer
+    attr_reader open_timeout: Integer
+    attr_reader max_retries: Integer
+    attr_reader logger: untyped
+    attr_reader user_agent_suffix: String?
+    attr_reader base_url_overrides: Hash[Symbol, String]
+
+    def initialize: (?api_key: String?, ?data_api_key: String?, ?environment: Symbol,
+                     ?timeout: Integer, ?open_timeout: Integer, ?max_retries: Integer,
+                     ?logger: untyped, ?user_agent_suffix: String?,
+                     ?base_url_overrides: Hash[Symbol, String]) -> void
+
+    def base_url_for: (Symbol | String family) -> String
+
+    private
+
+    def normalize_family: (Symbol | String family) -> Symbol
+  end
+end

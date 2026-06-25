@@ -1,0 +1,26 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/service-invoice-rtc-v1.yaml
+# Hash: sha256:5c3b751b63e6a0adabb185b974e141f1b06127934fa0bf05fc505676024db32b
+
+module Nfe
+  module Generated
+    module ServiceInvoiceRtcV1
+      class DeductionDocument < Data
+        attr_reader deductible_total: Float
+        attr_reader deduction_type: String
+        attr_reader fiscal_document_number: String
+        attr_reader issue_date: String
+        attr_reader municipal_nfse: Hash[String, untyped]
+        attr_reader nfe_key: String
+        attr_reader nfse_key: String
+        attr_reader non_fiscal_document_number: String
+        attr_reader other_deduction_description: String
+        attr_reader supplier: PartyDefinition
+        attr_reader used_amount: Float
+        def self.new: (deductible_total: Float, deduction_type: String, ?fiscal_document_number: String, issue_date: String, ?municipal_nfse: Hash[String, untyped], ?nfe_key: String, ?nfse_key: String, ?non_fiscal_document_number: String, ?other_deduction_description: String, ?supplier: PartyDefinition, used_amount: Float) -> instance
+        def initialize: (deductible_total: Float, deduction_type: String, ?fiscal_document_number: String, issue_date: String, ?municipal_nfse: Hash[String, untyped], ?nfe_key: String, ?nfse_key: String, ?non_fiscal_document_number: String, ?other_deduction_description: String, ?supplier: PartyDefinition, used_amount: Float) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

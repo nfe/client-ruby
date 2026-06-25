@@ -1,0 +1,19 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/service-invoice-rtc-v1.yaml
+# Hash: sha256:5c3b751b63e6a0adabb185b974e141f1b06127934fa0bf05fc505676024db32b
+
+module Nfe
+  module Generated
+    module ServiceInvoiceRtcV1
+      class Lease < Data
+        attr_reader category: String
+        attr_reader object_type: String
+        attr_reader poles_count: Integer
+        attr_reader total_length: Float
+        def self.new: (?category: String, ?object_type: String, ?poles_count: Integer, ?total_length: Float) -> instance
+        def initialize: (?category: String, ?object_type: String, ?poles_count: Integer, ?total_length: Float) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

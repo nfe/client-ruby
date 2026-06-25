@@ -1,0 +1,39 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/product-invoice-rtc-v1.yaml
+# Hash: sha256:4327ad141eeace6219dc4267678c44a134ae1fdde93f7dd69cf4c9ae9418415a
+
+module Nfe
+  module Generated
+    module ProductInvoiceRtcV1
+      class VehicleDetailResource < Data
+        attr_reader brand_model_code: String?
+        attr_reader chassis: String?
+        attr_reader color_code: String?
+        attr_reader color_description: String?
+        attr_reader denatran_color_code: String?
+        attr_reader engine_displacement: String?
+        attr_reader engine_number: String?
+        attr_reader engine_power: String?
+        attr_reader fuel_type: String?
+        attr_reader gross_weight: String?
+        attr_reader manufacture_year: Integer?
+        attr_reader maximum_traction_capacity: String?
+        attr_reader model_year: Integer?
+        attr_reader net_weight: String?
+        attr_reader operation_type: Integer?
+        attr_reader paint_type: String?
+        attr_reader restriction_type: Integer?
+        attr_reader seating_capacity: Integer?
+        attr_reader serial_number: String?
+        attr_reader vehicle_condition: Integer?
+        attr_reader vehicle_species: Integer?
+        attr_reader vehicle_type: String?
+        attr_reader vin_condition: String?
+        attr_reader wheel_base: String?
+        def self.new: (?brand_model_code: String?, ?chassis: String?, ?color_code: String?, ?color_description: String?, ?denatran_color_code: String?, ?engine_displacement: String?, ?engine_number: String?, ?engine_power: String?, ?fuel_type: String?, ?gross_weight: String?, ?manufacture_year: Integer?, ?maximum_traction_capacity: String?, ?model_year: Integer?, ?net_weight: String?, ?operation_type: Integer?, ?paint_type: String?, ?restriction_type: Integer?, ?seating_capacity: Integer?, ?serial_number: String?, ?vehicle_condition: Integer?, ?vehicle_species: Integer?, ?vehicle_type: String?, ?vin_condition: String?, ?wheel_base: String?) -> instance
+        def initialize: (?brand_model_code: String?, ?chassis: String?, ?color_code: String?, ?color_description: String?, ?denatran_color_code: String?, ?engine_displacement: String?, ?engine_number: String?, ?engine_power: String?, ?fuel_type: String?, ?gross_weight: String?, ?manufacture_year: Integer?, ?maximum_traction_capacity: String?, ?model_year: Integer?, ?net_weight: String?, ?operation_type: Integer?, ?paint_type: String?, ?restriction_type: Integer?, ?seating_capacity: Integer?, ?serial_number: String?, ?vehicle_condition: Integer?, ?vehicle_species: Integer?, ?vehicle_type: String?, ?vin_condition: String?, ?wheel_base: String?) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

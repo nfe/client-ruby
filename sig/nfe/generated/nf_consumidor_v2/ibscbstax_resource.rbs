@@ -1,0 +1,31 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/nf-consumidor-v2.yaml
+# Hash: sha256:8c39e692ff794ccb2587ebe142be040e44d76cbf970f45e65b28d56a6165bdb5
+
+module Nfe
+  module Generated
+    module NfConsumidorV2
+      class IBSCBSTaxResource < Data
+        attr_reader basis: Float?
+        attr_reader calculation_mode: String?
+        attr_reader cbs: CBSTaxResource
+        attr_reader class_code: String?
+        attr_reader credit_reversal: CreditReversalResource
+        attr_reader credit_transfer: CreditTransferTaxResource
+        attr_reader donation_indicator: String?
+        attr_reader government_purchase: GovernmentPurchaseTaxResource
+        attr_reader ibs_total_amount: Float?
+        attr_reader monophase: MonophaseIBSCBSTaxResource
+        attr_reader municipal: IBSMunicipalTaxResource
+        attr_reader operational_presumed_credit: OperationalPresumedCreditResource
+        attr_reader regular_taxation: RegularTaxationResource
+        attr_reader situation_code: String?
+        attr_reader state: IBSStateTaxResource
+        attr_reader zfm_presumed_credit: ZfmPresumedCreditResource
+        def self.new: (?basis: Float?, ?calculation_mode: String?, ?cbs: CBSTaxResource, ?class_code: String?, ?credit_reversal: CreditReversalResource, ?credit_transfer: CreditTransferTaxResource, ?donation_indicator: String?, ?government_purchase: GovernmentPurchaseTaxResource, ?ibs_total_amount: Float?, ?monophase: MonophaseIBSCBSTaxResource, ?municipal: IBSMunicipalTaxResource, ?operational_presumed_credit: OperationalPresumedCreditResource, ?regular_taxation: RegularTaxationResource, ?situation_code: String?, ?state: IBSStateTaxResource, ?zfm_presumed_credit: ZfmPresumedCreditResource) -> instance
+        def initialize: (?basis: Float?, ?calculation_mode: String?, ?cbs: CBSTaxResource, ?class_code: String?, ?credit_reversal: CreditReversalResource, ?credit_transfer: CreditTransferTaxResource, ?donation_indicator: String?, ?government_purchase: GovernmentPurchaseTaxResource, ?ibs_total_amount: Float?, ?monophase: MonophaseIBSCBSTaxResource, ?municipal: IBSMunicipalTaxResource, ?operational_presumed_credit: OperationalPresumedCreditResource, ?regular_taxation: RegularTaxationResource, ?situation_code: String?, ?state: IBSStateTaxResource, ?zfm_presumed_credit: ZfmPresumedCreditResource) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

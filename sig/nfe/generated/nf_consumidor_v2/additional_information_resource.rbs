@@ -1,0 +1,25 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/nf-consumidor-v2.yaml
+# Hash: sha256:8c39e692ff794ccb2587ebe142be040e44d76cbf970f45e65b28d56a6165bdb5
+
+module Nfe
+  module Generated
+    module NfConsumidorV2
+      class AdditionalInformationResource < Data
+        attr_reader advance_payment: Array[AdvancePaymentItemResource]?
+        attr_reader contract: String?
+        attr_reader effort: String?
+        attr_reader fisco: String?
+        attr_reader order: String?
+        attr_reader referenced_process: Array[ReferencedProcessResource]?
+        attr_reader tax_documents_reference: Array[TaxDocumentsReferenceResource]?
+        attr_reader taxpayer: String?
+        attr_reader taxpayer_comments: Array[TaxpayerCommentsResource]?
+        attr_reader xml_authorized: Array[Integer]?
+        def self.new: (?advance_payment: Array[AdvancePaymentItemResource]?, ?contract: String?, ?effort: String?, ?fisco: String?, ?order: String?, ?referenced_process: Array[ReferencedProcessResource]?, ?tax_documents_reference: Array[TaxDocumentsReferenceResource]?, ?taxpayer: String?, ?taxpayer_comments: Array[TaxpayerCommentsResource]?, ?xml_authorized: Array[Integer]?) -> instance
+        def initialize: (?advance_payment: Array[AdvancePaymentItemResource]?, ?contract: String?, ?effort: String?, ?fisco: String?, ?order: String?, ?referenced_process: Array[ReferencedProcessResource]?, ?tax_documents_reference: Array[TaxDocumentsReferenceResource]?, ?taxpayer: String?, ?taxpayer_comments: Array[TaxpayerCommentsResource]?, ?xml_authorized: Array[Integer]?) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

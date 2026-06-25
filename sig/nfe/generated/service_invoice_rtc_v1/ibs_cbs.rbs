@@ -1,0 +1,35 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/service-invoice-rtc-v1.yaml
+# Hash: sha256:5c3b751b63e6a0adabb185b974e141f1b06127934fa0bf05fc505676024db32b
+
+module Nfe
+  module Generated
+    module ServiceInvoiceRtcV1
+      class IbsCbs < Data
+        attr_reader basis: Float
+        attr_reader cbs: Hash[String, untyped]
+        attr_reader class_code: String
+        attr_reader credit_transfer: Hash[String, untyped]
+        attr_reader destination_indicator: String
+        attr_reader government_purchase: Hash[String, untyped]
+        attr_reader ibs: Hash[String, untyped]
+        attr_reader ibscbs_deduction_reduction_amount: Float
+        attr_reader is_donation: bool?
+        attr_reader leased_movable_assets: Array[Hash[String, untyped]]
+        attr_reader operation_indicator: String
+        attr_reader operation_type: String
+        attr_reader personal_use: untyped
+        attr_reader presumed_credits: Hash[String, untyped]
+        attr_reader purpose: String
+        attr_reader regular_taxation: Hash[String, untyped]
+        attr_reader reimbursed_resupplied_amount: Float
+        attr_reader related_docs: Hash[String, untyped]
+        attr_reader situation_code: String
+        attr_reader third_party_reimbursements: Hash[String, untyped]
+        def self.new: (?basis: Float, ?cbs: Hash[String, untyped], class_code: String, ?credit_transfer: Hash[String, untyped], ?destination_indicator: String, ?government_purchase: Hash[String, untyped], ?ibs: Hash[String, untyped], ?ibscbs_deduction_reduction_amount: Float, ?is_donation: bool?, ?leased_movable_assets: Array[Hash[String, untyped]], operation_indicator: String, ?operation_type: String, ?personal_use: untyped, ?presumed_credits: Hash[String, untyped], ?purpose: String, ?regular_taxation: Hash[String, untyped], ?reimbursed_resupplied_amount: Float, ?related_docs: Hash[String, untyped], ?situation_code: String, ?third_party_reimbursements: Hash[String, untyped]) -> instance
+        def initialize: (?basis: Float, ?cbs: Hash[String, untyped], class_code: String, ?credit_transfer: Hash[String, untyped], ?destination_indicator: String, ?government_purchase: Hash[String, untyped], ?ibs: Hash[String, untyped], ?ibscbs_deduction_reduction_amount: Float, ?is_donation: bool?, ?leased_movable_assets: Array[Hash[String, untyped]], operation_indicator: String, ?operation_type: String, ?personal_use: untyped, ?presumed_credits: Hash[String, untyped], ?purpose: String, ?regular_taxation: Hash[String, untyped], ?reimbursed_resupplied_amount: Float, ?related_docs: Hash[String, untyped], ?situation_code: String, ?third_party_reimbursements: Hash[String, untyped]) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

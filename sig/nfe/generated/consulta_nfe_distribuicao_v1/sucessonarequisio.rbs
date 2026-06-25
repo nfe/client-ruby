@@ -1,0 +1,36 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/consulta-nfe-distribuicao-v1.yaml
+# Hash: sha256:c28db6c6fed93a58342537de8131850f266d0cdff71873a3bab126b3309e3ea7
+
+module Nfe
+  module Generated
+    module ConsultaNfeDistribuicaoV1
+      class Sucessonarequisio < Data
+        attr_reader access_key: String
+        attr_reader buyer: Buyer
+        attr_reader company: Company
+        attr_reader created_on: String
+        attr_reader description: String
+        attr_reader federal_tax_number_sender: String
+        attr_reader id: String
+        attr_reader issued_on: String
+        attr_reader issuer: Issuer
+        attr_reader links: Links
+        attr_reader name_sender: String
+        attr_reader nfe_number: String
+        attr_reader nfe_serial_number: String
+        attr_reader nsu: String
+        attr_reader nsu_parent: String
+        attr_reader operation_type: String?
+        attr_reader parent_access_key: String
+        attr_reader total_invoice_amount: String
+        attr_reader transportation: Transportation
+        attr_reader type: String?
+        attr_reader xml_url: String
+        def self.new: (access_key: String, buyer: Buyer, company: Company, created_on: String, description: String, federal_tax_number_sender: String, id: String, issued_on: String, issuer: Issuer, links: Links, name_sender: String, nfe_number: String, nfe_serial_number: String, nsu: String, nsu_parent: String, ?operation_type: String?, parent_access_key: String, total_invoice_amount: String, transportation: Transportation, ?type: String?, xml_url: String) -> instance
+        def initialize: (access_key: String, buyer: Buyer, company: Company, created_on: String, description: String, federal_tax_number_sender: String, id: String, issued_on: String, issuer: Issuer, links: Links, name_sender: String, nfe_number: String, nfe_serial_number: String, nsu: String, nsu_parent: String, ?operation_type: String?, parent_access_key: String, total_invoice_amount: String, transportation: Transportation, ?type: String?, xml_url: String) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

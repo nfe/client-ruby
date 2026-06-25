@@ -1,0 +1,33 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/product-register-pt-br-v1.yaml
+# Hash: sha256:beba0a3fb4dc1bc157a5a4a28e55768cea0e7390b491bdd4bedee2ee2297ca64
+
+module Nfe
+  module Generated
+    module ProductRegisterPtBrV1
+      class IcmsTaxGroup < Data
+        attr_reader cst: String
+        attr_reader mod_bc: String
+        attr_reader mod_bcst: String
+        attr_reader mot_des_icms: String
+        attr_reader mot_des_icmsst: String
+        attr_reader p_cred_sn: String
+        attr_reader p_dif: String
+        attr_reader p_fcp: String
+        attr_reader p_fcpdif: String
+        attr_reader p_fcpst: String
+        attr_reader p_fcpstret: String
+        attr_reader p_icms: String
+        attr_reader p_icmsefet: String
+        attr_reader p_icmsst: String
+        attr_reader p_mvast: String
+        attr_reader p_red_bc: String
+        attr_reader p_red_bcefet: String
+        attr_reader p_red_bcst: String
+        def self.new: (?cst: String, ?mod_bc: String, ?mod_bcst: String, ?mot_des_icms: String, ?mot_des_icmsst: String, ?p_cred_sn: String, ?p_dif: String, ?p_fcp: String, ?p_fcpdif: String, ?p_fcpst: String, ?p_fcpstret: String, ?p_icms: String, ?p_icmsefet: String, ?p_icmsst: String, ?p_mvast: String, ?p_red_bc: String, ?p_red_bcefet: String, ?p_red_bcst: String) -> instance
+        def initialize: (?cst: String, ?mod_bc: String, ?mod_bcst: String, ?mot_des_icms: String, ?mot_des_icmsst: String, ?p_cred_sn: String, ?p_dif: String, ?p_fcp: String, ?p_fcpdif: String, ?p_fcpst: String, ?p_fcpstret: String, ?p_icms: String, ?p_icmsefet: String, ?p_icmsst: String, ?p_mvast: String, ?p_red_bc: String, ?p_red_bcefet: String, ?p_red_bcst: String) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

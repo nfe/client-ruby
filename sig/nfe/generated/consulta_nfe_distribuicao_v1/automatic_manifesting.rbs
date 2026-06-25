@@ -1,0 +1,16 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/consulta-nfe-distribuicao-v1.yaml
+# Hash: sha256:c28db6c6fed93a58342537de8131850f266d0cdff71873a3bab126b3309e3ea7
+
+module Nfe
+  module Generated
+    module ConsultaNfeDistribuicaoV1
+      class AutomaticManifesting < Data
+        attr_reader minutes_to_wait_awareness_operation: String
+        def self.new: (minutes_to_wait_awareness_operation: String) -> instance
+        def initialize: (minutes_to_wait_awareness_operation: String) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

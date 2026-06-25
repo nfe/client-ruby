@@ -1,0 +1,23 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/nf-consumidor-v2.yaml
+# Hash: sha256:8c39e692ff794ccb2587ebe142be040e44d76cbf970f45e65b28d56a6165bdb5
+
+module Nfe
+  module Generated
+    module NfConsumidorV2
+      class RegularTaxationResource < Data
+        attr_reader amount: Float?
+        attr_reader cbs_amount: Float?
+        attr_reader cbs_effective_rate: Float?
+        attr_reader class_code: String?
+        attr_reader municipal_amount: Float?
+        attr_reader municipal_effective_rate: Float?
+        attr_reader situation_code: String?
+        attr_reader state_effective_rate: Float?
+        def self.new: (?amount: Float?, ?cbs_amount: Float?, ?cbs_effective_rate: Float?, ?class_code: String?, ?municipal_amount: Float?, ?municipal_effective_rate: Float?, ?situation_code: String?, ?state_effective_rate: Float?) -> instance
+        def initialize: (?amount: Float?, ?cbs_amount: Float?, ?cbs_effective_rate: Float?, ?class_code: String?, ?municipal_amount: Float?, ?municipal_effective_rate: Float?, ?situation_code: String?, ?state_effective_rate: Float?) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

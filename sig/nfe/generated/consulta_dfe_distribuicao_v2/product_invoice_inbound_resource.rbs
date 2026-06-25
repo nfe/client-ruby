@@ -1,0 +1,18 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/consulta-dfe-distribuicao-v2.yaml
+# Hash: sha256:f607124386b9d5210012cd4ac84ed7a0e359939e4176cebe4103b5a525321bdd
+
+module Nfe
+  module Generated
+    module ConsultaDfeDistribuicaoV2
+      class ProductInvoiceInboundResource < Data
+        attr_reader environment_sefaz: String
+        attr_reader start_from_date: String
+        attr_reader status: String
+        def self.new: (?environment_sefaz: String, ?start_from_date: String, ?status: String) -> instance
+        def initialize: (?environment_sefaz: String, ?start_from_date: String, ?status: String) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

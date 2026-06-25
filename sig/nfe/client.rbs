@@ -1,0 +1,40 @@
+module Nfe
+  class Client
+    RESOURCES: Array[Symbol]
+
+    @config: Nfe::Configuration
+    @retry_config: untyped
+    @resources: Hash[Symbol, untyped]
+
+    attr_reader config: Nfe::Configuration
+
+    def initialize: (?api_key: String?, ?data_api_key: String?, ?environment: Symbol,
+                     ?base_url: String?, ?timeout: Integer, ?retry_config: untyped,
+                     ?configuration: Nfe::Configuration?) -> void
+
+    # The 17 core resource accessors. Bodies are stubs in the foundation change
+    # (they raise NotImplementedError) and are implemented by later changes.
+    def service_invoices: () -> untyped
+    def product_invoices: () -> untyped
+    def consumer_invoices: () -> untyped
+    def transportation_invoices: () -> untyped
+    def inbound_product_invoices: () -> untyped
+    def product_invoice_query: () -> untyped
+    def consumer_invoice_query: () -> untyped
+    def companies: () -> untyped
+    def legal_people: () -> untyped
+    def natural_people: () -> untyped
+    def webhooks: () -> untyped
+    def addresses: () -> untyped
+    def legal_entity_lookup: () -> untyped
+    def natural_person_lookup: () -> untyped
+    def tax_calculation: () -> untyped
+    def tax_codes: () -> untyped
+    def state_taxes: () -> untyped
+
+    private
+
+    def resource: (Symbol name) -> untyped
+    def build_resource: (Symbol name) -> untyped
+  end
+end

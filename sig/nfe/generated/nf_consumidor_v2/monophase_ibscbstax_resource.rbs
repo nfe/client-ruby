@@ -1,0 +1,21 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/nf-consumidor-v2.yaml
+# Hash: sha256:8c39e692ff794ccb2587ebe142be040e44d76cbf970f45e65b28d56a6165bdb5
+
+module Nfe
+  module Generated
+    module NfConsumidorV2
+      class MonophaseIBSCBSTaxResource < Data
+        attr_reader cbs_amount: Float?
+        attr_reader deferment: MonophaseDefermentTaxResource
+        attr_reader ibs_amount: Float?
+        attr_reader previously_withheld: MonophasePreviouslyWithheldTaxResource
+        attr_reader standart: MonophaseStandardTaxResource
+        attr_reader withholding: MonophaseWithholdingTaxResource
+        def self.new: (?cbs_amount: Float?, ?deferment: MonophaseDefermentTaxResource, ?ibs_amount: Float?, ?previously_withheld: MonophasePreviouslyWithheldTaxResource, ?standart: MonophaseStandardTaxResource, ?withholding: MonophaseWithholdingTaxResource) -> instance
+        def initialize: (?cbs_amount: Float?, ?deferment: MonophaseDefermentTaxResource, ?ibs_amount: Float?, ?previously_withheld: MonophasePreviouslyWithheldTaxResource, ?standart: MonophaseStandardTaxResource, ?withholding: MonophaseWithholdingTaxResource) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

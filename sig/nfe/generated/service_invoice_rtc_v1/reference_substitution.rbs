@@ -1,0 +1,18 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/service-invoice-rtc-v1.yaml
+# Hash: sha256:5c3b751b63e6a0adabb185b974e141f1b06127934fa0bf05fc505676024db32b
+
+module Nfe
+  module Generated
+    module ServiceInvoiceRtcV1
+      class ReferenceSubstitution < Data
+        attr_reader id: String
+        attr_reader reason: String
+        attr_reader reason_text: String
+        def self.new: (?id: String, ?reason: String, ?reason_text: String) -> instance
+        def initialize: (?id: String, ?reason: String, ?reason_text: String) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

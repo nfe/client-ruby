@@ -1,0 +1,16 @@
+# Keep the build context small and avoid leaking sibling repos / local junk.
+.git
+.github
+# Local dev symlinks to sibling repos (would be dangling inside the container).
+client-nodejs
+client-php
+nfeio-docs
+# Build/test artifacts (regenerated inside the container).
+coverage
+pkg
+tmp
+.bundle
+.steep
+*.gem
+Gemfile.lock
+.env

@@ -1,0 +1,24 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/nf-consumidor-v2.yaml
+# Hash: sha256:8c39e692ff794ccb2587ebe142be040e44d76cbf970f45e65b28d56a6165bdb5
+
+module Nfe
+  module Generated
+    module NfConsumidorV2
+      class AddressResource < Data
+        attr_reader additional_information: String?
+        attr_reader city: CityResource
+        attr_reader country: String?
+        attr_reader district: String?
+        attr_reader number: String?
+        attr_reader phone: String?
+        attr_reader postal_code: String?
+        attr_reader state: String?
+        attr_reader street: String?
+        def self.new: (?additional_information: String?, ?city: CityResource, ?country: String?, ?district: String?, ?number: String?, ?phone: String?, ?postal_code: String?, ?state: String?, ?street: String?) -> instance
+        def initialize: (?additional_information: String?, ?city: CityResource, ?country: String?, ?district: String?, ?number: String?, ?phone: String?, ?postal_code: String?, ?state: String?, ?street: String?) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

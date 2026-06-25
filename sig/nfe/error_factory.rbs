@@ -1,0 +1,20 @@
+module Nfe
+  module ErrorFactory
+    MAX_MESSAGE_LENGTH: Integer
+    MESSAGE_KEYS: Array[String]
+    ERROR_CODE_KEYS: Array[String]
+    CONTROL_CHARS: Regexp
+
+    def self?.from_response: (untyped response) -> Nfe::Error
+    def self?.from_network_error: (Exception exception) -> Nfe::ApiConnectionError
+    def self?.error_class_for: (Integer status) -> singleton(Nfe::Error)
+    def self?.parse_body: (String? body) -> untyped
+    def self?.extract_message: (untyped parsed) -> String?
+    def self?.message_from_keys: (Hash[String, untyped] parsed) -> String?
+    def self?.message_from_errors: (untyped errors) -> untyped
+    def self?.sanitize_message: (untyped raw) -> String?
+    def self?.extract_error_code: (untyped parsed) -> String?
+    def self?.extract_retry_after: (untyped response) -> Integer?
+    def self?.timeout?: (Exception exception) -> bool
+  end
+end

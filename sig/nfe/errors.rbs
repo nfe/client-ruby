@@ -1,0 +1,48 @@
+module Nfe
+  class Error < StandardError
+    attr_reader status_code: Integer?
+    attr_reader request_id: String?
+    attr_reader error_code: String?
+    attr_reader response_body: String?
+    attr_reader response_headers: Hash[String, untyped]
+
+    def initialize: (?String? message, ?status_code: Integer?, ?request_id: String?,
+                     ?error_code: String?, ?response_body: String?,
+                     ?response_headers: Hash[String, untyped]) -> void
+
+    def to_h: () -> Hash[Symbol, untyped]
+  end
+
+  class AuthenticationError < Error
+  end
+
+  class AuthorizationError < Error
+  end
+
+  class InvalidRequestError < Error
+  end
+
+  class NotFoundError < Error
+  end
+
+  class ConflictError < Error
+  end
+
+  class RateLimitError < Error
+    attr_reader retry_after: Integer?
+
+    def initialize: (?String? message, ?retry_after: Integer?, **untyped kwargs) -> void
+  end
+
+  class ServerError < Error
+  end
+
+  class ApiConnectionError < Error
+  end
+
+  class TimeoutError < ApiConnectionError
+  end
+
+  class SignatureVerificationError < Error
+  end
+end

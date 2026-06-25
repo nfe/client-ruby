@@ -1,0 +1,51 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/nf-consumidor-v2.yaml
+# Hash: sha256:8c39e692ff794ccb2587ebe142be040e44d76cbf970f45e65b28d56a6165bdb5
+
+module Nfe
+  module Generated
+    module NfConsumidorV2
+      module LegalNature
+        EmpresaPublica: String
+        SociedadeEconomiaMista: String
+        SociedadeAnonimaAberta: String
+        SociedadeAnonimaFechada: String
+        SociedadeEmpresariaLimitada: String
+        SociedadeEmpresariaEmNomeColetivo: String
+        SociedadeEmpresariaEmComanditaSimples: String
+        SociedadeEmpresariaEmComanditaporAcoes: String
+        SociedadeemContaParticipacao: String
+        Empresario: String
+        Cooperativa: String
+        ConsorcioSociedades: String
+        GrupoSociedades: String
+        EmpresaDomiciliadaExterior: String
+        ClubeFundoInvestimento: String
+        SociedadeSimplesPura: String
+        SociedadeSimplesLimitada: String
+        SociedadeSimplesEmNomeColetivo: String
+        SociedadeSimplesEmComanditaSimples: String
+        EmpresaBinacional: String
+        ConsorcioEmpregadores: String
+        ConsorcioSimples: String
+        EireliNaturezaEmpresaria: String
+        EireliNaturezaSimples: String
+        ServicoNotarial: String
+        FundacaoPrivada: String
+        ServicoSocialAutonomo: String
+        CondominioEdilicio: String
+        ComissaoConciliacaoPrevia: String
+        EntidadeMediacaoArbitragem: String
+        PartidoPolitico: String
+        EntidadeSindical: String
+        EstabelecimentoBrasilFundacaoAssociacaoEstrangeiras: String
+        FundacaoAssociacaoDomiciliadaExterior: String
+        OrganizacaoReligiosa: String
+        ComunidadeIndigena: String
+        FundoPrivado: String
+        AssociacaoPrivada: String
+        ALL: Array[String]
+      end
+    end
+  end
+end

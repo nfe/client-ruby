@@ -1,0 +1,26 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/nf-produto-v2.yaml
+# Hash: sha256:e565b47e4d8b17255f99efc2b6354d589d2903c4ba9b97caabd74f84de59e4e2
+
+module Nfe
+  module Generated
+    module NfProdutoV2
+      class ImportDeclarationResource < Data
+        attr_reader acquirer_federal_tax_number: String?
+        attr_reader additions: Array[AdditionResource]?
+        attr_reader code: String?
+        attr_reader customs_clearance_name: String?
+        attr_reader customs_clearance_state: untyped
+        attr_reader customs_clearanced_on: String?
+        attr_reader exporter: String?
+        attr_reader intermediation: untyped
+        attr_reader international_transport: untyped
+        attr_reader registered_on: String?
+        attr_reader state_third: String?
+        def self.new: (?acquirer_federal_tax_number: String?, ?additions: Array[AdditionResource]?, ?code: String?, ?customs_clearance_name: String?, ?customs_clearance_state: untyped, ?customs_clearanced_on: String?, ?exporter: String?, ?intermediation: untyped, ?international_transport: untyped, ?registered_on: String?, ?state_third: String?) -> instance
+        def initialize: (?acquirer_federal_tax_number: String?, ?additions: Array[AdditionResource]?, ?code: String?, ?customs_clearance_name: String?, ?customs_clearance_state: untyped, ?customs_clearanced_on: String?, ?exporter: String?, ?intermediation: untyped, ?international_transport: untyped, ?registered_on: String?, ?state_third: String?) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

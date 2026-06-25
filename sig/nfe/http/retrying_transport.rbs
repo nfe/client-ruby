@@ -1,0 +1,27 @@
+module Nfe
+  module Http
+    class RetryingTransport
+      @inner: untyped
+      @policy: RetryPolicy
+      @sleep_fn: ^(Float | Integer seconds) -> untyped
+      @logger: untyped
+
+      def initialize: (inner: untyped, ?policy: RetryPolicy, ?sleep_fn: ^(Float | Integer) -> untyped, ?logger: untyped) -> void
+
+      def call: (Nfe::Http::Request request) -> Nfe::Http::Response
+
+      def retryable_status?: (Integer status) -> bool
+
+      private
+
+      def retry_again?: (Integer attempt, Nfe::Http::Request request) -> bool
+      def delay_for_response: (Integer attempt, Nfe::Http::Response response) -> Float
+      def parse_retry_after: (Nfe::Http::Response response) -> Integer?
+      def log_start: (Nfe::Http::Request request) -> void
+      def log_retry: (Nfe::Http::Request request, attempt: Integer, delay: (Float | Integer), ?status: Integer?, ?error: untyped) -> void
+      def log_final_error: (Nfe::Http::Request request, ?response: Nfe::Http::Response?, ?error: untyped) -> void
+      def truncate: (untyped body, ?Integer limit) -> String
+      def safe_log: () { () -> untyped } -> untyped
+    end
+  end
+end
