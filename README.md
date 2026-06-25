@@ -76,8 +76,27 @@ A `v1` expõe **17 recursos** no `Nfe::Client`, organizados por família:
 | **Emissão** | `service_invoices` (NFS-e), `product_invoices` (NF-e), `consumer_invoices` (NFC-e), `transportation_invoices` (CT-e inbound), `inbound_product_invoices` |
 | **Consulta / dados** | `product_invoice_query` (NF-e por chave), `consumer_invoice_query` (cupom NFC-e por chave), `addresses` (CEP), `legal_entity_lookup` (CNPJ), `natural_person_lookup` (CPF), `tax_calculation` (motor de impostos), `tax_codes`, `state_taxes` (CRUD) |
 
-Emissão no layout da **Reforma Tributária (RTC)** é exposta opcionalmente via
-`service_invoices_rtc` (NFS-e) e `product_invoices_rtc` (NF-e/NFC-e).
+Emissão no layout da **Reforma Tributária (RTC)** é opt-in via
+`service_invoices_rtc` (NFS-e) e `product_invoices_rtc` (NF-e/NFC-e) — **mesmos
+endpoints e mesmo fluxo discriminado/polling** do clássico. O leiaute RTC é
+selecionado pela presença do grupo `ibsCbs` (NFS-e) ou `items[].tax.IBSCBS`
+(produto) no payload — sem header/parâmetro discriminador.
+
+```ruby
+result = client.product_invoices_rtc.create(
+  company_id: "co_1",
+  data: {
+    items: [{
+      description: "Produto",
+      tax: { IBSCBS: { situationCode: "000", classCode: "000001" } }
+    }],
+    payment: { ... }
+  }
+)
+# Retorno discriminado (ProductInvoiceRtcPending | ProductInvoiceRtcIssued);
+# faça polling com client.product_invoices_rtc.retrieve até
+# Nfe::FlowStatus.terminal?(invoice.flow_status). O clássico continua disponível.
+```
 
 > **Roteamento multi-host**: cada família resolve seu próprio host — entidades e
 > NFS-e em `api.nfe.io`; NF-e/NFC-e/CT-e e impostos em `api.nfse.io`; e os dados
@@ -89,8 +108,8 @@ Emissão no layout da **Reforma Tributária (RTC)** é exposta opcionalmente via
 > emitido por chave de acesso (host `nfe.api.nfe.io`); `consumer_invoices`
 > **emite** NFC-e (host `api.nfse.io`). Hosts e versões distintos.
 
-> Os recursos de **emissão**, **entidades** e **consulta/dados** já estão
-> implementados; só a emissão **RTC** chega na próxima etapa da v1.
+> A v1 cobre **emissão** (clássica + **RTC**), **entidades** e **consulta/dados**
+> — 19 acessores (17 canônicos + 2 addons RTC).
 
 > **Downloads**: `product_invoices.download_*` devolve um `Nfe::NfeFileResource`
 > (URI do arquivo), enquanto `service_invoices`, `consumer_invoices` e

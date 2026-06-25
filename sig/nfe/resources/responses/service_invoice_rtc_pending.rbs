@@ -1,0 +1,14 @@
+module Nfe
+  module Resources
+    class ServiceInvoiceRtcPending < Data
+      attr_reader invoice_id: String
+      attr_reader location: String
+
+      def pending?: () -> bool
+      def issued?: () -> bool
+
+      def self.new: (invoice_id: String, location: String) -> instance
+      def initialize: (invoice_id: String, location: String) -> void
+    end
+  end
+end

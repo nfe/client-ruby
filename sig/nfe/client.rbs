@@ -33,6 +33,8 @@ module Nfe
     def tax_calculation: () -> Nfe::Resources::TaxCalculation
     def tax_codes: () -> Nfe::Resources::TaxCodes
     def state_taxes: () -> Nfe::Resources::StateTaxes
+    def service_invoices_rtc: () -> Nfe::Resources::ServiceInvoicesRtc
+    def product_invoices_rtc: () -> Nfe::Resources::ProductInvoicesRtc
 
     def request: (Symbol | String method, family: Symbol, path: String,
                   ?query: Hash[untyped, untyped], ?body: untyped,

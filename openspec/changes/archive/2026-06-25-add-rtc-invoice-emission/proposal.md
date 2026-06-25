@@ -42,9 +42,9 @@ Depende de:
 - **`cancel(company_id:, invoice_id:, reason:)`** — `DELETE /v2/companies/{company_id}/productinvoices/{invoice_id}?reason=`; assíncrono (204-enfileirado); retorna `RequestCancellationResource` (`{account_id, company_id, product_invoice_id, reason}`).
 - **`list_items(company_id:, invoice_id:)`** — `GET .../items` (`InvoiceItemsResource`).
 - **`list_events(company_id:, invoice_id:)`** — `GET .../events` (`InvoiceEventsResource` de `ActivityResource`).
-- **`download_pdf` / `download_xml` / `download_rejection_xml` / `download_epec_xml`** — `GET .../pdf?force=` (DANFE), `.../xml` (autorizado), `.../xml-rejection`, `.../xml-epec` (contingência EPEC). Cada um retorna `Nfe::Models::NfeFileResource` (uma URI), igual à superfície clássica `product_invoices` e ao schema `FileResource{uri}` de `nf-produto-v2.yaml` — não bytes crus.
+- **`download_pdf` / `download_xml` / `download_rejection_xml` / `download_epec_xml`** — `GET .../pdf?force=` (DANFE), `.../xml` (autorizado), `.../xml-rejection`, `.../xml-epec` (contingência EPEC). Cada um retorna `Nfe::NfeFileResource` (uma URI), igual à superfície clássica `product_invoices` e ao schema `FileResource{uri}` de `nf-produto-v2.yaml` — não bytes crus.
 - **`send_correction_letter(company_id:, invoice_id:, reason:)`** — `PUT .../correctionletter` (CC-e; `reason` 15–1000 chars, sem acentos/especiais; assíncrono).
-- **`download_correction_letter_pdf` / `download_correction_letter_xml`** — `GET .../correctionletter/pdf` e `.../correctionletter/xml`; cada um retorna `Nfe::Models::NfeFileResource` (uma URI), igual à superfície clássica `product_invoices`.
+- **`download_correction_letter_pdf` / `download_correction_letter_xml`** — `GET .../correctionletter/pdf` e `.../correctionletter/xml`; cada um retorna `Nfe::NfeFileResource` (uma URI), igual à superfície clássica `product_invoices`.
 - **`disable(company_id:, invoice_id:, reason:)`** — `POST .../disablement?reason=` (inutilização de uma nota; assíncrono).
 - **`disable_range(company_id:, data:)`** — `POST /v2/companies/{company_id}/productinvoices/disablement` (inutilização de faixa de numeração; corpo `DisablementResource`).
 

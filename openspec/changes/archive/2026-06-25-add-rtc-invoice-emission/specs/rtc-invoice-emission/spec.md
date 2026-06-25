@@ -252,7 +252,7 @@ The product RTC payload SHALL carry the new RTC tax groups at the item level, on
 
 ### Requirement: Product RTC lifecycle methods
 
-`Nfe::Resources::ProductInvoicesRtc` SHALL expose, carried over from the classic product surface on the same host and base path, the following methods: `create_with_state_tax(company_id:, state_tax_id:, data:)` issuing `POST /companies/{company_id}/statetaxes/{state_tax_id}/productinvoices`; `retrieve(company_id:, invoice_id:)`; `list(company_id:, environment:, ...)` with cursor pagination; `cancel(company_id:, invoice_id:, reason:)`; `list_items`; `list_events`; the file-resource downloads `download_pdf`, `download_xml`, `download_rejection_xml`, `download_epec_xml` (each returning a `Nfe::Models::NfeFileResource` URI, matching the classic `ProductInvoices` contract and `nf-produto-v2.yaml` `FileResource{uri}`); the correction-letter methods `send_correction_letter`, `download_correction_letter_pdf`, `download_correction_letter_xml`; and the disablement methods `disable`, `disable_range`.
+`Nfe::Resources::ProductInvoicesRtc` SHALL expose, carried over from the classic product surface on the same host and base path, the following methods: `create_with_state_tax(company_id:, state_tax_id:, data:)` issuing `POST /companies/{company_id}/statetaxes/{state_tax_id}/productinvoices`; `retrieve(company_id:, invoice_id:)`; `list(company_id:, environment:, ...)` with cursor pagination; `cancel(company_id:, invoice_id:, reason:)`; `list_items`; `list_events`; the file-resource downloads `download_pdf`, `download_xml`, `download_rejection_xml`, `download_epec_xml` (each returning a `Nfe::NfeFileResource` URI, matching the classic `ProductInvoices` contract and `nf-produto-v2.yaml` `FileResource{uri}`); the correction-letter methods `send_correction_letter`, `download_correction_letter_pdf`, `download_correction_letter_xml`; and the disablement methods `disable`, `disable_range`.
 
 #### Scenario: Retrieve returns a typed InvoiceResource
 
@@ -277,7 +277,7 @@ The product RTC payload SHALL carry the new RTC tax groups at the item level, on
 #### Scenario: Downloads return a file resource URI
 
 - **WHEN** `download_pdf`, `download_xml`, `download_rejection_xml`, or `download_epec_xml` succeeds
-- **THEN** the return value SHALL be a `Nfe::Models::NfeFileResource` exposing a `uri` (matching the `FileResource{uri}` schema in `nf-produto-v2.yaml`), NOT raw `ASCII-8BIT` bytes
+- **THEN** the return value SHALL be a `Nfe::NfeFileResource` exposing a `uri` (matching the `FileResource{uri}` schema in `nf-produto-v2.yaml`), NOT raw `ASCII-8BIT` bytes
 - **AND** this SHALL match the classic `ProductInvoices` download contract
 
 #### Scenario: Disablement of a numbering range

@@ -27,8 +27,8 @@ RSpec.describe Nfe::Client do
   end
 
   describe "resource accessors" do
-    it "declares exactly seventeen core resource accessors" do
-      expect(described_class::RESOURCES.size).to eq(17)
+    it "declares nineteen resource accessors (17 canonical + 2 RTC addons)" do
+      expect(described_class::RESOURCES.size).to eq(19)
     end
 
     it "returns the right resource class for each accessor" do

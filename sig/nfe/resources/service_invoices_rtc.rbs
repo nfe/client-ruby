@@ -1,0 +1,21 @@
+module Nfe
+  module Resources
+    class ServiceInvoicesRtc < AbstractResource
+      def api_family: () -> Symbol
+      def api_version: () -> String
+
+      def create: (company_id: String, data: Hash[untyped, untyped], ?idempotency_key: String?, ?request_options: Nfe::RequestOptions?) -> (Nfe::Resources::ServiceInvoiceRtcPending | Nfe::Resources::ServiceInvoiceRtcIssued)
+      def retrieve: (company_id: String, invoice_id: String) -> Nfe::ServiceInvoice?
+      def cancel: (company_id: String, invoice_id: String) -> Nfe::ServiceInvoice?
+      def download_cancellation_xml: (company_id: String, invoice_id: String) -> String
+
+      private
+
+      def json_headers: () -> Hash[String, String]
+      def json_body: (untyped data) -> String
+      def discriminate: (Nfe::Http::Response response) -> (Nfe::Resources::ServiceInvoiceRtcPending | Nfe::Resources::ServiceInvoiceRtcIssued)
+      def build_pending: (Nfe::Http::Response response) -> Nfe::Resources::ServiceInvoiceRtcPending
+      def extract_rtc_invoice_id: (String? location) -> String?
+    end
+  end
+end

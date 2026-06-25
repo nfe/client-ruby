@@ -102,3 +102,23 @@ Style/DataInheritance:
 # intentionally shadows Object#method (never relied upon by the value object).
 Lint/DataDefineOverride:
   Enabled: false
+
+# `q` is the API's documented free-text search query parameter (productinvoices
+# list); allow it as a short keyword-argument name alongside RuboCop's defaults.
+Naming/MethodParameterName:
+  AllowedNames:
+    - q
+    - id
+    - io
+    - to
+    - by
+    - on
+    - in
+    - at
+    - ip
+    - db
+    - os
+    - pp
+    - ce
+    - cc
+    - ph

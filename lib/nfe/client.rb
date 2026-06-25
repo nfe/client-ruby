@@ -26,6 +26,8 @@ require "nfe/resources/natural_person_lookup"
 require "nfe/resources/tax_calculation"
 require "nfe/resources/tax_codes"
 require "nfe/resources/state_taxes"
+require "nfe/resources/service_invoices_rtc"
+require "nfe/resources/product_invoices_rtc"
 
 module Nfe
   # Primary entry point for the SDK.
@@ -57,7 +59,11 @@ module Nfe
       natural_person_lookup: Resources::NaturalPersonLookup,
       tax_calculation: Resources::TaxCalculation,
       tax_codes: Resources::TaxCodes,
-      state_taxes: Resources::StateTaxes
+      state_taxes: Resources::StateTaxes,
+      # RTC (Reforma Tributária) emission — paridade-plus addons, not part of
+      # the 17 canonical resources shared with the PHP/Node SDKs.
+      service_invoices_rtc: Resources::ServiceInvoicesRtc,
+      product_invoices_rtc: Resources::ProductInvoicesRtc
     }.freeze
 
     # @return [Nfe::Configuration] the active configuration.
@@ -108,6 +114,8 @@ module Nfe
     def tax_calculation = resource(:tax_calculation)
     def tax_codes = resource(:tax_codes)
     def state_taxes = resource(:state_taxes)
+    def service_invoices_rtc = resource(:service_invoices_rtc)
+    def product_invoices_rtc = resource(:product_invoices_rtc)
 
     # Issue an arbitrary request against +family+, applying the family's host
     # and key plus the standard authorization and User-Agent headers. This is

@@ -19,7 +19,7 @@ Diferença de qualidade de tipos vs NFS-e clássica: `nf-servico-v1.yaml` tem **
 - Emitir NF-e/NFC-e no leiaute RTC via recurso dedicado `client.product_invoices_rtc`, com os grupos item-level `IBSCBS` (`state`/`municipal`/`cbs`) e `IS` (Imposto Seletivo) no payload.
 - Reusar o contrato discriminado 202 de `add-client-core` (`Nfe::Pending`/`Nfe::Issued`) nos dois recursos: `create` retorna `*RtcPending` (202+Location) ou `*RtcIssued` (201+corpo).
 - Tipar request/response a partir dos schemas nomeados das specs RTC (`NFSeRequest`/`ibsCbs`; `ProductInvoiceRequest`/`IBSCBSTaxResource`/`ISTaxResource`) gerados por `add-openapi-pipeline` como `Data.define` imutáveis.
-- Baixar o XML do evento de cancelamento (`e110001`) da NFS-e via `download_cancellation_xml` (retorna `String` binária `ASCII-8BIT`); baixar PDF/XML/rejeição/EPEC/CC-e da NF-e/NFC-e — todos retornam `Nfe::Models::NfeFileResource` (uma URI), igual à superfície clássica `product_invoices` e ao schema `FileResource{uri}` de `nf-produto-v2.yaml`.
+- Baixar o XML do evento de cancelamento (`e110001`) da NFS-e via `download_cancellation_xml` (retorna `String` binária `ASCII-8BIT`); baixar PDF/XML/rejeição/EPEC/CC-e da NF-e/NFC-e — todos retornam `Nfe::NfeFileResource` (uma URI), igual à superfície clássica `product_invoices` e ao schema `FileResource{uri}` de `nf-produto-v2.yaml`.
 - Oferecer ciclo de vida completo de produto (retrieve/list/cancel/items/events/downloads/CC-e/inutilização) por paridade com a superfície clássica, no mesmo host `api.nfse.io`.
 - Validar IDs antes do HTTP (fail-fast) e suportar polling manual via `FlowStatus.terminal?`.
 - Deixar os recursos clássicos `service_invoices` e `product_invoices` 100% intactos (RTC é opt-in).

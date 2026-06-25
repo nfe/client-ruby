@@ -68,4 +68,13 @@ RSpec.describe "resource registry" do # rubocop:disable RSpec/DescribeClass
     expect(client.natural_people).to respond_to(:create, :list, :find_by_tax_number)
     expect(client.webhooks).to respond_to(:create, :test, :get_available_events)
   end
+
+  it "exposes the two RTC addon accessors routed to the classic hosts" do
+    expect(client.service_invoices_rtc).to be_a(Nfe::Resources::ServiceInvoicesRtc)
+    expect(client.product_invoices_rtc).to be_a(Nfe::Resources::ProductInvoicesRtc)
+    rtc_main = client.service_invoices_rtc.send(:api_family)
+    rtc_cte = client.product_invoices_rtc.send(:api_family)
+    expect(client.configuration.base_url_for(rtc_main)).to eq("https://api.nfe.io")
+    expect(client.configuration.base_url_for(rtc_cte)).to eq("https://api.nfse.io")
+  end
 end
