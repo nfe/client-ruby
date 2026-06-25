@@ -1,0 +1,202 @@
+name: Release
+
+# Disparado pelo push de uma tag de versão (forma com hífen):
+#   v1.0.0, v1.0.0-rc.1, v1.0.0-beta.2
+#
+# Pipeline:
+#   verify  -> roda o MESMO gate do ci.yml na matrix Ruby 3.2/3.3/3.4.
+#   publish -> needs: verify; constrói o gem, publica no RubyGems via OIDC
+#              (trusted publishing) e cria o GitHub Release com o .gem + .sha256.
+#
+# A versão do gem (Nfe::VERSION) usa a forma com PONTO (1.0.0.rc.1); a tag usa
+# a forma com HÍFEN (v1.0.0-rc.1). O job publish deriva a forma pontilhada da
+# tag e aborta se o gem construído divergir.
+
+on:
+  push:
+    tags:
+      - "v*"
+
+# Permissão mínima no nível do workflow; o job publish eleva o que precisa.
+permissions:
+  contents: read
+
+jobs:
+  # ---------------------------------------------------------------------------
+  # Gate de CI: idêntico ao ci.yml. Falha aqui = release abortado (publish não roda).
+  # ---------------------------------------------------------------------------
+  verify:
+    name: Verify (Ruby ${{ matrix.ruby }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby: ["3.2", "3.3", "3.4"]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby ${{ matrix.ruby }}
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+
+      - name: RSpec (fails if coverage < 80%)
+        run: bundle exec rake spec
+
+      - name: RuboCop
+        run: bundle exec rubocop
+
+      - name: Steep type-check
+        run: bundle exec steep check
+
+      - name: OpenAPI generated code is in sync
+        run: bundle exec rake generate:check
+
+  # ---------------------------------------------------------------------------
+  # Build + publish. Só roda se TODA a matrix verify passar.
+  # ---------------------------------------------------------------------------
+  publish:
+    name: Build & publish to RubyGems
+    needs: verify
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # criar o GitHub Release e anexar artefatos
+      id-token: write # OIDC para RubyGems trusted publishing
+    # Opcional: para exigir aprovação manual antes de publicar, crie um GitHub
+    # Environment (Settings > Environments) e descomente a linha abaixo.
+    # environment: rubygems
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby 3.3
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+
+      # A tag é a forma com hífen (refs/tags/v1.0.0-rc.1). Derivamos:
+      #   TAG_VERSION     = 1.0.0-rc.1   (sem o 'v')
+      #   DOTTED_VERSION  = 1.0.0.rc.1   (forma do RubyGems; primeiro '-' vira '.')
+      #   PRERELEASE      = true|false   (tag contém '-rc.'/'-beta.')
+      - name: Derive version from tag
+        id: ver
+        run: |
+          set -euo pipefail
+          tag="${GITHUB_REF_NAME}"
+          tag_version="${tag#v}"
+          dotted_version="${tag_version/-/.}"
+          if [[ "$tag_version" == *-rc.* || "$tag_version" == *-beta.* ]]; then
+            prerelease=true
+          else
+            prerelease=false
+          fi
+          {
+            echo "tag=$tag"
+            echo "tag_version=$tag_version"
+            echo "dotted_version=$dotted_version"
+            echo "prerelease=$prerelease"
+          } >> "$GITHUB_OUTPUT"
+          echo "tag=$tag  dotted=$dotted_version  prerelease=$prerelease"
+
+      # Garante que Nfe::VERSION (e portanto o gem) bate com a tag empurrada.
+      # Aborta o publish em qualquer divergência ANTES de construir/publicar.
+      - name: Assert Nfe::VERSION matches tag
+        run: |
+          set -euo pipefail
+          gem_version="$(ruby -r ./lib/nfe/version -e 'print Nfe::VERSION')"
+          expected="${{ steps.ver.outputs.dotted_version }}"
+          echo "Nfe::VERSION='$gem_version'  esperado='$expected'"
+          if [[ "$gem_version" != "$expected" ]]; then
+            echo "::error::Nfe::VERSION ('$gem_version') não bate com a versão derivada da tag ('$expected'). Abortando."
+            exit 1
+          fi
+
+      - name: Build gem
+        id: build
+        run: |
+          set -euo pipefail
+          gem build nfe-io.gemspec
+          gem_file="$(ls -1 nfe-io-*.gem | head -n1)"
+          echo "gem_file=$gem_file" >> "$GITHUB_OUTPUT"
+          echo "Built $gem_file"
+
+      # Sanidade: a versão DENTRO do .gem construído deve bater com a esperada.
+      - name: Assert built gem version
+        run: |
+          set -euo pipefail
+          # `gem specification FILE version` imprime o YAML do objeto Gem::Version;
+          # a linha 'version: X.Y.Z[.rc.N]' carrega o valor. Extraímos esse campo.
+          built="$(gem specification "${{ steps.build.outputs.gem_file }}" version | awk '/^version:/ {print $2; exit}')"
+          expected="${{ steps.ver.outputs.dotted_version }}"
+          echo "gem interno='$built'  esperado='$expected'"
+          if [[ "$built" != "$expected" ]]; then
+            echo "::error::Versão do gem construído ('$built') != esperada ('$expected'). Abortando."
+            exit 1
+          fi
+
+      - name: Checksum (SHA-256)
+        run: |
+          set -euo pipefail
+          sha256sum "${{ steps.build.outputs.gem_file }}" > "${{ steps.build.outputs.gem_file }}.sha256"
+          cat "${{ steps.build.outputs.gem_file }}.sha256"
+
+      # Extrai as notas da versão do CHANGELOG (forma pontilhada) para o Release.
+      - name: Extract changelog notes
+        id: notes
+        run: |
+          set -euo pipefail
+          ver="${{ steps.ver.outputs.dotted_version }}"
+          notes_file="RELEASE_NOTES.md"
+          awk -v ver="$ver" '
+            $0 ~ "^## \\[" ver "\\]" { capture = 1; next }
+            capture && /^## / { exit }
+            capture { print }
+          ' CHANGELOG.md > "$notes_file" || true
+          if [[ ! -s "$notes_file" ]]; then
+            echo "Release ${{ steps.ver.outputs.tag }}." > "$notes_file"
+          fi
+          echo "notes_file=$notes_file" >> "$GITHUB_OUTPUT"
+
+      # ----- Publicação no RubyGems via OIDC (trusted publishing) ------------
+      # Caminho preferido: nenhuma API key de longa duração. Requer o repo
+      # registrado como trusted publisher na conta do gem nfe-io no RubyGems.
+      - name: Configure RubyGems credentials (OIDC trusted publishing)
+        id: oidc
+        continue-on-error: true
+        uses: rubygems/configure-rubygems-credentials@v1.0.0
+
+      - name: Push gem to RubyGems (OIDC)
+        if: steps.oidc.outcome == 'success'
+        run: gem push "${{ steps.build.outputs.gem_file }}"
+
+      # ----- Fallback: API key em secret (se OIDC não estiver configurado) ----
+      # Ative cadastrando o secret RUBYGEMS_API_KEY no repositório. Só roda se
+      # o passo OIDC acima falhar (ex.: trusted publisher ainda não vinculado).
+      - name: Push gem to RubyGems (API key fallback)
+        if: steps.oidc.outcome != 'success'
+        env:
+          GEM_HOST_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+        run: |
+          set -euo pipefail
+          if [[ -z "${GEM_HOST_API_KEY:-}" ]]; then
+            echo "::error::OIDC trusted publishing indisponível e o secret RUBYGEMS_API_KEY não está configurado. Configure um dos dois."
+            exit 1
+          fi
+          gem push "${{ steps.build.outputs.gem_file }}"
+
+      # ----- GitHub Release com o .gem + .sha256 -----------------------------
+      # Pré-releases (-rc/-beta) são marcadas como prerelease e NÃO viram latest.
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2.0.8
+        with:
+          tag_name: ${{ steps.ver.outputs.tag }}
+          name: ${{ steps.ver.outputs.tag }}
+          body_path: ${{ steps.notes.outputs.notes_file }}
+          prerelease: ${{ steps.ver.outputs.prerelease }}
+          make_latest: ${{ steps.ver.outputs.prerelease == 'false' }}
+          files: |
+            ${{ steps.build.outputs.gem_file }}
+            ${{ steps.build.outputs.gem_file }}.sha256

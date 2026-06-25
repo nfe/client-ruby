@@ -8,6 +8,7 @@ AllCops:
   Exclude:
     - "lib/nfe/generated/**/*"
     - "lib/nfe/generated.rb"
+    - "samples/**/*"
     - "bin/**/*"
     - "vendor/**/*"
     - "client-nodejs/**/*"

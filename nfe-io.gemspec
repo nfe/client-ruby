@@ -20,6 +20,7 @@ Gem::Specification.new do |spec|
     "homepage_uri" => spec.homepage,
     "source_code_uri" => "https://github.com/nfe/client-ruby",
     "changelog_uri" => "https://github.com/nfe/client-ruby/blob/master/CHANGELOG.md",
+    "documentation_uri" => "https://github.com/nfe/client-ruby/blob/master/README.md",
     "bug_tracker_uri" => "https://github.com/nfe/client-ruby/issues",
     "rubygems_mfa_required" => "true"
   }
