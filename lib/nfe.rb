@@ -13,6 +13,11 @@ require "nfe/request_options"
 require "nfe/flow_status"
 require "nfe/id_validator"
 
+# Webhook signature verification + certificate handling
+require "nfe/webhook_event"
+require "nfe/webhook"
+require "nfe/certificate"
+
 # HTTP transport layer (zero-dependency, Net::HTTP-based)
 require "nfe/http/request"
 require "nfe/http/response"

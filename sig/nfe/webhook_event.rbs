@@ -1,0 +1,13 @@
+module Nfe
+  class WebhookEvent < Data
+    attr_reader type: String?
+    attr_reader data: Hash[untyped, untyped]
+    attr_reader id: String?
+    attr_reader created_at: String?
+
+    def self.new: (type: String?, data: Hash[untyped, untyped], ?id: String?, ?created_at: String?) -> instance
+                | (String? type, Hash[untyped, untyped] data, ?String? id, ?String? created_at) -> instance
+
+    def initialize: (type: String?, data: Hash[untyped, untyped], ?id: String?, ?created_at: String?) -> void
+  end
+end

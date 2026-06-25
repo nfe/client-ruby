@@ -1,0 +1,20 @@
+module Nfe
+  module Webhook
+    SIGNATURE_PREFIX: String
+    HEX_RE: Regexp
+
+    def self?.verify_signature: (payload: String, signature: (String | Array[String])?, secret: String?) -> bool
+
+    def self?.construct_event: (payload: String, signature: (String | Array[String])?, secret: String?) -> Nfe::WebhookEvent
+
+    def self?.parse_payload: (untyped payload) -> Hash[untyped, untyped]
+
+    def self?.build_event: (Hash[untyped, untyped] decoded) -> Nfe::WebhookEvent
+
+    def self?.envelope_data: (Hash[untyped, untyped] decoded) -> Hash[untyped, untyped]
+
+    def self?.first_string: (Hash[untyped, untyped] hash, *String keys) -> String?
+
+    def self?.nullable_string: (untyped value) -> String?
+  end
+end

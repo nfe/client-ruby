@@ -1,0 +1,18 @@
+module Nfe
+  class WebhookSubscription < Data
+    attr_reader id: String?
+    attr_reader url: String?
+    attr_reader events: Array[String]?
+    attr_reader secret: String?
+    attr_reader active: bool?
+    attr_reader status: untyped
+    attr_reader created_on: String?
+    attr_reader modified_on: String?
+
+    def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::WebhookSubscription?
+
+    def self.new: (id: String?, url: String?, events: Array[String]?, secret: String?, active: bool?, status: untyped, created_on: String?, modified_on: String?) -> instance
+
+    def initialize: (id: String?, url: String?, events: Array[String]?, secret: String?, active: bool?, status: untyped, created_on: String?, modified_on: String?) -> void
+  end
+end

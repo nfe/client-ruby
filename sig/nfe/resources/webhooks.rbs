@@ -1,14 +1,24 @@
 module Nfe
   module Resources
     class Webhooks < AbstractResource
-      IMPLEMENTED_IN: String
+      AVAILABLE_EVENTS: Array[String]
 
       def api_family: () -> Symbol
 
+      def list: (String company_id) -> Nfe::ListResponse
+      def create: (String company_id, Hash[untyped, untyped] data) -> Nfe::WebhookSubscription?
+      def retrieve: (String company_id, String webhook_id) -> Nfe::WebhookSubscription?
+      def update: (String company_id, String webhook_id, Hash[untyped, untyped] data) -> Nfe::WebhookSubscription?
+      def delete: (String company_id, String webhook_id) -> nil
+      def test: (String company_id, String webhook_id) -> { success: bool, message: String? }
+      def get_available_events: () -> Array[String]
+      def verify_signature: (payload: String, signature: (String | Array[String])?, secret: String?) -> bool
+
       private
 
-      def method_missing: (Symbol name, *untyped args, **untyped kwargs) -> untyped
-      def respond_to_missing?: (untyped name, ?bool include_private) -> bool
+      def json_headers: () -> Hash[String, String]
+      def json_body: (untyped data) -> String
+      def webhook_items: (untyped payload) -> Array[untyped]
     end
   end
 end

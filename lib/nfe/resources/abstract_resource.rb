@@ -195,6 +195,73 @@ module Nfe
       rescue JSON::ParserError
         nil
       end
+
+      # Unwrap an API envelope: return +payload[key]+ when present (String or
+      # Symbol key), otherwise return +payload+ unchanged. Tolerant of a missing
+      # envelope so callers can pass a wrapped or already-unwrapped Hash.
+      #
+      # @param payload [Hash, nil] the parsed response body.
+      # @param key [String, Symbol] the envelope key (e.g. +"companies"+).
+      # @return [Object] the unwrapped value, or +payload+.
+      def unwrap(payload, key)
+        return payload unless payload.is_a?(Hash)
+
+        if payload.key?(key.to_s)
+          payload[key.to_s]
+        elsif payload.key?(key.to_sym)
+          payload[key.to_sym]
+        else
+          payload
+        end
+      end
+
+      # POST a +multipart/form-data+ body built from +parts+ using only Ruby
+      # stdlib, introducing no new runtime dependency. Each part is either a
+      # scalar field value (+String+) or a file part described by a Hash with
+      # +:filename+, +:content+, and optional +:content_type+.
+      #
+      # The body is assembled as binary (+ASCII-8BIT+) so certificate bytes are
+      # never corrupted, and the +Content-Type+ header carries the generated
+      # boundary. The multipart body is intentionally never logged.
+      #
+      # @param path [String] request path (already family-relative).
+      # @param parts [Hash{String,Symbol => String, Hash}] form fields/files.
+      # @return [Nfe::Http::Response]
+      def upload_multipart(path, parts)
+        boundary = "----NfeBoundary#{parts.object_id}"
+        body = build_multipart_body(parts, boundary)
+        headers = { "Content-Type" => "multipart/form-data; boundary=#{boundary}" }
+        post(path, body: body, headers: headers)
+      end
+
+      # Assemble the raw multipart/form-data body for +parts+ under +boundary+.
+      def build_multipart_body(parts, boundary)
+        buffer = String.new(encoding: Encoding::ASCII_8BIT)
+        parts.each do |name, value|
+          buffer << "--#{boundary}\r\n".b
+          buffer << multipart_part(name.to_s, value)
+        end
+        buffer << "--#{boundary}--\r\n".b
+        buffer
+      end
+
+      # Encode a single multipart part (scalar field or file).
+      def multipart_part(name, value)
+        part = String.new(encoding: Encoding::ASCII_8BIT)
+        if value.is_a?(Hash)
+          filename = value[:filename] || value["filename"] || "file"
+          content_type = value[:content_type] || value["content_type"] || "application/octet-stream"
+          content = value[:content] || value["content"] || ""
+          part << %(Content-Disposition: form-data; name="#{name}"; filename="#{filename}"\r\n).b
+          part << "Content-Type: #{content_type}\r\n\r\n".b
+          part << content.dup.force_encoding(Encoding::ASCII_8BIT)
+        else
+          part << %(Content-Disposition: form-data; name="#{name}"\r\n\r\n).b
+          part << value.to_s.dup.force_encoding(Encoding::ASCII_8BIT)
+        end
+        part << "\r\n".b
+        part
+      end
     end
   end
 end

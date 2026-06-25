@@ -1,14 +1,38 @@
 module Nfe
   module Resources
     class Companies < AbstractResource
-      IMPLEMENTED_IN: String
+      ENVELOPE: String
 
       def api_family: () -> Symbol
 
+      def create: (Hash[untyped, untyped] data) -> Nfe::Company?
+      def list: (?page_index: Integer, ?page_count: Integer) -> Nfe::ListResponse
+      def list_all: () -> Array[Nfe::Company]
+      def list_each: () -> Enumerator[Nfe::Company, void]
+      def retrieve: (String company_id) -> Nfe::Company?
+      def update: (String company_id, Hash[untyped, untyped] data) -> Nfe::Company?
+      def remove: (String company_id) -> { deleted: bool, id: String }
+      def find_by_tax_number: ((String | Integer) tax_number) -> Nfe::Company?
+      def find_by_name: (String name) -> Array[Nfe::Company]
+      def validate_certificate: (file: String, password: String) -> Nfe::CertificateInfo
+      def upload_certificate: (String company_id, file: String, password: String, ?filename: String?) -> { uploaded: bool, message: String? }
+      def replace_certificate: (String company_id, file: String, password: String, ?filename: String?) -> { uploaded: bool, message: String? }
+      def get_certificate_status: (String company_id) -> Nfe::CertificateStatus
+      def check_certificate_expiration: (String company_id, ?threshold_days: Integer) -> ({ expiring: bool, days_remaining: Integer, expires_on: String }?)
+      def get_companies_with_certificates: () -> Array[Nfe::Company]
+      def get_companies_with_expiring_certificates: (?threshold_days: Integer) -> Array[Nfe::Company]
+
       private
 
-      def method_missing: (Symbol name, *untyped args, **untyped kwargs) -> untyped
-      def respond_to_missing?: (untyped name, ?bool include_private) -> bool
+      def json_headers: () -> Hash[String, String]
+      def json_body: (untyped data) -> String
+      def resolve_page_index: (Hash[untyped, untyped] payload, Integer requested_index) -> Integer
+      def validate_company_data: (Hash[untyped, untyped] data) -> void
+      def normalize_tax_number: (untyped value) -> String
+      def read_certificate_bytes: (String file) -> String
+      def build_certificate_status: (Hash[untyped, untyped] details) -> Nfe::CertificateStatus
+      def certificate_status_or_nil: (String company_id) -> Nfe::CertificateStatus?
+      def expiring_or_nil: (String company_id, Integer threshold_days) -> untyped
     end
   end
 end

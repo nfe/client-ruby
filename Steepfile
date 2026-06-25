@@ -9,5 +9,5 @@ target :lib do
   ignore "lib/nfe/generated"
 
   # Standard-library signatures used by the HTTP transport layer.
-  library "json", "uri", "net-http", "zlib", "openssl", "stringio", "timeout", "socket"
+  library "json", "uri", "net-http", "zlib", "openssl", "stringio", "timeout", "socket", "time"
 end

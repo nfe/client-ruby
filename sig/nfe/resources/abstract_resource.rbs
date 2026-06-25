@@ -23,6 +23,11 @@ module Nfe
 
       private
 
+      def unwrap: (untyped payload, (String | Symbol) key) -> untyped
+      def upload_multipart: (String path, Hash[untyped, untyped] parts) -> Nfe::Http::Response
+      def build_multipart_body: (Hash[untyped, untyped] parts, String boundary) -> String
+      def multipart_part: (String name, untyped value) -> String
+
       def build_list_page: (untyped payload) -> Nfe::ListPage
       def dig_key: (untyped payload, String camel_key, Symbol snake_key) -> untyped
       def page_list_page: (untyped page_index, untyped page_count, untyped total) -> Nfe::ListPage

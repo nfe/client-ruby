@@ -1,0 +1,27 @@
+module Nfe
+  class Company < Data
+    attr_reader id: String?
+    attr_reader name: String?
+    attr_reader trade_name: String?
+    attr_reader federal_tax_number: String?
+    attr_reader email: String?
+    attr_reader status: untyped
+    attr_reader tax_regime: untyped
+    attr_reader municipal_tax_number: String?
+    attr_reader address: untyped
+    attr_reader state_taxes: untyped
+    attr_reader municipal_taxes: untyped
+    attr_reader environment: untyped
+    attr_reader account_id: String?
+    attr_reader created_on: String?
+    attr_reader modified_on: String?
+
+    def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::Company?
+
+    def self.stringify: (untyped value) -> String?
+
+    def self.new: (id: String?, name: String?, trade_name: String?, federal_tax_number: String?, email: String?, status: untyped, tax_regime: untyped, municipal_tax_number: String?, address: untyped, state_taxes: untyped, municipal_taxes: untyped, environment: untyped, account_id: String?, created_on: String?, modified_on: String?) -> instance
+
+    def initialize: (id: String?, name: String?, trade_name: String?, federal_tax_number: String?, email: String?, status: untyped, tax_regime: untyped, municipal_tax_number: String?, address: untyped, state_taxes: untyped, municipal_taxes: untyped, environment: untyped, account_id: String?, created_on: String?, modified_on: String?) -> void
+  end
+end

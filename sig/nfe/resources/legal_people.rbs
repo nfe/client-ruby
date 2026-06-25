@@ -1,14 +1,22 @@
 module Nfe
   module Resources
     class LegalPeople < AbstractResource
-      IMPLEMENTED_IN: String
+      ENVELOPE: String
 
       def api_family: () -> Symbol
 
+      def list: (String company_id) -> Nfe::ListResponse
+      def create: (String company_id, Hash[untyped, untyped] data) -> Nfe::LegalPerson?
+      def retrieve: (String company_id, String legal_person_id) -> Nfe::LegalPerson?
+      def update: (String company_id, String legal_person_id, Hash[untyped, untyped] data) -> Nfe::LegalPerson?
+      def delete: (String company_id, String legal_person_id) -> nil
+      def create_batch: (String company_id, Array[Hash[untyped, untyped]] list) -> Array[Nfe::LegalPerson?]
+      def find_by_tax_number: (String company_id, String federal_tax_number) -> Nfe::LegalPerson?
+
       private
 
-      def method_missing: (Symbol name, *untyped args, **untyped kwargs) -> untyped
-      def respond_to_missing?: (untyped name, ?bool include_private) -> bool
+      def json_headers: () -> Hash[String, String]
+      def json_body: (untyped data) -> String
     end
   end
 end

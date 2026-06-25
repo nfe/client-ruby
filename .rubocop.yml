@@ -56,6 +56,13 @@ Metrics/ModuleLength:
 Metrics/CyclomaticComplexity:
   Max: 10
 
+Metrics/PerceivedComplexity:
+  Max: 10
+
+# get_* method names intentionally mirror the Node SDK surface (parity).
+Naming/AccessorMethodName:
+  Enabled: false
+
 Metrics/BlockLength:
   Exclude:
     - "spec/**/*"
@@ -67,7 +74,7 @@ Gemspec/DevelopmentDependencies:
   Enabled: false
 
 RSpec/ExampleLength:
-  Max: 15
+  Max: 20
 
 RSpec/MultipleExpectations:
   Max: 10

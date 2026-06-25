@@ -1,0 +1,45 @@
+module Nfe
+  class CertificateInfo < Data
+    attr_reader subject: String
+    attr_reader issuer: String
+    attr_reader not_before: Time?
+    attr_reader not_after: Time?
+    attr_reader serial_number: String
+
+    def self.new: (subject: String, issuer: String, not_before: Time?, not_after: Time?, serial_number: String) -> instance
+                | (String subject, String issuer, Time? not_before, Time? not_after, String serial_number) -> instance
+
+    def initialize: (subject: String, issuer: String, not_before: Time?, not_after: Time?, serial_number: String) -> void
+                  | (String subject, String issuer, Time? not_before, Time? not_after, String serial_number) -> void
+  end
+
+  class CertificateStatus < Data
+    attr_reader has_certificate: bool
+    attr_reader expires_on: String?
+    attr_reader valid: bool?
+    attr_reader days_until_expiration: Integer?
+    attr_reader expiring_soon: bool?
+    attr_reader details: untyped
+
+    def self.new: (has_certificate: bool, expires_on: String?, valid: bool?, days_until_expiration: Integer?, expiring_soon: bool?, details: untyped) -> instance
+                | (bool has_certificate, String? expires_on, bool? valid, Integer? days_until_expiration, bool? expiring_soon, untyped details) -> instance
+
+    def initialize: (has_certificate: bool, expires_on: String?, valid: bool?, days_until_expiration: Integer?, expiring_soon: bool?, details: untyped) -> void
+                  | (bool has_certificate, String? expires_on, bool? valid, Integer? days_until_expiration, bool? expiring_soon, untyped details) -> void
+  end
+
+  module CertificateValidator
+    DEFAULT_THRESHOLD_DAYS: Integer
+    SECONDS_PER_DAY: Integer
+
+    def self?.supported_format?: (String? filename) -> bool
+
+    def self?.validate: (String der_bytes, String password) -> Nfe::CertificateInfo
+
+    def self?.days_until_expiration: ((Time | String) not_after) -> Integer
+
+    def self?.expiring_soon?: ((Time | String) not_after, ?Integer threshold_days) -> bool
+
+    def self?.coerce_time: (untyped value) -> Time
+  end
+end
