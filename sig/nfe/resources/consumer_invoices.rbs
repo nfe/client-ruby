@@ -1,0 +1,14 @@
+module Nfe
+  module Resources
+    class ConsumerInvoices < AbstractResource
+      IMPLEMENTED_IN: String
+
+      def api_family: () -> Symbol
+
+      private
+
+      def method_missing: (Symbol name, *untyped args, **untyped kwargs) -> untyped
+      def respond_to_missing?: (untyped name, ?bool include_private) -> bool
+    end
+  end
+end

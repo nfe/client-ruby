@@ -1,6 +1,8 @@
 # Tasks — add-client-core
 
-> Greenfield. Todos os itens UNCHECKED. Depende de **add-ruby-foundation** (namespace `Nfe`, layout `lib/nfe/`, tooling), **add-http-transport** (transporte `Net::HTTP`, retries, erros tipados) e **add-openapi-pipeline** (DTOs `Data.define` + `.rbs`). Todo `.rb` começa com `# frozen_string_literal: true`. Ruby floor 3.2; CI 3.2/3.3/3.4. Zero dependências de runtime (só stdlib). Tipos via RBS em `sig/`, Steep no CI, RuboCop no lint, RSpec com SimpleCov >= 80%.
+> Depende de **add-ruby-foundation**, **add-http-transport** e **add-openapi-pipeline** (todas arquivadas). Todo `.rb` começa com `# frozen_string_literal: true`. Ruby floor 3.2; CI 3.2/3.3/3.4. Zero dependências de runtime (só stdlib). Tipos via RBS em `sig/`, Steep no CI, RuboCop no lint, RSpec com SimpleCov >= 80%.
+>
+> **Status (2026-06-25): IMPLEMENTADO e verificado verde via Docker na matrix Ruby 3.2/3.3/3.4.** Entregue: `Nfe::Configuration` completa (host map + aliases, `api_key_for` dois-modos, fallback `NFE_API_KEY`/`NFE_DATA_API_KEY`, `ca_file`/`ca_path`/`proxy`), `Nfe::Client` (transporte `RetryingTransport(NetHttp)` por família com mutex, `#request` levantando `ErrorFactory` em não-2xx, 17 acessores lazy memoizados), `Nfe::RequestOptions` (override por chamada/multi-tenant), `Nfe::Pending`/`Issued`, `Nfe::ListResponse`/`ListPage`, `Nfe::IdValidator`, `Nfe::Resources::AbstractResource` (get/post/put/delete, `full_path`, `hydrate`→`from_api`, `download` ASCII-8BIT, `hydrate_list` page/cursor, `handle_async_response` 202→Pending), os **17 stubs** de recurso, e `ConfigurationError`/`InvoiceProcessingError`. `FlowStatus`/`VERSION` reaproveitados da fundação. Gate: rspec 298/0 (cobertura ~95.6%), rubocop 0, steep 0, rbs ok, generate:check in-sync — nos três Rubies. Decisões na verificação: acessores explícitos (não `define_method`, p/ Steep ver o método privado); ENV fallback via `ENV.fetch`; `proxy` armazenado mas wiring no `NetHttp` reservado.
 
 ## 1. Versão e constantes
 
@@ -126,9 +128,9 @@
 
 ## 13. Validação end-to-end
 
-- [ ] 13.1 `bundle exec rspec` — verde, cobertura SimpleCov >= 80%.
-- [ ] 13.2 `bundle exec rubocop` — sem offenses; todo `.rb` com `# frozen_string_literal: true`.
-- [ ] 13.3 `bundle exec steep check` — sem erros de tipo nas assinaturas `sig/`.
-- [ ] 13.4 CI verde nas 3 versões da matriz (Ruby 3.2 / 3.3 / 3.4).
-- [ ] 13.5 `openspec validate add-client-core` — passa.
-- [ ] 13.6 Confirmar zero dependências de runtime no `*.gemspec` (só stdlib: net/http, json, openssl, uri, securerandom, stringio, time, base64).
+- [x] 13.1 `bundle exec rspec` — 298 exemplos / 0 falhas, cobertura ~95.6% (docker 3.2/3.3/3.4).
+- [x] 13.2 `bundle exec rubocop` — 0 offenses; `# frozen_string_literal: true` em todo `.rb` (docker 3.2/3.3/3.4).
+- [x] 13.3 `bundle exec steep check` — 0 erros (docker 3.2/3.3/3.4).
+- [x] 13.4 Gate verde nas 3 versões da matriz (Ruby 3.2 / 3.3 / 3.4) via Docker.
+- [x] 13.5 `openspec validate add-client-core --strict` — passa.
+- [x] 13.6 Zero dependências de runtime no gemspec (confirmado em add-ruby-foundation; só stdlib).

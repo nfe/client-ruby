@@ -45,4 +45,10 @@ module Nfe
 
   class SignatureVerificationError < Error
   end
+
+  class ConfigurationError < Error
+  end
+
+  class InvoiceProcessingError < Error
+  end
 end

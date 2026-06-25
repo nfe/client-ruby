@@ -93,4 +93,14 @@ module Nfe
 
   # Raised when a webhook signature fails verification.
   class SignatureVerificationError < Error; end
+
+  # Raised when the SDK is misconfigured: a required API key is missing for a
+  # family, or an invalid +environment+ was supplied. Raised client-side,
+  # before any HTTP request is issued.
+  class ConfigurationError < Error; end
+
+  # Raised when an asynchronous (202) invoice response violates the expected
+  # protocol — e.g., a 202 without a +Location+ header, or an +invoice_id+ that
+  # cannot be extracted from it.
+  class InvoiceProcessingError < Error; end
 end

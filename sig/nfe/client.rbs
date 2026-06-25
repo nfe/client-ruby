@@ -1,40 +1,53 @@
 module Nfe
   class Client
-    RESOURCES: Array[Symbol]
+    RESOURCES: Hash[Symbol, untyped]
 
-    @config: Nfe::Configuration
-    @retry_config: untyped
+    @configuration: Nfe::Configuration
     @resources: Hash[Symbol, untyped]
+    @transports: Hash[Symbol, untyped]
+    @resource_mutex: Thread::Mutex
+    @transport_mutex: Thread::Mutex
 
-    attr_reader config: Nfe::Configuration
+    attr_reader configuration: Nfe::Configuration
 
-    def initialize: (?api_key: String?, ?data_api_key: String?, ?environment: Symbol,
-                     ?base_url: String?, ?timeout: Integer, ?retry_config: untyped,
-                     ?configuration: Nfe::Configuration?) -> void
+    def initialize: (?api_key: String?, ?data_api_key: String?,
+                     ?configuration: Nfe::Configuration?, ?environment: Symbol,
+                     ?timeout: Integer, ?max_retries: Integer, ?logger: untyped,
+                     ?user_agent_suffix: String?) -> void
 
-    # The 17 core resource accessors. Bodies are stubs in the foundation change
-    # (they raise NotImplementedError) and are implemented by later changes.
-    def service_invoices: () -> untyped
-    def product_invoices: () -> untyped
-    def consumer_invoices: () -> untyped
-    def transportation_invoices: () -> untyped
-    def inbound_product_invoices: () -> untyped
-    def product_invoice_query: () -> untyped
-    def consumer_invoice_query: () -> untyped
-    def companies: () -> untyped
-    def legal_people: () -> untyped
-    def natural_people: () -> untyped
-    def webhooks: () -> untyped
-    def addresses: () -> untyped
-    def legal_entity_lookup: () -> untyped
-    def natural_person_lookup: () -> untyped
-    def tax_calculation: () -> untyped
-    def tax_codes: () -> untyped
-    def state_taxes: () -> untyped
+    # The 17 core lazy resource accessors.
+    def service_invoices: () -> Nfe::Resources::ServiceInvoices
+    def product_invoices: () -> Nfe::Resources::ProductInvoices
+    def consumer_invoices: () -> Nfe::Resources::ConsumerInvoices
+    def transportation_invoices: () -> Nfe::Resources::TransportationInvoices
+    def inbound_product_invoices: () -> Nfe::Resources::InboundProductInvoices
+    def product_invoice_query: () -> Nfe::Resources::ProductInvoiceQuery
+    def consumer_invoice_query: () -> Nfe::Resources::ConsumerInvoiceQuery
+    def companies: () -> Nfe::Resources::Companies
+    def legal_people: () -> Nfe::Resources::LegalPeople
+    def natural_people: () -> Nfe::Resources::NaturalPeople
+    def webhooks: () -> Nfe::Resources::Webhooks
+    def addresses: () -> Nfe::Resources::Addresses
+    def legal_entity_lookup: () -> Nfe::Resources::LegalEntityLookup
+    def natural_person_lookup: () -> Nfe::Resources::NaturalPersonLookup
+    def tax_calculation: () -> Nfe::Resources::TaxCalculation
+    def tax_codes: () -> Nfe::Resources::TaxCodes
+    def state_taxes: () -> Nfe::Resources::StateTaxes
+
+    def request: (Symbol | String method, family: Symbol, path: String,
+                  ?query: Hash[untyped, untyped], ?body: untyped,
+                  ?headers: Hash[untyped, untyped], ?idempotency_key: String?,
+                  ?request_options: Nfe::RequestOptions?) -> Nfe::Http::Response
 
     private
 
+    def build_request: (Symbol | String method, family: Symbol, path: String,
+                        query: Hash[untyped, untyped], body: untyped,
+                        headers: Hash[untyped, untyped], idempotency_key: String?,
+                        request_options: Nfe::RequestOptions?) -> Nfe::Http::Request
+    def default_headers: (String? api_key) -> Hash[String, untyped]
     def resource: (Symbol name) -> untyped
-    def build_resource: (Symbol name) -> untyped
+    def transport_for: (Symbol family) -> untyped
+    def build_transport: () -> Nfe::Http::RetryingTransport
   end
 end

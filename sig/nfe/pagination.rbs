@@ -1,0 +1,26 @@
+module Nfe
+  class ListPage < Data
+    attr_reader page_index: untyped
+    attr_reader page_count: untyped
+    attr_reader starting_after: untyped
+    attr_reader ending_before: untyped
+    attr_reader total: untyped
+
+    def self.new: (?page_index: untyped, ?page_count: untyped, ?starting_after: untyped, ?ending_before: untyped, ?total: untyped) -> instance
+
+    def initialize: (?page_index: untyped, ?page_count: untyped, ?starting_after: untyped, ?ending_before: untyped, ?total: untyped) -> void
+
+    def self.from_page: (?page_index: untyped, ?page_count: untyped, ?total: untyped) -> instance
+
+    def self.from_cursor: (?starting_after: untyped, ?ending_before: untyped, ?total: untyped) -> instance
+  end
+
+  class ListResponse < Data
+    attr_reader data: untyped
+    attr_reader page: untyped
+
+    def self.new: (?data: untyped, ?page: untyped) -> instance
+
+    def initialize: (?data: untyped, ?page: untyped) -> void
+  end
+end

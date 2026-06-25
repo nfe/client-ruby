@@ -1,0 +1,34 @@
+module Nfe
+  module Resources
+    class AbstractResource
+      @client: Nfe::Client
+
+      def initialize: (Nfe::Client client) -> void
+
+      attr_reader client: Nfe::Client
+
+      def api_family: () -> Symbol
+      def api_version: () -> String
+
+      def get: (String path, ?query: Hash[untyped, untyped], ?request_options: Nfe::RequestOptions?, ?headers: Hash[untyped, untyped]) -> Nfe::Http::Response
+      def post: (String path, ?body: untyped, ?query: Hash[untyped, untyped], ?request_options: Nfe::RequestOptions?, ?headers: Hash[untyped, untyped], ?idempotency_key: String?) -> Nfe::Http::Response
+      def put: (String path, ?body: untyped, ?query: Hash[untyped, untyped], ?request_options: Nfe::RequestOptions?, ?headers: Hash[untyped, untyped]) -> Nfe::Http::Response
+      def delete: (String path, ?query: Hash[untyped, untyped], ?request_options: Nfe::RequestOptions?, ?headers: Hash[untyped, untyped]) -> Nfe::Http::Response
+
+      def full_path: (String path) -> String
+      def hydrate: (untyped klass, untyped payload) -> untyped
+      def download: (String path, ?query: Hash[untyped, untyped], ?request_options: Nfe::RequestOptions?, ?headers: Hash[untyped, untyped]) -> String
+      def hydrate_list: (untyped klass, untyped payload, wrapper_key: (String | Symbol)) -> Nfe::ListResponse
+      def handle_async_response: (Nfe::Http::Response response, issued_klass: untyped) -> (Nfe::Pending | Nfe::Issued)
+
+      private
+
+      def build_list_page: (untyped payload) -> Nfe::ListPage
+      def dig_key: (untyped payload, String camel_key, Symbol snake_key) -> untyped
+      def page_list_page: (untyped page_index, untyped page_count, untyped total) -> Nfe::ListPage
+      def cursor_list_page: (untyped payload, untyped total) -> Nfe::ListPage
+      def extract_invoice_id: (String location) -> String?
+      def parse_json: (String? body) -> untyped
+    end
+  end
+end

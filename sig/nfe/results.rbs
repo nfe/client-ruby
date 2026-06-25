@@ -1,0 +1,22 @@
+module Nfe
+  class Pending < Data
+    attr_reader invoice_id: untyped
+    attr_reader location: untyped
+
+    def self.new: (untyped invoice_id, untyped location) -> instance
+                | (invoice_id: untyped, location: untyped) -> instance
+
+    def initialize: (untyped invoice_id, untyped location) -> void
+                  | (invoice_id: untyped, location: untyped) -> void
+  end
+
+  class Issued < Data
+    attr_reader resource: untyped
+
+    def self.new: (untyped resource) -> instance
+                | (resource: untyped) -> instance
+
+    def initialize: (untyped resource) -> void
+                  | (resource: untyped) -> void
+  end
+end

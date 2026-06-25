@@ -70,7 +70,8 @@ RSpec.describe Nfe::Error do
         Nfe::AuthenticationError, Nfe::AuthorizationError, Nfe::InvalidRequestError,
         Nfe::NotFoundError, Nfe::ConflictError, Nfe::RateLimitError,
         Nfe::ServerError, Nfe::ApiConnectionError, Nfe::TimeoutError,
-        Nfe::SignatureVerificationError
+        Nfe::SignatureVerificationError, Nfe::ConfigurationError,
+        Nfe::InvoiceProcessingError
       ].each do |klass|
         expect(klass.ancestors).to include(described_class)
       end
@@ -93,6 +94,32 @@ RSpec.describe Nfe::Error do
 
     it "defaults retry_after to nil" do
       expect(described_class.new("slow down").retry_after).to be_nil
+    end
+  end
+
+  describe Nfe::ConfigurationError do
+    it "is a kind of Nfe::Error" do
+      expect(described_class.new("api_key ausente")).to be_a(Nfe::Error)
+    end
+
+    it "carries the base response context like any other error" do
+      error = described_class.new("environment inválido", status_code: nil, error_code: "CONFIG")
+
+      expect(error.message).to eq("environment inválido")
+      expect(error.error_code).to eq("CONFIG")
+    end
+  end
+
+  describe Nfe::InvoiceProcessingError do
+    it "is a kind of Nfe::Error" do
+      expect(described_class.new("202 sem Location")).to be_a(Nfe::Error)
+    end
+
+    it "carries a logging-safe to_h" do
+      expect(described_class.new("sem Location").to_h).to include(
+        type: "Nfe::InvoiceProcessingError",
+        message: "sem Location"
+      )
     end
   end
 end

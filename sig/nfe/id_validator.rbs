@@ -1,0 +1,18 @@
+module Nfe
+  module IdValidator
+    UF: Array[String]
+
+    def self?.company_id: (untyped value) -> untyped
+    def self?.invoice_id: (untyped value) -> untyped
+    def self?.state_tax_id: (untyped value) -> untyped
+    def self?.event_key: (untyped value) -> untyped
+    def self?.access_key: (untyped value) -> String
+    def self?.cnpj: (untyped value) -> String
+    def self?.cpf: (untyped value) -> String
+    def self?.cep: (untyped value) -> String
+    def self?.state: (untyped value) -> String
+    def self?.presence!: (untyped value, String name) -> untyped
+    def self?.digits_only: (untyped value) -> String
+    def self?.strip_separators: (untyped value) -> String
+  end
+end

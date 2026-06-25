@@ -6,6 +6,13 @@ require "nfe/version"
 require "nfe/errors"
 require "nfe/error_factory"
 
+# Value objects & validation helpers
+require "nfe/results"
+require "nfe/pagination"
+require "nfe/request_options"
+require "nfe/flow_status"
+require "nfe/id_validator"
+
 # HTTP transport layer (zero-dependency, Net::HTTP-based)
 require "nfe/http/request"
 require "nfe/http/response"
@@ -16,9 +23,8 @@ require "nfe/http/net_http"
 require "nfe/http/retry_policy"
 require "nfe/http/retrying_transport"
 
-# Core DX layer
+# Core DX layer (Client also requires Configuration, AbstractResource, and the 17 resource stubs)
 require "nfe/configuration"
-require "nfe/flow_status"
 require "nfe/client"
 
 # Official NFE.io SDK for Ruby.
