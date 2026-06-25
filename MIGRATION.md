@@ -98,7 +98,7 @@ Construtor completo (todos os argumentos são nomeados, com os defaults reais):
 client = Nfe::Client.new(
   api_key: "...",          # chave principal; fallback ENV NFE_API_KEY
   data_api_key: nil,       # chave de dados; fallback ENV NFE_DATA_API_KEY
-  environment: :production, # :production (default) ou :development — SÍMBOLO
+  environment: :production, # SÍMBOLO :production|:development (reservado p/ uso futuro)
   timeout: 30,             # read timeout (segundos)
   max_retries: 3,          # tentativas após a inicial
   logger: nil,             # objeto com #info/#warn/#error
@@ -106,10 +106,11 @@ client = Nfe::Client.new(
 )
 ```
 
-> **`environment:` seleciona a CHAVE, não a URL.** `:production` e `:development`
-> apontam para os MESMOS endpoints; o que diferencia o ambiente é a chave de API
-> em uso. Não existe "URL de sandbox". É um **símbolo** (`:production`), não uma
-> string.
+> **`environment:` está reservado para uso futuro.** Hoje é validado mas não
+> altera endpoints, chaves ou comportamento. A separação produção/teste
+> (homologação) é definida na configuração da sua conta em https://app.nfe.io
+> (lado servidor) — não pela chave de API nem pelo SDK; não existe "URL de
+> sandbox". É um **símbolo** (`:production`), não uma string.
 
 #### Fallback por variável de ambiente
 
@@ -747,7 +748,8 @@ end
   `company_id:` agora é argumento de cada chamada.
 - Removida a URL global única; o host é roteado por recurso (multi-host).
 - Novo `data_api_key:` (com fallback para `api_key`) para famílias de dados.
-- `environment:` é um **símbolo** que seleciona a **chave**, não a URL.
+- `environment:` (`:production`/`:development`) é um **símbolo reservado para uso
+  futuro** — hoje sem efeito; produção/teste é definido na conta em app.nfe.io.
 
 **Dependências e runtime**
 

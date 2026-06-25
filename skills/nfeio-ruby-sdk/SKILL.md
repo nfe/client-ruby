@@ -48,7 +48,7 @@ Nfe::Client.new(
   api_key: nil,             # fallback ENV NFE_API_KEY (argumento explícito vence)
   data_api_key: nil,        # fallback ENV NFE_DATA_API_KEY
   configuration: nil,       # quando passado, IGNORA os demais kwargs abaixo
-  environment: :production, # SÍMBOLO :production | :development — seleciona a CHAVE, não a URL
+  environment: :production, # SÍMBOLO :production | :development — reservado p/ uso futuro (sem efeito hoje)
   timeout: 30,              # read timeout (s)
   max_retries: 3,           # tentativas após a 1ª
   logger: nil,
@@ -56,7 +56,7 @@ Nfe::Client.new(
 )
 ```
 
-> **Atenção (divergência da memória):** o construtor de `Client` NÃO aceita
+> **Atenção:** o construtor de `Client` NÃO aceita
 > `open_timeout:`, `base_url_overrides:`, `ca_file:`, `ca_path:` nem `proxy:`
 > diretamente. Esses campos vivem em `Nfe::Configuration`. Para usá-los, construa
 > a configuração e injete via `configuration:`:
@@ -65,19 +65,22 @@ Nfe::Client.new(
 config = Nfe::Configuration.new(
   api_key: ENV.fetch("NFE_API_KEY"),
   open_timeout: 10,
-  base_url_overrides: { main: "https://sandbox.example" },
+  base_url_overrides: { main: "https://mock.local" }, # escape hatch p/ testes/proxy
   ca_file: "/etc/ssl/custom-ca.pem",   # SÓ adiciona CA; não há como desabilitar verificação TLS
   proxy: "http://proxy:3128"
 )
 client = Nfe::Client.new(configuration: config)
 ```
 
-`environment:` é um **símbolo** que escolhe *qual chave* usar; `:production` e
-`:development` apontam para os **mesmos endpoints**. Não existe "URL de sandbox".
+`environment:` (`:production`/`:development`) é um **símbolo reservado para uso
+futuro**: hoje é validado mas não altera endpoints/chaves. A separação
+produção/teste (homologação) é definida na conta em https://app.nfe.io.
 
 ## Sandbox vs Produção
 
-- Não há host de sandbox separado. O ambiente é diferenciado pela **chave de API**.
+- Não há host de sandbox separado. Produção/teste é definido na **conta**
+  (https://app.nfe.io), **não** pela chave; o `environment:` Símbolo do `Client`
+  está reservado para uso futuro.
 - Para os recursos de **product/consumer invoices**, `list` exige um parâmetro
   `environment:` **String separado** (`"Production"` ou `"Test"`) — distinto do
   `environment:` Símbolo do `Client`. Eles coexistem e significam coisas diferentes.

@@ -83,7 +83,7 @@ puts invoice.flow_status
 |---|---|---|
 | `api_key:` | _(ENV)_ | Chave principal. Fallback: `ENV["NFE_API_KEY"]`. |
 | `data_api_key:` | `nil` | Chave das famílias de **dados**. Fallback: `ENV["NFE_DATA_API_KEY"]`, depois `api_key`. |
-| `environment:` | `:production` | **Símbolo** `:production` \| `:development`. Seleciona a **chave**, não a URL. |
+| `environment:` | `:production` | **Símbolo** `:production` \| `:development`. **Reservado para uso futuro** — hoje não altera endpoints/chaves (ver "Sandbox vs. Produção"). |
 | `timeout:` | `30` | Timeout de leitura (segundos). |
 | `max_retries:` | `3` | Orçamento de retentativas (inteiro ≥ 0). |
 | `logger:` | `nil` | Logger opcional. |
@@ -130,10 +130,12 @@ Se nenhuma chave resolver, `Nfe::Client.new` levanta `Nfe::ConfigurationError`
 
 ## Sandbox vs. Produção
 
-> **Importante:** `environment:` no `Nfe::Client` é um **símbolo** (`:production`
-> ou `:development`) que apenas **seleciona qual chave** usar — `:production` e
-> `:development` apontam para os **mesmos endpoints**. **Não existe URL de
-> sandbox.** A separação produção/teste é feita pela chave de API.
+> **Importante:** a separação **produção vs. teste (homologação)** é definida na
+> configuração da sua conta em [app.nfe.io](https://app.nfe.io) (lado servidor) —
+> **não** pela chave de API nem pelo SDK — e **não existe URL de sandbox**.
+> O argumento `environment:` do `Nfe::Client` (`:production` / `:development`)
+> está **reservado para uso futuro**: hoje ele é validado mas **não** altera
+> endpoints, chaves ou comportamento.
 
 Há um segundo conceito de "ambiente", **distinto e independente** do anterior:
 NF-e/NFC-e (`product_invoices`, `consumer_invoices`, `product_invoices_rtc`)

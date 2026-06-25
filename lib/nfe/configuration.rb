@@ -12,10 +12,13 @@ module Nfe
   # family uses +api_key+. Either key may be supplied explicitly or via the
   # +NFE_API_KEY+ / +NFE_DATA_API_KEY+ environment variables (explicit wins).
   #
-  # == Environment selects the key, not the URL
-  # +:production+ and +:development+ target the SAME endpoints; the active
-  # environment is differentiated by the API key in use, not by a distinct base
-  # URL. There is no "sandbox URL".
+  # == Environment (reserved for future use)
+  # +environment:+ (+:production+ / +:development+) is currently a reserved,
+  # no-op parameter: it is validated but does NOT change endpoints, keys, or
+  # behavior. Production vs. test (homologação) is determined by the account
+  # configuration at https://app.nfe.io (server-side) — not by the SDK or the
+  # API key — and there is no "sandbox URL". Full +environment:+ support is
+  # planned for a future release.
   #
   # == TLS trust
   # +ca_file+ (and optionally +ca_path+) is the ONLY override of the TLS trust
@@ -67,7 +70,8 @@ module Nfe
     # do not add +:cte+ here without revisiting that contract.
     DATA_FAMILIES = %i[addresses legal-entity natural-person nfe-query].freeze
 
-    # Environments the SDK accepts. Both share the same endpoints.
+    # Accepted +environment:+ values. Reserved for future use — both currently
+    # share the same endpoints and key resolution (see the class doc).
     VALID_ENVIRONMENTS = %i[production development].freeze
 
     DEFAULT_TIMEOUT = 30
@@ -82,6 +86,8 @@ module Nfe
     # @param data_api_key [String, nil] data-services key; falls back to
     #   +NFE_DATA_API_KEY+.
     # @param environment [Symbol] +:production+ (default) or +:development+.
+    #   Reserved for future use — validated but currently has no effect on
+    #   endpoints/keys (prod vs. test is set in the account at app.nfe.io).
     # @param timeout [Integer] read timeout in seconds (must be positive).
     # @param open_timeout [Integer] connect timeout in seconds (must be positive).
     # @param max_retries [Integer] retry budget (non-negative).
