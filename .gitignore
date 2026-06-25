@@ -1,15 +1,19 @@
 /.idea/
 /.bundle/
 /.yardoc
-/Gemfile.lock
 /_yardoc/
 /coverage/
 /doc/
 /pkg/
-/spec/reports/
 /tmp/
-/nfe-io-*.gem
-/openspec/
+/spec/reports/
+Gemfile.lock
+*.gem
+.env
+.steep/
+.rbs_collection.lock
+.rbs_collection.yaml
+# Local dev symlinks to sibling repos (references / source of truth) — not part of the gem.
 /nfeio-docs
 /client-nodejs
 /client-php
