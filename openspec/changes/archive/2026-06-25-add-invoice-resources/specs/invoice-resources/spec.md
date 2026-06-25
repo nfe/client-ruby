@@ -93,7 +93,7 @@ When `request_options:` is supplied, it SHALL be a `Nfe::RequestOptions` value o
 
 #### Scenario: Retrieve returns a typed model
 - **WHEN** `retrieve(company_id:, invoice_id:)` succeeds
-- **THEN** the return value SHALL be a typed invoice model (a generated model, or a hand-written `Nfe::Models::ServiceInvoice` value object where the generated tree does not cover the shape) hydrated from the response body
+- **THEN** the return value SHALL be a typed invoice model (a generated model, or a hand-written `Nfe::ServiceInvoice` value object where the generated tree does not cover the shape) hydrated from the response body
 
 #### Scenario: Retrieve not found
 - **WHEN** `retrieve(company_id:, invoice_id:)` receives HTTP 404, or the response body is empty
@@ -144,7 +144,7 @@ Both `create` and `create_with_state_tax` SHALL accept the optional `idempotency
 
 #### Scenario: Product invoice downloads return a file URI, not bytes
 - **WHEN** `download_pdf`, `download_xml`, `download_rejection_xml`, or `download_epec_xml` succeeds
-- **THEN** the return value SHALL be a `Nfe::Models::NfeFileResource` carrying a URI to the file — NOT raw bytes — distinguishing this resource from the byte-returning downloads on the other invoice resources
+- **THEN** the return value SHALL be a `Nfe::NfeFileResource` carrying a URI to the file — NOT raw bytes — distinguishing this resource from the byte-returning downloads on the other invoice resources
 
 #### Scenario: Correction letter length validation
 - **WHEN** `send_correction_letter(company_id:, invoice_id:, reason:)` is called with a `reason` whose length is outside `15..1000`
@@ -177,7 +177,7 @@ The resource SHALL NOT define `send_correction_letter` (CC-e applies only to NF-
 
 #### Scenario: NFC-e discriminated creation
 - **WHEN** `create(company_id:, data:)` is called and the API responds HTTP 202 with `Location`
-- **THEN** the method SHALL return a `Nfe::Resources::ConsumerInvoicePending` whose `invoice_id` is extracted from the final path segment; on HTTP 201 it SHALL return a `Nfe::Resources::ConsumerInvoiceIssued` whose `resource` is a `Nfe::Models::ConsumerInvoice`
+- **THEN** the method SHALL return a `Nfe::Resources::ConsumerInvoicePending` whose `invoice_id` is extracted from the final path segment; on HTTP 201 it SHALL return a `Nfe::Resources::ConsumerInvoiceIssued` whose `resource` is a `Nfe::ConsumerInvoice`
 
 #### Scenario: NFC-e cancellation is synchronous
 - **WHEN** `cancel(company_id:, invoice_id:)` is called
@@ -327,7 +327,7 @@ Manual polling and `ServiceInvoices#get_status` SHALL determine terminal state t
 ### Requirement: Byte downloads return binary-safe strings
 The byte-returning download methods — `ServiceInvoices#download_pdf`/`download_xml`, `ConsumerInvoices#download_pdf`/`download_xml`/`download_rejection_xml`, `TransportationInvoices#download_xml`/`download_event_xml`, and `InboundProductInvoices#get_xml`/`get_event_xml`/`get_pdf` — SHALL return a Ruby `String` containing the raw response bytes with encoding forced to `Encoding::ASCII_8BIT`. They SHALL set the appropriate `Accept` header (`application/pdf` or `application/xml`) and SHALL NOT attempt to parse the body as JSON.
 
-This requirement does NOT apply to `ProductInvoices` download methods, which return a `Nfe::Models::NfeFileResource` (URI) instead of bytes.
+This requirement does NOT apply to `ProductInvoices` download methods, which return a `Nfe::NfeFileResource` (URI) instead of bytes.
 
 #### Scenario: PDF download bytes
 - **WHEN** any covered `download_pdf`/`get_pdf` method succeeds

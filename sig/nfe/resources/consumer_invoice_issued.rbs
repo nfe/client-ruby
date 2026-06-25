@@ -1,0 +1,16 @@
+module Nfe
+  module Resources
+    class ConsumerInvoiceIssued < Data
+      attr_reader resource: Nfe::ConsumerInvoice?
+
+      def self.new: (resource: Nfe::ConsumerInvoice?) -> instance
+                  | (Nfe::ConsumerInvoice? resource) -> instance
+
+      def initialize: (resource: Nfe::ConsumerInvoice?) -> void
+                    | (Nfe::ConsumerInvoice? resource) -> void
+
+      def pending?: () -> bool
+      def issued?: () -> bool
+    end
+  end
+end

@@ -1,14 +1,36 @@
 module Nfe
   module Resources
     class InboundProductInvoices < AbstractResource
-      IMPLEMENTED_IN: String
+      MANIFEST_AWARENESS: Integer
+      MANIFEST_CONFIRMATION: Integer
+      MANIFEST_NOT_PERFORMED: Integer
 
       def api_family: () -> Symbol
+      def api_version: () -> String
+
+      def enable_auto_fetch: (company_id: String, ?start_from_nsu: untyped, ?start_from_date: String?, ?environment_sefaz: String?, ?automatic_manifesting: untyped, ?webhook_version: untyped) -> Nfe::InboundSettings?
+      def disable_auto_fetch: (company_id: String) -> Nfe::InboundSettings?
+      def get_settings: (company_id: String) -> Nfe::InboundSettings?
+      def get_details: (company_id: String, access_key: String) -> Nfe::InboundInvoiceMetadata?
+      def get_product_invoice_details: (company_id: String, access_key: String) -> Nfe::InboundInvoiceMetadata?
+      def get_event_details: (company_id: String, access_key: String, event_key: String) -> Nfe::InboundInvoiceMetadata?
+      def get_product_invoice_event_details: (company_id: String, access_key: String, event_key: String) -> Nfe::InboundInvoiceMetadata?
+      def get_xml: (company_id: String, access_key: String) -> String
+      def get_event_xml: (company_id: String, access_key: String, event_key: String) -> String
+      def get_pdf: (company_id: String, access_key: String) -> String
+      def get_json: (company_id: String, access_key: String) -> Nfe::InboundInvoiceMetadata?
+      def manifest: (company_id: String, access_key: String, ?tp_event: Integer) -> String
+      def reprocess_webhook: (company_id: String, access_key_or_nsu: untyped) -> Nfe::InboundInvoiceMetadata?
 
       private
 
-      def method_missing: (Symbol name, *untyped args, **untyped kwargs) -> untyped
-      def respond_to_missing?: (untyped name, ?bool include_private) -> bool
+      def company_and_key: (String company_id, String access_key) -> [ String, String ]
+      def company_key_event: (String company_id, String access_key, String event_key) -> [ String, String, String ]
+      def json_headers: () -> Hash[String, String]
+      def json_body: (untyped data) -> String
+      def xml_accept: () -> Hash[String, String]
+      def pdf_accept: () -> Hash[String, String]
+      def compact: (Hash[untyped, untyped] hash) -> Hash[untyped, untyped]
     end
   end
 end

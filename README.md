@@ -34,7 +34,7 @@ require "nfe"
 
 client = Nfe::Client.new(api_key: "sua-api-key")
 
-# Emissão de NFS-e (exemplo projetado para a v1)
+# Emissão de NFS-e — o retorno é discriminado por tipo
 result = client.service_invoices.create(
   company_id: "55df4dc6b6cd9007e4f13ee8",
   data: {
@@ -44,6 +44,22 @@ result = client.service_invoices.create(
     borrower: { federal_tax_number: "191", name: "Banco do Brasil SA" }
   }
 )
+
+case result
+in Nfe::Resources::ServiceInvoicePending => pending
+  # HTTP 202 enfileirado — faça polling até um estado terminal
+  # (não há create_and_wait/create_batch na v1.0).
+  loop do
+    status = client.service_invoices.get_status(
+      company_id: "55df4dc6b6cd9007e4f13ee8", invoice_id: pending.invoice_id
+    )
+    break if status.complete?
+
+    sleep 2
+  end
+in Nfe::Resources::ServiceInvoiceIssued => issued
+  issued.resource # NFS-e já materializada (HTTP 201)
+end
 ```
 
 > A configuração também aceita `data_api_key:`, `environment:` (`:production` |
@@ -63,8 +79,15 @@ A `v1` expõe **17 recursos** no `Nfe::Client`, organizados por família:
 Emissão no layout da **Reforma Tributária (RTC)** é exposta opcionalmente via
 `service_invoices_rtc` (NFS-e) e `product_invoices_rtc` (NF-e/NFC-e).
 
-> Os corpos dos recursos são entregues nas etapas seguintes do desenvolvimento da
-> v1; esta versão estabelece a fundação (gem, namespace, configuração, tooling e CI).
+> Os recursos de **emissão** e **entidades** já estão implementados; os de
+> **consulta/dados** e a emissão **RTC** chegam nas próximas etapas da v1.
+
+> **Downloads**: `product_invoices.download_*` devolve um `Nfe::NfeFileResource`
+> (URI do arquivo), enquanto `service_invoices`, `consumer_invoices` e
+> `transportation_invoices` devolvem os **bytes** do documento.
+> `consumer_invoices` (NFC-e) segue a paridade-plus do SDK Node. Sem
+> `create_and_wait`/`create_batch` na v1.0 — use o loop de polling com
+> `Nfe::FlowStatus.terminal?` mostrado acima.
 
 ## Desenvolvimento
 

@@ -29,8 +29,8 @@ Esses recursos são o **primeiro consumidor real** dos blocos montados em `add-c
 - `Nfe::Resources::ServiceInvoicePending` / `ServiceInvoiceIssued` — value objects `Data.define` para o contrato 202 de NFS-e (especialização concreta do contrato `Nfe::Pending`/`Nfe::Issued` de `add-client-core`).
 - `Nfe::Resources::ProductInvoicePending` / `ProductInvoiceIssued`.
 - `Nfe::Resources::ConsumerInvoicePending` / `ConsumerInvoiceIssued`.
-- `Nfe::Models::NfeFileResource` — value object `Data.define` que carrega a URI de download retornada por `product_invoices.download_*` (não bytes).
-- DTOs de invoice hand-written sob `lib/nfe/models/` (ex.: `service_invoice.rb`, `consumer_invoice.rb`) onde o gerador OpenAPI não cobre o shape de resposta.
+- `Nfe::NfeFileResource` — value object `Data.define` que carrega a URI de download retornada por `product_invoices.download_*` (não bytes).
+- DTOs de invoice hand-written sob `lib/nfe/resources/dto/` (ex.: `service_invoice.rb`, `consumer_invoice.rb`) onde o gerador OpenAPI não cobre o shape de resposta.
 
 - Idempotência + opções por chamada na emissão: `create`/`create_with_state_tax` de service/product/consumer aceitam `idempotency_key:` (enviado como header `Idempotency-Key`; retry seguro reutiliza a MESMA chave para não duplicar documento fiscal) e `request_options:` (`Nfe::RequestOptions` de `add-client-core`, override de api_key/base_url/timeout por chamada). Vide design D13.
 
@@ -57,7 +57,7 @@ Esses recursos são o **primeiro consumidor real** dos blocos montados em `add-c
 ## Capabilities
 
 ### New Capabilities
-- `invoice-resources`: 5 recursos de invoice + classes de resposta discriminada por família (`*Pending`/`*Issued`) + `Nfe::Models::NfeFileResource` + DTOs hand-written de invoice. Consome (não redefine) `Nfe::IdValidator`, `Nfe::ListResponse`/`Nfe::ListPage`, `Nfe::FlowStatus.terminal?` e os helpers de `Nfe::Resources::AbstractResource`, todos de `add-client-core`.
+- `invoice-resources`: 5 recursos de invoice + classes de resposta discriminada por família (`*Pending`/`*Issued`) + `Nfe::NfeFileResource` + DTOs hand-written de invoice. Consome (não redefine) `Nfe::IdValidator`, `Nfe::ListResponse`/`Nfe::ListPage`, `Nfe::FlowStatus.terminal?` e os helpers de `Nfe::Resources::AbstractResource`, todos de `add-client-core`.
 
 ### Modified Capabilities
 - Nenhuma. Esta change apenas **consome** os contratos definidos em `add-client-core` (host map, contrato 202, acessores lazy, erros tipados); não os modifica.
@@ -67,8 +67,8 @@ Esses recursos são o **primeiro consumidor real** dos blocos montados em `add-c
 - **Affected code**:
   - `lib/nfe/resources/service_invoices.rb`, `product_invoices.rb`, `consumer_invoices.rb`, `transportation_invoices.rb`, `inbound_product_invoices.rb` (substituem os stubs de `add-client-core`; herdam de `Nfe::Resources::AbstractResource`).
   - `lib/nfe/resources/service_invoice_pending.rb`, `service_invoice_issued.rb`, e equivalentes product/consumer.
-  - `lib/nfe/models/nfe_file_resource.rb` + DTOs hand-written de invoice (`service_invoice.rb`, `consumer_invoice.rb`, …).
-  - `sig/nfe/resources/*.rbs` + `sig/nfe/models/*.rbs` (assinaturas RBS para Steep).
+  - `lib/nfe/resources/dto/nfe_file_resource.rb` + DTOs hand-written de invoice (`service_invoice.rb`, `consumer_invoice.rb`, …).
+  - `sig/nfe/resources/*.rbs` + `sig/nfe/resources/dto/*.rbs` (assinaturas RBS para Steep).
   - `spec/nfe/resources/*_spec.rb` + `spec/nfe/models/*_spec.rb` (RSpec com WebMock).
 - **Spec impact**: adiciona o capability `invoice-resources`. Não modifica nenhum capability existente.
 - **Dependencies**: depende de `add-client-core` (transporte, `Configuration` com host map, erros, contrato `Pending`/`Issued`, acessores lazy). Cruza com `add-rtc-invoice-emission` (variante RTC da emissão de service-invoice).

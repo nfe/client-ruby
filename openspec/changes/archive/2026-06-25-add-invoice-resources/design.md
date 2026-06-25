@@ -71,7 +71,7 @@ Regex de extração (paridade Node): service usa `%r{serviceinvoices/([a-z0-9-]+
 - Adapta o `Buffer` do Node (a decisão canônica manda `Buffer → String` binária).
 
 ### D5. `product_invoices.download_*` retorna `NfeFileResource` (URI), não bytes
-**Decisão**: ao contrário de D4, os downloads de `product_invoices` (pdf/xml/rejection/epec/correction-letter) retornam um `Nfe::Models::NfeFileResource` que carrega a URI do arquivo. Isso é comportamento da API NF-e (a API devolve um recurso com link, não os bytes).
+**Decisão**: ao contrário de D4, os downloads de `product_invoices` (pdf/xml/rejection/epec/correction-letter) retornam um `Nfe::NfeFileResource` que carrega a URI do arquivo. Isso é comportamento da API NF-e (a API devolve um recurso com link, não os bytes).
 
 **Por quê**: paridade com o Node (`NfeFileResource`) e com a API real. Documentar explicitamente para o caller não confundir com os downloads dos outros recursos. O caller faz o GET na URI por conta própria (ou via um helper futuro).
 
@@ -148,12 +148,12 @@ end
 **Por quê**: paridade com o Node (`ManifestEventType` numérico). NOTA de divergência: o spec PHP usa labels string (Confirmation/Acknowledgement/Unknown/Refused); seguimos o Node numérico, que casa com o `tpEvent` real da SEFAZ.
 
 ### D12. Onde colocam-se modelos hand-written quando o gerador for incompleto
-**Decisão**: `lib/nfe/models/<...>.rb` (ex.: `lib/nfe/models/nfe_file_resource.rb`, `lib/nfe/models/service_invoice.rb`), separados de `lib/nfe/generated/`.
+**Decisão**: `lib/nfe/resources/dto/<...>.rb` (ex.: `lib/nfe/resources/dto/nfe_file_resource.rb`, `lib/nfe/resources/dto/service_invoice.rb`), separados de `lib/nfe/generated/`.
 
 **Por quê**:
 - NÃO vai em `lib/nfe/generated/` (o guard de sync do gerador reclamaria; a decisão canônica proíbe hand-edit de gerados).
 - `nf-servico-v1.yaml` tem 0 schemas de componente — o modelo de service-invoice é necessariamente derivado/hand-written.
-- Fica visível como complemento hand-written, com RBS próprio em `sig/nfe/models/`.
+- Fica visível como complemento hand-written, com RBS próprio em `sig/nfe/resources/dto/`.
 
 ### D13. Idempotência e opções por chamada nos métodos de emissão (decisão de mantenedor)
 **Decisão**: os métodos de emissão — `create` e `create_with_state_tax` de `service_invoices`, `product_invoices` e `consumer_invoices` — aceitam dois kwargs opcionais:
@@ -172,7 +172,7 @@ client.service_invoices.create(company_id:, data:, idempotency_key: nil, request
 | Risco | Mitigação |
 |---|---|
 | Envelopes de resposta variam por endpoint sem padrão único (`{serviceInvoice:...}` vs `{serviceInvoices:[...]}` vs plano) | `Base#unwrap` por recurso; documentar o wrapper descoberto no comentário de cada método. |
-| Modelos gerados podem não cobrir o shape de resposta (gerador cobre só `components.schemas`; `nf-servico-v1.yaml` tem 0) | Fallback para `Data.define` hand-written em `lib/nfe/models/`; documentar quais foram criados (tasks §9.2). |
+| Modelos gerados podem não cobrir o shape de resposta (gerador cobre só `components.schemas`; `nf-servico-v1.yaml` tem 0) | Fallback para `Data.define` hand-written em `lib/nfe/resources/dto/`; documentar quais foram criados (tasks §9.2). |
 | Regex de `access_key` (44 dígitos) é frouxa e aceita sequências inválidas | Aceitável — validação local é fail-fast para typo, não substitui validação server-side. |
 | Paginação cursor-style (product/consumer) vs page-style (service) confunde o caller | Documentar em cada `list` qual shape de `ListPage` é preenchido; `ListResponse` aceita ambos e expõe `data` uniformemente. |
 | `consumer_invoices` é paridade-plus sem referência cruzada no Node | Smoke test em sandbox antes do GA (tasks §13.5); fundamentação em `nf-consumidor-v2.yaml`. |
@@ -183,7 +183,7 @@ client.service_invoices.create(company_id:, data:, idempotency_key: nil, request
 
 ### R1. Modelo principal de service-invoice é hand-written
 **Achado**: `nf-servico-v1.yaml` tem **0 schemas de componente** — o `ServiceInvoiceData` do Node é tratado como objeto aberto (`Record<string, any>`). Não há DTO de resposta gerável.
-**Decisão**: criar `lib/nfe/models/service_invoice.rb` (`Data.define`) com os campos que o SDK realmente acessa em produção (`id`, `flow_status`, `flow_message`, `status`, `environment`, `rps_number`, `rps_serial_number`, …). Tarefa em §9.2.
+**Decisão**: criar `lib/nfe/resources/dto/service_invoice.rb` (`Data.define`) com os campos que o SDK realmente acessa em produção (`id`, `flow_status`, `flow_message`, `status`, `environment`, `rps_number`, `rps_serial_number`, …). Tarefa em §9.2.
 
 ### R2. Cancelamento de service é síncrono
 **Achado**: `service-invoices.ts` faz `await this.http.delete(...)` e retorna `response.data` sem tratamento de 202 — confirmado HTTP 200 + modelo.

@@ -1,0 +1,13 @@
+module Nfe
+  class NfeFileResource < Data
+    attr_reader uri: String?
+    attr_reader name: String?
+    attr_reader content_type: String?
+    attr_reader size: untyped
+
+    def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::NfeFileResource?
+
+    def self.new: (?uri: String?, ?name: String?, ?content_type: String?, ?size: untyped) -> instance
+    def initialize: (?uri: String?, ?name: String?, ?content_type: String?, ?size: untyped) -> void
+  end
+end

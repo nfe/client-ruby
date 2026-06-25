@@ -16,11 +16,16 @@ module Nfe
   end
 
   class ListResponse < Data
+    include Enumerable[untyped]
+
     attr_reader data: untyped
     attr_reader page: untyped
 
     def self.new: (?data: untyped, ?page: untyped) -> instance
 
     def initialize: (?data: untyped, ?page: untyped) -> void
+
+    def each: () { (untyped) -> void } -> void
+            | () -> Enumerator[untyped, void]
   end
 end

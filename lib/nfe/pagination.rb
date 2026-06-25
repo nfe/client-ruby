@@ -29,9 +29,25 @@ module Nfe
 
   # A list of hydrated DTOs (+data+) plus its pagination metadata (+page+).
   # +data+ is iterated identically regardless of pagination shape.
+  #
+  # Includes +Enumerable+ (delegating +each+ to +data+), so a list response is
+  # usable directly anywhere an Enumerable is expected — +map+, +select+,
+  # +each_with_index+, ... — without first reaching into +data+.
   class ListResponse < Data.define(:data, :page)
+    include Enumerable
+
     def initialize(data: [], page: nil)
       super
+    end
+
+    # Iterate the hydrated DTOs in +data+.
+    #
+    # @yieldparam item each hydrated DTO.
+    # @return [Enumerator] when called without a block.
+    def each(&)
+      return enum_for(:each) unless block_given?
+
+      data.each(&)
     end
   end
 end

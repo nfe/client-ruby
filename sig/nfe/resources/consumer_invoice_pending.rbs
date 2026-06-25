@@ -1,0 +1,17 @@
+module Nfe
+  module Resources
+    class ConsumerInvoicePending < Data
+      attr_reader invoice_id: String?
+      attr_reader location: String?
+
+      def self.new: (invoice_id: String?, location: String?) -> instance
+                  | (String? invoice_id, String? location) -> instance
+
+      def initialize: (invoice_id: String?, location: String?) -> void
+                    | (String? invoice_id, String? location) -> void
+
+      def pending?: () -> bool
+      def issued?: () -> bool
+    end
+  end
+end
