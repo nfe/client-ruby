@@ -74,13 +74,23 @@ A `v1` expõe **17 recursos** no `Nfe::Client`, organizados por família:
 |---|---|
 | **Entidades** (`api.nfe.io`) | `companies`, `legal_people`, `natural_people`, `webhooks` |
 | **Emissão** | `service_invoices` (NFS-e), `product_invoices` (NF-e), `consumer_invoices` (NFC-e), `transportation_invoices` (CT-e inbound), `inbound_product_invoices` |
-| **Consulta / dados** | `product_invoice_query`, `consumer_invoice_query`, `addresses`, `legal_entity_lookup`, `natural_person_lookup`, `tax_calculation`, `tax_codes`, `state_taxes` |
+| **Consulta / dados** | `product_invoice_query` (NF-e por chave), `consumer_invoice_query` (cupom NFC-e por chave), `addresses` (CEP), `legal_entity_lookup` (CNPJ), `natural_person_lookup` (CPF), `tax_calculation` (motor de impostos), `tax_codes`, `state_taxes` (CRUD) |
 
 Emissão no layout da **Reforma Tributária (RTC)** é exposta opcionalmente via
 `service_invoices_rtc` (NFS-e) e `product_invoices_rtc` (NF-e/NFC-e).
 
-> Os recursos de **emissão** e **entidades** já estão implementados; os de
-> **consulta/dados** e a emissão **RTC** chegam nas próximas etapas da v1.
+> **Roteamento multi-host**: cada família resolve seu próprio host — entidades e
+> NFS-e em `api.nfe.io`; NF-e/NFC-e/CT-e e impostos em `api.nfse.io`; e os dados
+> em hosts dedicados (`address.api.nfe.io`, `legalentity.api.nfe.io`,
+> `naturalperson.api.nfe.io`, `nfe.api.nfe.io`). As quatro famílias de **dados
+> dedicadas** usam a `data_api_key` (com fallback para `api_key`).
+
+> **Não confundir**: `consumer_invoice_query` **consulta** um cupom NFC-e já
+> emitido por chave de acesso (host `nfe.api.nfe.io`); `consumer_invoices`
+> **emite** NFC-e (host `api.nfse.io`). Hosts e versões distintos.
+
+> Os recursos de **emissão**, **entidades** e **consulta/dados** já estão
+> implementados; só a emissão **RTC** chega na próxima etapa da v1.
 
 > **Downloads**: `product_invoices.download_*` devolve um `Nfe::NfeFileResource`
 > (URI do arquivo), enquanto `service_invoices`, `consumer_invoices` e

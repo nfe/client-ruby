@@ -58,7 +58,13 @@ module Nfe
       "consumer-invoice-query": :"nfe-query"
     }.freeze
 
-    # Canonical families whose key resolves from +data_api_key+ first.
+    # Canonical families whose key resolves from +data_api_key+ first. Only the
+    # four dedicated-host data-lookup families belong here. +:cte+ (api.nfse.io —
+    # NF-e/NFC-e/CT-e emission + tax-rules/tax-codes/state-taxes) intentionally
+    # uses the main +api_key+ and is NOT a data family: in this SDK emission is a
+    # core capability, not a data-lookup. This is a deliberate divergence from the
+    # Node SDK (which routes api.nfse.io through the data-key fallback chain) —
+    # do not add +:cte+ here without revisiting that contract.
     DATA_FAMILIES = %i[addresses legal-entity natural-person nfe-query].freeze
 
     # Environments the SDK accepts. Both share the same endpoints.

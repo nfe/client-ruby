@@ -1,14 +1,11 @@
 module Nfe
   module Resources
     class ConsumerInvoiceQuery < AbstractResource
-      IMPLEMENTED_IN: String
-
       def api_family: () -> Symbol
+      def api_version: () -> String
 
-      private
-
-      def method_missing: (Symbol name, *untyped args, **untyped kwargs) -> untyped
-      def respond_to_missing?: (untyped name, ?bool include_private) -> bool
+      def retrieve: (String access_key) -> Nfe::TaxCoupon?
+      def download_xml: (String access_key) -> String
     end
   end
 end

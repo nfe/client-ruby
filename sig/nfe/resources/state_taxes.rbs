@@ -1,14 +1,22 @@
 module Nfe
   module Resources
     class StateTaxes < AbstractResource
-      IMPLEMENTED_IN: String
+      ENVELOPE: String
+      LIST_ENVELOPE: String
 
       def api_family: () -> Symbol
+      def api_version: () -> String
+
+      def list: (String company_id, ?starting_after: untyped, ?ending_before: untyped, ?limit: untyped) -> Nfe::ListResponse
+      def create: (String company_id, Hash[untyped, untyped] data) -> Nfe::NfeStateTax?
+      def retrieve: (String company_id, String state_tax_id) -> Nfe::NfeStateTax?
+      def update: (String company_id, String state_tax_id, Hash[untyped, untyped] data) -> Nfe::NfeStateTax?
+      def delete: (String company_id, String state_tax_id) -> nil
 
       private
 
-      def method_missing: (Symbol name, *untyped args, **untyped kwargs) -> untyped
-      def respond_to_missing?: (untyped name, ?bool include_private) -> bool
+      def base_path: (String company_id) -> String
+      def json_headers: () -> Hash[String, String]
     end
   end
 end

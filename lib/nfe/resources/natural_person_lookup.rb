@@ -1,35 +1,35 @@
 # frozen_string_literal: true
 
 require "nfe/resources/abstract_resource"
+require "nfe/resources/dto/natural_person_lookup/natural_person_status_response"
 
 module Nfe
   module Resources
-    # Resource stub for the +:natural_person+ family. Business methods are filled in by
-    # the +add-lookup-resources+ change; calling one before then raises +NotImplementedError+
-    # naming that change.
+    # Read-only lookups against the +naturalperson+ data API
+    # (+https://naturalperson.api.nfe.io+). The version segment is embedded in
+    # the request path, so +api_version+ is +""+.
     class NaturalPersonLookup < AbstractResource
-      # The change that implements this resource's business methods.
-      IMPLEMENTED_IN = "add-lookup-resources"
+      # Fetch the registration status of a natural person (CPF) at the federal
+      # tax authority. The CPF is normalized to 11 digits and the birth date to
+      # +YYYY-MM-DD+ before the request is issued (fail-fast).
+      #
+      # @param federal_tax_number [String] the CPF (with or without separators).
+      # @param birth_date [String, Date, Time, DateTime] the person's birth date.
+      # @return [Nfe::NaturalPersonStatusResponse, nil]
+      def get_status(federal_tax_number, birth_date)
+        cpf = Nfe::IdValidator.cpf(federal_tax_number)
+        date = Nfe::DateNormalizer.to_iso_date(birth_date)
+        response = get("/v1/naturalperson/status/#{cpf}/#{date}")
+        hydrate(Nfe::NaturalPersonStatusResponse, parse_json(response.body))
+      end
 
       protected
 
-      def api_family
-        :natural_person
-      end
+      def api_family = :natural_person
 
-      private
-
-      # Business methods are not implemented in this change. Calling one
-      # raises +NotImplementedError+ naming the change that fills it.
-      def method_missing(name, *_args, **_kwargs)
-        raise NotImplementedError,
-              "Nfe::Resources::NaturalPersonLookup##{name} is not implemented yet; " \
-              "it is implemented in the #{IMPLEMENTED_IN} change."
-      end
-
-      def respond_to_missing?(_name, _include_private = false)
-        false
-      end
+      # This family's host embeds the version in the path, so no version segment
+      # is prefixed to the request path.
+      def api_version = ""
     end
   end
 end

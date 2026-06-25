@@ -12,6 +12,7 @@ require "nfe/pagination"
 require "nfe/request_options"
 require "nfe/flow_status"
 require "nfe/id_validator"
+require "nfe/date_normalizer"
 
 # Webhook signature verification + certificate handling
 require "nfe/webhook_event"

@@ -1,14 +1,10 @@
 module Nfe
   module Resources
     class NaturalPersonLookup < AbstractResource
-      IMPLEMENTED_IN: String
+      def get_status: (untyped federal_tax_number, untyped birth_date) -> Nfe::NaturalPersonStatusResponse?
 
       def api_family: () -> Symbol
-
-      private
-
-      def method_missing: (Symbol name, *untyped args, **untyped kwargs) -> untyped
-      def respond_to_missing?: (untyped name, ?bool include_private) -> bool
+      def api_version: () -> String
     end
   end
 end

@@ -1,0 +1,40 @@
+module Nfe
+  class Address < Data
+    class City < Data
+      attr_reader code: String?
+      attr_reader name: String?
+
+      def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::Address::City?
+      def self.new: (code: String?, name: String?) -> instance
+      def initialize: (code: String?, name: String?) -> void
+    end
+
+    attr_reader street: String?
+    attr_reader street_suffix: String?
+    attr_reader number: String?
+    attr_reader number_min: String?
+    attr_reader number_max: String?
+    attr_reader additional_information: String?
+    attr_reader district: String?
+    attr_reader postal_code: String?
+    attr_reader city: Nfe::Address::City?
+    attr_reader state: String?
+    attr_reader country: String?
+
+    def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::Address?
+
+    def self.new: (street: String?, street_suffix: String?, number: String?, number_min: String?, number_max: String?, additional_information: String?, district: String?, postal_code: String?, city: Nfe::Address::City?, state: String?, country: String?) -> instance
+
+    def initialize: (street: String?, street_suffix: String?, number: String?, number_min: String?, number_max: String?, additional_information: String?, district: String?, postal_code: String?, city: Nfe::Address::City?, state: String?, country: String?) -> void
+  end
+
+  class AddressLookupResponse < Data
+    attr_reader addresses: Array[Nfe::Address?]
+
+    def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::AddressLookupResponse?
+
+    def self.new: (addresses: Array[Nfe::Address?]) -> instance
+
+    def initialize: (addresses: Array[Nfe::Address?]) -> void
+  end
+end

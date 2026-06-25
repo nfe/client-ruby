@@ -1,14 +1,17 @@
 module Nfe
   module Resources
     class TaxCodes < AbstractResource
-      IMPLEMENTED_IN: String
-
       def api_family: () -> Symbol
+      def api_version: () -> String
+
+      def list_operation_codes: (?page_index: Integer?, ?page_count: Integer?) -> Nfe::TaxCodePaginatedResponse?
+      def list_acquisition_purposes: (?page_index: Integer?, ?page_count: Integer?) -> Nfe::TaxCodePaginatedResponse?
+      def list_issuer_tax_profiles: (?page_index: Integer?, ?page_count: Integer?) -> Nfe::TaxCodePaginatedResponse?
+      def list_recipient_tax_profiles: (?page_index: Integer?, ?page_count: Integer?) -> Nfe::TaxCodePaginatedResponse?
 
       private
 
-      def method_missing: (Symbol name, *untyped args, **untyped kwargs) -> untyped
-      def respond_to_missing?: (untyped name, ?bool include_private) -> bool
+      def list_tax_codes: (String path, Integer? page_index, Integer? page_count) -> Nfe::TaxCodePaginatedResponse?
     end
   end
 end

@@ -71,6 +71,10 @@ RSpec.describe Nfe::IdValidator do
     it "raises on the wrong length" do
       expect { described_class.cnpj("123") }.to raise_error(Nfe::InvalidRequestError, /CNPJ/)
     end
+
+    it "raises on an empty value" do
+      expect { described_class.cnpj("") }.to raise_error(Nfe::InvalidRequestError, /CNPJ/)
+    end
   end
 
   describe ".cpf" do
@@ -78,8 +82,16 @@ RSpec.describe Nfe::IdValidator do
       expect(described_class.cpf("123.456.789-09")).to eq("12345678909")
     end
 
+    it "normalizes hyphen-and-dot formatted input to 11 digits" do
+      expect(described_class.cpf("123.456.789-01")).to eq("12345678901")
+    end
+
     it "raises on the wrong length" do
       expect { described_class.cpf("123") }.to raise_error(Nfe::InvalidRequestError, /CPF/)
+    end
+
+    it "raises on an empty value" do
+      expect { described_class.cpf("") }.to raise_error(Nfe::InvalidRequestError, /CPF/)
     end
   end
 
@@ -88,8 +100,16 @@ RSpec.describe Nfe::IdValidator do
       expect(described_class.cep("01310-100")).to eq("01310100")
     end
 
+    it "accepts an already-digits-only CEP" do
+      expect(described_class.cep("01310100")).to eq("01310100")
+    end
+
     it "raises on the wrong length" do
       expect { described_class.cep("123") }.to raise_error(Nfe::InvalidRequestError, /CEP/)
+    end
+
+    it "raises on an empty value" do
+      expect { described_class.cep("") }.to raise_error(Nfe::InvalidRequestError, /CEP/)
     end
   end
 

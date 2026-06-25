@@ -46,13 +46,15 @@ RSpec.describe "resource registry" do # rubocop:disable RSpec/DescribeClass
     end
   end
 
-  it "raises NotImplementedError naming the filling change on a not-yet-filled resource" do
-    # The :main entity resources (companies, legal_people, natural_people,
-    # webhooks) are implemented by add-entity-resources, and the invoice
-    # resources by add-invoice-resources; the remaining stubs still raise
-    # NotImplementedError naming their filling change.
-    expect { client.addresses.retrieve }
-      .to raise_error(NotImplementedError, /add-lookup-resources/)
+  it "exposes the lookup resources as functional (non-stub) instances" do
+    expect(client.addresses).to respond_to(:lookup_by_postal_code, :search, :lookup_by_term)
+    expect(client.legal_entity_lookup).to respond_to(:get_basic_info, :get_state_tax_info)
+    expect(client.natural_person_lookup).to respond_to(:get_status)
+    expect(client.product_invoice_query).to respond_to(:retrieve, :download_pdf, :download_xml)
+    expect(client.consumer_invoice_query).to respond_to(:retrieve, :download_xml)
+    expect(client.tax_calculation).to respond_to(:calculate)
+    expect(client.tax_codes).to respond_to(:list_operation_codes, :list_acquisition_purposes)
+    expect(client.state_taxes).to respond_to(:list, :create, :retrieve, :update, :delete)
   end
 
   it "exposes the invoice resources as functional (non-stub) instances" do

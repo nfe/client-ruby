@@ -1,0 +1,53 @@
+module Nfe
+  class ProductInvoiceDetails < Data
+    class Issuer < Data
+      attr_reader federal_tax_number: String?
+      attr_reader name: String?
+      attr_reader trade_name: String?
+      attr_reader state_tax_number: String?
+
+      def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::ProductInvoiceDetails::Issuer?
+      def self.new: (federal_tax_number: String?, name: String?, trade_name: String?, state_tax_number: String?) -> instance
+      def initialize: (federal_tax_number: String?, name: String?, trade_name: String?, state_tax_number: String?) -> void
+    end
+
+    class Buyer < Data
+      attr_reader federal_tax_number: String?
+      attr_reader name: String?
+      attr_reader state_tax_number: String?
+      attr_reader email: String?
+
+      def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::ProductInvoiceDetails::Buyer?
+      def self.new: (federal_tax_number: String?, name: String?, state_tax_number: String?, email: String?) -> instance
+      def initialize: (federal_tax_number: String?, name: String?, state_tax_number: String?, email: String?) -> void
+    end
+
+    class Totals < Data
+      attr_reader product_amount: untyped
+      attr_reader invoice_amount: untyped
+      attr_reader discount_amount: untyped
+      attr_reader icms_amount: untyped
+
+      def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::ProductInvoiceDetails::Totals?
+      def self.new: (product_amount: untyped, invoice_amount: untyped, discount_amount: untyped, icms_amount: untyped) -> instance
+      def initialize: (product_amount: untyped, invoice_amount: untyped, discount_amount: untyped, icms_amount: untyped) -> void
+    end
+
+    attr_reader current_status: String?
+    attr_reader state_code: untyped
+    attr_reader check_code: String?
+    attr_reader operation_nature: String?
+    attr_reader serie: untyped
+    attr_reader number: untyped
+    attr_reader issued_on: String?
+    attr_reader operation_on: String?
+    attr_reader issuer: Nfe::ProductInvoiceDetails::Issuer?
+    attr_reader buyer: Nfe::ProductInvoiceDetails::Buyer?
+    attr_reader totals: Nfe::ProductInvoiceDetails::Totals?
+    attr_reader items: untyped
+
+    def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::ProductInvoiceDetails?
+    def self.new: (current_status: String?, state_code: untyped, check_code: String?, operation_nature: String?, serie: untyped, number: untyped, issued_on: String?, operation_on: String?, issuer: Nfe::ProductInvoiceDetails::Issuer?, buyer: Nfe::ProductInvoiceDetails::Buyer?, totals: Nfe::ProductInvoiceDetails::Totals?, items: untyped) -> instance
+    def initialize: (current_status: String?, state_code: untyped, check_code: String?, operation_nature: String?, serie: untyped, number: untyped, issued_on: String?, operation_on: String?, issuer: Nfe::ProductInvoiceDetails::Issuer?, buyer: Nfe::ProductInvoiceDetails::Buyer?, totals: Nfe::ProductInvoiceDetails::Totals?, items: untyped) -> void
+  end
+end

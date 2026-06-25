@@ -1,0 +1,12 @@
+module Nfe
+  class ProductInvoiceEventsResponse < Data
+    attr_reader events: untyped
+    attr_reader created_on: String?
+
+    def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::ProductInvoiceEventsResponse?
+
+    def self.new: (events: untyped, created_on: String?) -> instance
+
+    def initialize: (events: untyped, created_on: String?) -> void
+  end
+end

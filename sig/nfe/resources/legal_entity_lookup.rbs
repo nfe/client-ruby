@@ -1,14 +1,13 @@
 module Nfe
   module Resources
     class LegalEntityLookup < AbstractResource
-      IMPLEMENTED_IN: String
+      def get_basic_info: (untyped federal_tax_number, ?update_address: untyped, ?update_city_code: untyped) -> Nfe::LegalEntityBasicInfoResponse?
+      def get_state_tax_info: (untyped state, untyped federal_tax_number) -> Nfe::LegalEntityStateTaxResponse?
+      def get_state_tax_for_invoice: (untyped state, untyped federal_tax_number) -> Nfe::LegalEntityStateTaxForInvoiceResponse?
+      def get_suggested_state_tax_for_invoice: (untyped state, untyped federal_tax_number) -> Nfe::LegalEntityStateTaxForInvoiceResponse?
 
       def api_family: () -> Symbol
-
-      private
-
-      def method_missing: (Symbol name, *untyped args, **untyped kwargs) -> untyped
-      def respond_to_missing?: (untyped name, ?bool include_private) -> bool
+      def api_version: () -> String
     end
   end
 end

@@ -1,0 +1,8 @@
+module Nfe
+  module DateNormalizer
+    ISO_DATE: Regexp
+
+    def self?.to_iso_date: (String | Date | Time | DateTime) -> String
+    def self?.from_string: (String value) -> String
+  end
+end
