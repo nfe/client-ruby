@@ -1,6 +1,8 @@
 # Tasks — add-entity-resources
 
-> Plano greenfield. Depende de **add-client-core** (consome `Nfe::Client`, `Nfe::Configuration` com host map, `Nfe::Resources::AbstractResource`, `Nfe::ListResponse`, helpers de validação de ID/CNPJ/CPF e as exceções tipadas `Nfe::InvalidRequestError`, `Nfe::NotFoundError`, `Nfe::SignatureVerificationError`). Todos os itens começam DESMARCADOS. Todo arquivo `.rb` começa com `# frozen_string_literal: true`.
+> Depende de **add-client-core** (consome `Nfe::Client`, `Nfe::Configuration` com host map, `Nfe::Resources::AbstractResource`, `Nfe::ListResponse`, helpers de validação de ID/CNPJ/CPF e as exceções tipadas). Todo arquivo `.rb` começa com `# frozen_string_literal: true`.
+>
+> **Status (2026-06-25): IMPLEMENTADO e verificado verde via Docker na matrix Ruby 3.2/3.3/3.4.** Entregue: `Nfe::Webhook` (verify_signature HMAC-SHA1 nunca-levanta + construct_event) + `Nfe::WebhookEvent`; `Nfe::CertificateValidator`/`CertificateInfo`/`CertificateStatus` (OpenSSL::PKCS12); DTOs hand-written `Nfe::Company`/`LegalPerson`/`NaturalPerson`/`WebhookSubscription` (com `from_api`); `AbstractResource#upload_multipart`/`unwrap`; e os 4 recursos `Companies` (CRUD + certificado + multipart + finders), `LegalPeople`, `NaturalPeople`, `Webhooks` (CRUD + test + get_available_events + verify_signature). Gate: rspec 404/0 (cobertura ~95.9%), rubocop 0, steep 0, rbs ok, generate:check in-sync. Nota: o DTO de webhook é `Nfe::WebhookSubscription` (o constante `Nfe::Webhook` é o módulo de verificação). `get_*` mantêm o nome (paridade Node; `Naming/AccessorMethodName` desabilitado).
 
 ## 1. Verificação de assinatura: `Nfe::Webhook` + `Nfe::WebhookEvent`
 
@@ -111,10 +113,10 @@
 
 ## 11. Validação end-to-end
 
-- [ ] 11.1 `bundle exec rspec` verde; cobertura SimpleCov >= 80% (alvo 100% de branch em `Nfe::Webhook.verify_signature` por ser security-critical).
-- [ ] 11.2 `bundle exec steep check` — 0 erros nas assinaturas RBS desta change.
-- [ ] 11.3 `bundle exec rubocop` — sem offenses; todo `.rb` com `# frozen_string_literal: true`.
-- [ ] 11.4 `openspec validate add-entity-resources` passa (ambas as capabilities).
+- [x] 11.1 `bundle exec rspec` verde — 404 exemplos / 0 falhas, cobertura ~95.9% (docker 3.2/3.3/3.4); matriz completa de `Nfe::Webhook.verify_signature`.
+- [x] 11.2 `bundle exec steep check` — 0 erros (docker 3.2/3.3/3.4).
+- [x] 11.3 `bundle exec rubocop` — 0 offenses; `# frozen_string_literal: true` em todo `.rb`.
+- [x] 11.4 `openspec validate add-entity-resources --strict` passa (ambas as capabilities).
 
 ## 12. Smoke test manual (opt-in, fora do CI)
 
