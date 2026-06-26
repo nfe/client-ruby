@@ -2,6 +2,7 @@
 title: Primeiros passos com o SDK Ruby da NFE.io
 sidebar_label: Primeiros passos
 sidebar_position: 1
+slug: primeiros-passos
 description: Instale o gem nfe-io, crie um Nfe::Client, emita sua primeira NFS-e e acompanhe o processamento com polling.
 ---
 

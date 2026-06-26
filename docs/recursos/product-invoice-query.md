@@ -2,6 +2,7 @@
 title: Consulta de NF-e (product_invoice_query) no SDK Ruby da NFE.io
 sidebar_label: Consulta de NF-e
 sidebar_position: 17
+slug: consulta-nfe
 description: Consulta de NF-e por chave de acesso — detalhes, download de PDF (DANFE) e XML, e listagem de eventos — no SDK Ruby da NFE.io.
 ---
 

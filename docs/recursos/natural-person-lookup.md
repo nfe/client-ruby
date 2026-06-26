@@ -2,6 +2,7 @@
 title: Consulta de CPF (natural_person_lookup) no SDK Ruby da NFE.io
 sidebar_label: Consulta de CPF
 sidebar_position: 13
+slug: consulta-cpf
 description: Consulta da situação cadastral de uma pessoa física (CPF + data de nascimento) na Receita Federal pelo SDK Ruby da NFE.io.
 ---
 

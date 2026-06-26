@@ -70,7 +70,7 @@ O fluxo completo (retorno discriminado + polling) está em
 | [Downloads](./downloads.md) | Bytes binários vs. `NfeFileResource`. |
 | [Roteamento multi-host](./multi-host-routing.md) | Os hosts por família de recurso. |
 | [Emissão RTC](./rtc-emission.md) | IBS/CBS/IS; leiaute `ibsCbs`/`IBSCBS`. |
-| [Cookbook por recurso](./resources/) | Um exemplo por recurso (os 17 canônicos + RTC). |
+| [Cookbook por recurso](./recursos/) | Um exemplo por recurso (os 17 canônicos + RTC). |
 
 ## Referência da API
 

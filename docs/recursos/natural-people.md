@@ -2,6 +2,7 @@
 title: Pessoas físicas (natural_people) no SDK Ruby da NFE.io
 sidebar_label: Pessoas físicas
 sidebar_position: 9
+slug: pessoas-fisicas
 description: CRUD de pessoas físicas (tomadores PF) escopadas por empresa, com create_batch e find_by_tax_number, no SDK Ruby da NFE.io.
 ---
 

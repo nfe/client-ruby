@@ -2,6 +2,7 @@
 title: Inscrições estaduais (state_taxes) no SDK Ruby da NFE.io
 sidebar_label: Inscrições estaduais
 sidebar_position: 16
+slug: inscricoes-estaduais
 description: CRUD das inscrições estaduais (Inscrição Estadual) de uma empresa, com paginação cursor-style, no SDK Ruby da NFE.io.
 ---
 

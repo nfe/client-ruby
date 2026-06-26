@@ -1,6 +1,6 @@
 # Manutenção da documentação (interno)
 
-> Documento **interno** do repositório (não é uma página do Docusaurus — não tem
+> Documento **interno** do repositório (não é uma página da docs — não tem
 > frontmatter e não deve ser copiado para o `nfeio-docs`).
 
 Esta pasta `docs/` é a **residência canônica** da documentação do SDK Ruby. Os
@@ -13,8 +13,8 @@ arquivos já vêm com o frontmatter e as convenções do **Docusaurus 3** para u
 |---|---|
 | `docs/README.md` | Página de entrada (landing). Frontmatter `layout_type: IntegrationLayout`, espelhando `bibliotecas/php.md`. |
 | `docs/*.md` | Guias temáticos (configuração, 202/polling, erros, webhooks, paginação, downloads, multi-host, RTC). |
-| `docs/resources/*.md` | Cookbook — uma página por recurso (17 canônicos + RTC). |
-| `docs/_category_.json`, `docs/resources/_category_.json` | Categorias da sidebar do Docusaurus. |
+| `docs/recursos/*.md` | Cookbook — uma página por recurso (17 canônicos + RTC). |
+| `docs/_category_.json`, `docs/recursos/_category_.json` | Categorias da sidebar do Docusaurus. |
 | `docs/api/` | Referência da API gerada pelo YARD (HTML). **Gitignorada** — gere com `rake doc`. |
 | `docs/yard-theme/` | Tema YARD com a identidade NFE.io (CSS + `headers.erb` + `setup.rb`). Versionado. |
 
@@ -32,7 +32,7 @@ Saída em `docs/api/` (122+ páginas HTML, tema NFE.io). É **self-contained**
 O destino principal destes arquivos é o `nfeio-docs`. Enquanto não há automação,
 o fluxo é manual:
 
-1. **Guias + cookbook** → copie `docs/*.md` e `docs/resources/` para
+1. **Guias + cookbook** → copie `docs/*.md` e `docs/recursos/` para
    `docs/docs/desenvolvedores/bibliotecas/ruby/` no `nfeio-docs`. Renomeie
    `README.md` para `index.md` (ou `ruby.md`) — o frontmatter `IntegrationLayout`
    já está pronto. Adicione o `heroImage` `static/img/bibliotecas/ruby.svg`.
@@ -46,6 +46,11 @@ o fluxo é manual:
 
 - **Frontmatter** em toda página: `title`, `sidebar_label`, `sidebar_position`,
   `description` (a landing usa o bloco `IntegrationLayout`).
+- **`slug`** explícito em pt-BR em toda página (relativo ao diretório), para a
+  URL não depender do nome (em inglês) do arquivo — ex.: `slug: configuracao`,
+  `docs/recursos/companies.md` → `slug: empresas` → `.../recursos/empresas`. A
+  landing (`README.md`) não leva `slug`: é o índice da seção (`bibliotecas/ruby/`).
+  A categoria `recursos/` tem um `generated-index` em `slug: recursos`.
 - **MDX-safe** (Docusaurus 3 lê `.md` como MDX): todo código em blocos cercados
   (` ```ruby `, ` ```sh `) ou crase inline; **nunca** `<` ou `{` soltos na prosa.
 - **Callouts** como admonitions do Docusaurus: `:::note`, `:::tip`, `:::warning`.

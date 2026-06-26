@@ -2,6 +2,7 @@
 title: Emissão RTC (Reforma Tributária — IBS, CBS e IS)
 sidebar_label: Emissão RTC
 sidebar_position: 6
+slug: rtc
 description: Emita NFS-e e NF-e/NFC-e no layout da Reforma Tributária do Consumo com client.service_invoices_rtc (api.nfe.io /v1) e client.product_invoices_rtc (api.nfse.io /v2), selecionando o layout pela presença dos grupos IBS/CBS no payload.
 ---
 

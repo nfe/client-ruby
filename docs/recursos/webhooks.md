@@ -2,6 +2,7 @@
 title: Webhooks no SDK Ruby da NFE.io
 sidebar_label: Webhooks
 sidebar_position: 10
+slug: webhooks
 description: CRUD de assinaturas de webhook por empresa, disparo de teste, lista de eventos disponíveis e verificação de assinatura no SDK Ruby da NFE.io.
 ---
 

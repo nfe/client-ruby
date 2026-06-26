@@ -2,6 +2,7 @@
 title: Conhecimentos de transporte recebidos (CT-e)
 sidebar_label: CT-e de entrada
 sidebar_position: 4
+slug: conhecimentos-de-transporte
 description: Habilite a busca automática de CT-e (Distribuição DFe) e leia documentos e eventos recebidos por chave de acesso com client.transportation_invoices no host api.nfse.io /v2.
 ---
 

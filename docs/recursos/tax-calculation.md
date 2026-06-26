@@ -2,6 +2,7 @@
 title: Cálculo de impostos (tax_calculation) no SDK Ruby da NFE.io
 sidebar_label: Cálculo de impostos
 sidebar_position: 14
+slug: calculo-de-impostos
 description: Execução do motor de regras tributárias por tenant, com retorno do detalhamento de impostos por item, no SDK Ruby da NFE.io.
 ---
 

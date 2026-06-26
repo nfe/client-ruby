@@ -2,6 +2,7 @@
 title: Empresas (companies) no SDK Ruby da NFE.io
 sidebar_label: Empresas
 sidebar_position: 7
+slug: empresas
 description: CRUD de empresas e ciclo de vida do certificado digital (upload, validação e status) no recurso companies do SDK Ruby da NFE.io.
 ---
 

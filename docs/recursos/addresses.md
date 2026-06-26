@@ -2,6 +2,7 @@
 title: Consulta de endereços (addresses) no SDK Ruby da NFE.io
 sidebar_label: Endereços
 sidebar_position: 11
+slug: enderecos
 description: Consulta de endereços por CEP, por termo livre e por filtro OData no recurso addresses do SDK Ruby da NFE.io.
 ---
 

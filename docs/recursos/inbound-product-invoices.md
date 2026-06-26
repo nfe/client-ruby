@@ -2,6 +2,7 @@
 title: NF-e de entrada e manifestação do destinatário
 sidebar_label: NF-e de entrada
 sidebar_position: 5
+slug: notas-de-entrada
 description: Habilite a busca automática de NF-e de fornecedores (Distribuição DFe), leia documentos e eventos por chave de acesso e envie a manifestação do destinatário com client.inbound_product_invoices no host api.nfse.io /v2.
 ---
 

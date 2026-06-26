@@ -2,6 +2,7 @@
 title: Notas fiscais de serviço (NFS-e)
 sidebar_label: Notas de serviço
 sidebar_position: 1
+slug: notas-fiscais-de-servico
 description: Emita, liste, consulte, cancele e baixe NFS-e com client.service_invoices no host api.nfe.io /v1, tratando o retorno discriminado 202.
 ---
 

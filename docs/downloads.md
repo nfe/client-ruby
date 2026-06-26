@@ -2,6 +2,7 @@
 title: Downloads de PDF e XML no SDK Ruby da NFE.io
 sidebar_label: Downloads
 sidebar_position: 7
+slug: downloads
 description: Baixe PDF/XML das notas. A maioria dos recursos devolve bytes binários (ASCII-8BIT) para salvar com File.binwrite; product_invoices devolve um Nfe::NfeFileResource com a URI do arquivo.
 ---
 

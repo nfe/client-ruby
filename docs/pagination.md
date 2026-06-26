@@ -2,6 +2,7 @@
 title: Paginação de listas no SDK Ruby da NFE.io
 sidebar_label: Paginação
 sidebar_position: 6
+slug: paginacao
 description: Itere listas com Nfe::ListResponse (que inclui Enumerable) e leia os metadados de página em Nfe::ListPage — paginação por página ou por cursor, conforme o recurso.
 ---
 

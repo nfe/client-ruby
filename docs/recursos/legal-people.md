@@ -2,6 +2,7 @@
 title: Pessoas jurídicas (legal_people) no SDK Ruby da NFE.io
 sidebar_label: Pessoas jurídicas
 sidebar_position: 8
+slug: pessoas-juridicas
 description: CRUD de pessoas jurídicas (tomadores PJ) escopadas por empresa, com create_batch e find_by_tax_number, no SDK Ruby da NFE.io.
 ---
 

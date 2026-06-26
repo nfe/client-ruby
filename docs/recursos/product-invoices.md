@@ -2,6 +2,7 @@
 title: Notas fiscais de produto (NF-e)
 sidebar_label: Notas de produto
 sidebar_position: 2
+slug: notas-fiscais-de-produto
 description: Emita NF-e modelo 55 com client.product_invoices no host api.nfse.io /v2 — listagem por cursor com environment obrigatório, carta de correção, inutilização e downloads por URI.
 ---
 

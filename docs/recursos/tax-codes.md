@@ -2,6 +2,7 @@
 title: Tabelas tributárias (tax_codes) no SDK Ruby da NFE.io
 sidebar_label: Tabelas tributárias
 sidebar_position: 15
+slug: codigos-fiscais
 description: Listas de referência do CT-e — códigos de operação, finalidades de aquisição e perfis tributários — com paginação page-style no SDK Ruby da NFE.io.
 ---
 

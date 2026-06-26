@@ -2,6 +2,7 @@
 title: Emissão RTC (Reforma Tributária do Consumo) no SDK Ruby da NFE.io
 sidebar_label: Emissão RTC
 sidebar_position: 9
+slug: emissao-rtc
 description: Emita NFS-e e NF-e/NFC-e sob o layout da Reforma Tributária do Consumo com service_invoices_rtc e product_invoices_rtc — o layout é selecionado pela forma do payload (ibsCbs / items[].tax.IBSCBS), sem header discriminador.
 ---
 

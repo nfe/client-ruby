@@ -2,6 +2,7 @@
 title: Emissão assíncrona e polling no SDK Ruby da NFE.io
 sidebar_label: Assíncrono e polling
 sidebar_position: 3
+slug: emissao-assincrona-e-polling
 description: Entenda o contrato HTTP 202, os resultados Pending e Issued, o pattern matching com pending?/issued? e como montar um loop de polling com FlowStatus.terminal?.
 ---
 

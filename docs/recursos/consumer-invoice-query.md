@@ -2,6 +2,7 @@
 title: Consulta de NFC-e (consumer_invoice_query) no SDK Ruby da NFE.io
 sidebar_label: Consulta de NFC-e
 sidebar_position: 18
+slug: consulta-nfce
 description: Consulta de cupom fiscal NFC-e (CFe-SAT) por chave de acesso — recuperação e download de XML — no SDK Ruby da NFE.io.
 ---
 

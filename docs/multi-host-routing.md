@@ -2,6 +2,7 @@
 title: Roteamento multi-host no SDK Ruby da NFE.io
 sidebar_label: Roteamento multi-host
 sidebar_position: 8
+slug: roteamento-multi-host
 description: Entenda como o SDK roteia cada recurso para o host correto (api.nfe.io, api.nfse.io e os hosts de dados), o modelo de duas chaves e o escape hatch base_url_overrides.
 ---
 

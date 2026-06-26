@@ -2,6 +2,7 @@
 title: Consulta de CNPJ (legal_entity_lookup) no SDK Ruby da NFE.io
 sidebar_label: Consulta de CNPJ
 sidebar_position: 12
+slug: consulta-cnpj
 description: Consulta cadastral de pessoa jurídica por CNPJ — dados básicos e inscrição estadual (inclusive para emissão) no SDK Ruby da NFE.io.
 ---
 

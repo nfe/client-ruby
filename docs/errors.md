@@ -2,6 +2,7 @@
 title: Tratamento de erros no SDK Ruby da NFE.io
 sidebar_label: Tratamento de erros
 sidebar_position: 4
+slug: tratamento-de-erros
 description: A hierarquia Nfe::Error, a tabela de códigos HTTP por classe, padrões idiomáticos de rescue, validação client-side fail-fast, RateLimitError#retry_after e erros de rede.
 ---
 

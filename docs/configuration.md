@@ -2,6 +2,7 @@
 title: Configuração do cliente do SDK Ruby da NFE.io
 sidebar_label: Configuração
 sidebar_position: 2
+slug: configuracao
 description: Todas as opções do Nfe::Client e do Nfe::Configuration — chaves de API, timeouts, retries, modelo de duas chaves, sandbox vs. produção, TLS e proxy.
 ---
 

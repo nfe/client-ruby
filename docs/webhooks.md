@@ -2,6 +2,7 @@
 title: Verificação de webhooks da NFE.io
 sidebar_label: Webhooks
 sidebar_position: 5
+slug: webhooks
 description: Verifique a assinatura HMAC-SHA1 das entregas de webhook da NFE.io com Nfe::Webhook, leia o corpo cru antes de parsear o JSON e torne seus handlers idempotentes.
 ---
 

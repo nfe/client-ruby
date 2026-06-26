@@ -2,6 +2,7 @@
 title: Notas fiscais de consumidor (NFC-e)
 sidebar_label: Notas de consumidor
 sidebar_position: 3
+slug: notas-fiscais-de-consumidor
 description: Emita NFC-e (modelo 65) com client.consumer_invoices no host api.nfse.io /v2 — emissão discriminada, listagem por cursor, downloads em bytes e inutilização coletiva.
 ---
 
