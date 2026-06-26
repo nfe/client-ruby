@@ -2,6 +2,7 @@
 title: Biblioteca NFE.io em Ruby para Emissão de Notas Fiscais (NFS-e, NF-e, NFC-e, CT-e)
 description: SDK Ruby oficial da NFE.io — Ruby 3.2+, zero dependências de runtime, cliente estilo Stripe, tipos RBS e modelos imutáveis.
 sidebar_label: Biblioteca Ruby
+slug: /desenvolvedores/bibliotecas/ruby
 provider: NFE.io
 badge: SDK
 layout_type: IntegrationLayout

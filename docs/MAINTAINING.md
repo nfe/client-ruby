@@ -49,7 +49,8 @@ o fluxo é manual:
 - **`slug`** explícito em pt-BR em toda página (relativo ao diretório), para a
   URL não depender do nome (em inglês) do arquivo — ex.: `slug: configuracao`,
   `docs/recursos/companies.md` → `slug: empresas` → `.../recursos/empresas`. A
-  landing (`README.md`) não leva `slug`: é o índice da seção (`bibliotecas/ruby/`).
+  landing (`README.md` → `index.md`) usa `slug` **absoluto**
+  `/desenvolvedores/bibliotecas/ruby` (igual ao `nodejs/index.md`).
   A categoria `recursos/` tem um `generated-index` em `slug: recursos`.
 - **MDX-safe** (Docusaurus 3 lê `.md` como MDX): todo código em blocos cercados
   (` ```ruby `, ` ```sh `) ou crase inline; **nunca** `<` ou `{` soltos na prosa.
