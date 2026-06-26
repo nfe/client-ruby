@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+
+/* ============================================================
+   Tema NFE.io para a referencia da API (YARD)
+   Marca: Manual de Identidade Visual NFE.io (media-kit oficial)
+   ============================================================ */
+:root {
+  --nfe-azul: #5DD0F2;
+  --nfe-verde: #7AEA53;
+  --nfe-cinza-claro: #E6EBF3;
+  --nfe-texto: #333333;
+  --nfe-gradiente: linear-gradient(120deg, #5DD0F2, #7AEA53);
+}
+
+body, #content, .docstring, p, li, dd, dt, td, th,
+#content h1, #content h2, #content h3, #content h4, #content h5, #content h6 {
+  font-family: "Roboto", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  color: var(--nfe-texto);
+}
+body { background: #ffffff; }
+#content { font-weight: 300; }                 /* Roboto Light no corpo */
+
+/* ---- Faixa de marca no topo de cada pagina (gradiente + logo branco) ---- */
+#header { position: relative; }
+#header::before {
+  content: "";
+  display: block;
+  height: 54px;
+  margin: 0 0 16px;
+  border-radius: 6px;
+  background: url("data:image/png;base64,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") no-repeat 20px center, var(--nfe-gradiente);
+  background-size: auto 26px, cover;
+  box-shadow: 0 1px 5px rgba(51, 51, 51, 0.18);
+}
+
+/* ---- Titulos: Roboto Medium com sublinhado em gradiente da marca ---- */
+#content h1, #content h2 {
+  font-weight: 500;
+  border-bottom: 3px solid var(--nfe-azul);
+  border-image: var(--nfe-gradiente) 1;
+  padding-bottom: 0.25em;
+}
+#content h3, #content h4 { font-weight: 500; }
+
+/* ---- Links: texto legivel (#333) com sublinhado da marca; verde no hover ---- */
+#content a, #content a:link, #content a:visited {
+  color: var(--nfe-texto);
+  text-decoration: none;
+  border-bottom: 1px solid var(--nfe-azul);
+}
+#content a:hover { border-bottom-color: var(--nfe-verde); color: #1f1f1f; }
+#content a.summary_signature, #content a.summary_signature:link { border-bottom: none; }
+
+/* ---- Codigo: fundo cinza claro da marca, acento azul ---- */
+#content tt, #content code, #content .docstring code {
+  background: var(--nfe-cinza-claro);
+  color: var(--nfe-texto);
+  border-radius: 3px;
+  padding: 0.1em 0.35em;
+}
+#content pre, #content pre.code, .source_code pre {
+  background: var(--nfe-cinza-claro);
+  border-left: 3px solid var(--nfe-azul);
+  border-radius: 4px;
+}
+#content pre code, #content pre tt { background: transparent; padding: 0; }
+
+/* ---- Assinaturas de metodos e blocos de resumo ---- */
+.summary_signature {
+  background: var(--nfe-cinza-claro);
+  border: 1px solid #d7deea;
+  border-radius: 4px;
+}
+.summary_signature:hover { border-color: var(--nfe-azul); }
+h2.summary, .docstring h1, .docstring h2 { color: var(--nfe-texto); }
+
+/* ---- Tabelas ---- */
+#content table th { background: var(--nfe-cinza-claro); color: var(--nfe-texto); font-weight: 500; }
+
+/* ---- Tags (Note/Returns/Params) com barra da marca ---- */
+.note, .docstring .note {
+  border-left: 4px solid var(--nfe-azul);
+  background: var(--nfe-cinza-claro);
+  border-radius: 4px;
+}
+.note.returns { border-left-color: var(--nfe-verde); }
+.note.deprecated { border-left-color: #f2a65d; }
+
+/* ---- Navegacao lateral (frame) ---- */
+#full_list, #nav, .nav_wrap { font-family: "Roboto", sans-serif; }
+#full_list li { color: var(--nfe-texto); }
+#full_list .toggle { color: var(--nfe-azul); }
+ul#full_list li.clicked, #full_list li:hover { background: var(--nfe-cinza-claro); }
+
+/* ---- Busca ---- */
+#search a, #search a:link { color: var(--nfe-texto); }
+#search a:hover, #search a.active { color: #ffffff; background: var(--nfe-azul); }
+
+/* ---- Rodape ---- */
+#footer { color: #888; border-top: 1px solid var(--nfe-cinza-claro); }
+#footer a { color: var(--nfe-texto); border-bottom: 1px solid var(--nfe-verde); text-decoration: none; }

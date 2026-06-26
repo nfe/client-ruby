@@ -7,6 +7,15 @@ require "rubocop/rake_task"
 RSpec::Core::RakeTask.new(:spec)
 RuboCop::RakeTask.new(:rubocop)
 
+# API reference (YARD) -> docs/api/ (config in .yardopts). Optional: the task is
+# only defined when YARD is installed, so it never breaks the core tasks.
+begin
+  require "yard"
+  YARD::Rake::YardocTask.new(:doc)
+rescue LoadError
+  nil
+end
+
 desc "Type-check lib/ against sig/ with Steep"
 task :steep do
   sh "bundle exec steep check"

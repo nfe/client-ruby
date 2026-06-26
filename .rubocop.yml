@@ -9,6 +9,7 @@ AllCops:
     - "lib/nfe/generated/**/*"
     - "lib/nfe/generated.rb"
     - "samples/**/*"
+    - "docs/**/*"
     - "bin/**/*"
     - "vendor/**/*"
     - "client-nodejs/**/*"
