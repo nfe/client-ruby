@@ -17,9 +17,10 @@ RSpec.describe Nfe::Resources::Addresses do
   def last_request = transport.requests.last
 
   describe "#lookup_by_postal_code" do
-    # Real API shape (openapi/consulta-endereco.yaml): district, the nested
-    # city {code, name} object, numberMin/numberMax and postalCode are the
-    # exact camelCase keys returned by address.api.nfe.io/v2.
+    # Real API shape (confirmado contra address.api.nfe.io/v2): a consulta por
+    # CEP retorna UM endereço sob a chave SINGULAR "address" — o array
+    # "addresses" do openapi/consulta-endereco.yaml não bate com este endpoint.
+    # O DTO normaliza ambos os formatos (ver AddressLookupResponse abaixo).
     let(:address_item) do
       { "street" => "Paulista", "streetSuffix" => "Avenida", "number" => "1000",
         "numberMin" => "0001", "numberMax" => "1999", "district" => "Bela Vista",
@@ -27,7 +28,7 @@ RSpec.describe Nfe::Resources::Addresses do
         "city" => { "code" => "3550308", "name" => "São Paulo" },
         "state" => "SP", "country" => "BR" }
     end
-    let(:payload) { { "addresses" => [address_item] } }
+    let(:payload) { { "address" => address_item } }
 
     before { transport.enqueue(response(body: payload.to_json)) }
 
@@ -108,6 +109,22 @@ RSpec.describe Nfe::Resources::Addresses do
       expect { addresses.lookup_by_term("   ") }
         .to raise_error(Nfe::InvalidRequestError)
       expect(transport.requests).to be_empty
+    end
+  end
+
+  describe Nfe::AddressLookupResponse do
+    it "normalizes the singular { address: {...} } shape (postal-code lookup)" do
+      result = described_class.from_api("address" => { "street" => "Paulista" })
+      expect(result.addresses.map(&:street)).to eq(["Paulista"])
+    end
+
+    it "accepts the list { addresses: [...] } shape (search/term)" do
+      result = described_class.from_api("addresses" => [{ "street" => "A" }, { "street" => "B" }])
+      expect(result.addresses.map(&:street)).to eq(%w[A B])
+    end
+
+    it "returns an empty list when neither key is present" do
+      expect(described_class.from_api({}).addresses).to eq([])
     end
   end
 end

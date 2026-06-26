@@ -79,7 +79,8 @@ RSpec.describe Nfe::Resources::Companies do
       expect(result.data.map(&:id)).to eq(%w[a b])
       expect(result.page.page_index).to eq(0)
       expect(result.page.page_count).to eq(20)
-      expect(last_request.url).to include("pageIndex=0").and include("pageCount=20")
+      # page_index 0 (0-based) é enviado como pageIndex=1 (1-based, exigido pela API)
+      expect(last_request.url).to include("pageIndex=1").and include("pageCount=20")
     end
   end
 

@@ -27,7 +27,7 @@ A emissão segue o **contrato 202 discriminado**: `create` /
 |---|---|---|
 | `create(company_id:, data:, idempotency_key: nil, request_options: nil)` | Emite a NFC-e. | `ConsumerInvoicePending` ou `ConsumerInvoiceIssued` |
 | `create_with_state_tax(company_id:, state_tax_id:, data:, idempotency_key: nil, request_options: nil)` | Emite vinculada a uma inscrição estadual. | `ConsumerInvoicePending` ou `ConsumerInvoiceIssued` |
-| `list(company_id:, **options)` | Lista por cursor. | `Nfe::ListResponse` |
+| `list(company_id:, environment:, **options)` | Lista por cursor. `environment` (`"Production"`/`"Test"`) é **obrigatório**. | `Nfe::ListResponse` |
 | `retrieve(company_id:, invoice_id:)` | Consulta por id. | `Nfe::ConsumerInvoice` |
 | `cancel(company_id:, invoice_id:)` | Cancela (síncrono). | `Nfe::ConsumerInvoice` |
 | `list_items(company_id:, invoice_id:)` | Lista os itens. | `Array` |

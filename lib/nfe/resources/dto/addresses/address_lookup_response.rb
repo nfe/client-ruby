@@ -58,18 +58,20 @@ module Nfe
     end
   end
 
-  # Immutable value object wrapping the list of addresses returned by an
-  # address lookup. {from_api} hydrates each item of the API +addresses+
-  # array into an {Nfe::Address} and is nil-tolerant.
+  # Immutable value object wrapping the addresses returned by a lookup.
+  # {from_api} is nil-tolerant and accepts BOTH response shapes the API uses:
+  # the list shape (+{ "addresses" => [...] }+, e.g. term/$filter search) and
+  # the single-result shape the postal-code lookup actually returns
+  # (+{ "address" => {...} }+) — the latter is normalized into a one-element
+  # +addresses+ list, so callers always read +response.addresses+.
   class AddressLookupResponse < Data.define(:addresses)
     # @param payload [Hash, nil] the parsed lookup response body.
     # @return [Nfe::AddressLookupResponse, nil] +nil+ when +payload+ is +nil+.
     def self.from_api(payload)
       return nil if payload.nil?
 
-      new(
-        addresses: (payload["addresses"] || []).map { |item| Nfe::Address.from_api(item) }
-      )
+      raw = payload["addresses"] || [payload["address"]].compact
+      new(addresses: raw.map { |item| Nfe::Address.from_api(item) })
     end
   end
 end

@@ -40,14 +40,15 @@ module Nfe
         hydrate(Nfe::Company, unwrap(parse_json(response.body), ENVELOPE))
       end
 
-      # List one page of companies, converting the API's 1-based +page+ to a
-      # 0-based +page_index+.
+      # List one page of companies. The public +page_index+ is 0-based and is
+      # sent to the API as its 1-based +pageIndex+ (which must be >= 1); the
+      # 1-based +page+ in the response is converted back to 0-based.
       #
       # @param page_index [Integer] 0-based page index.
       # @param page_count [Integer] page size.
       # @return [Nfe::ListResponse]
       def list(page_index: 0, page_count: 100)
-        response = get("/companies", query: { pageIndex: page_index, pageCount: page_count })
+        response = get("/companies", query: { pageIndex: page_index + 1, pageCount: page_count })
         payload = parse_json(response.body) || {}
         items = (unwrap(payload, ENVELOPE) || []).map { |item| hydrate(Nfe::Company, item) }
         resolved_index = resolve_page_index(payload, page_index)

@@ -104,9 +104,11 @@ module Nfe
       # @param company_id [String]
       # @param options [Hash] cursor query params (+starting_after+, +limit+...).
       # @return [Nfe::ListResponse]
-      def list(company_id:, **options)
+      def list(company_id:, environment:, **options)
         id = Nfe::IdValidator.company_id(company_id)
-        response = get("/companies/#{id}/consumerinvoices", query: options)
+        require_environment(environment)
+        response = get("/companies/#{id}/consumerinvoices",
+                       query: options.merge(environment: environment))
         hydrate_list(Nfe::ConsumerInvoice, parse_json(response.body), wrapper_key: ENVELOPE)
       end
 
@@ -188,6 +190,14 @@ module Nfe
       end
 
       private
+
+      # The API rejects a NFC-e listing without an +environment+; require it
+      # client-side (mirrors product_invoices#list).
+      def require_environment(environment)
+        return unless environment.nil? || environment.to_s.strip.empty?
+
+        raise Nfe::InvalidRequestError, "environment é obrigatório (Production ou Test)"
+      end
 
       # Validate a (company_id, invoice_id) pair, returning both normalized.
       def validate_pair(company_id, invoice_id)

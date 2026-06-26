@@ -21,7 +21,7 @@ RSpec.describe Nfe::Resources::ConsumerInvoices do
   describe "routing" do
     it "targets the api.nfse.io /v2 host for every call" do
       transport.enqueue(response(body: { "consumerInvoices" => [] }.to_json))
-      consumer_invoices.list(company_id: "co")
+      consumer_invoices.list(company_id: "co", environment: "Test")
       expect(last_request.url).to start_with("https://api.nfse.io/v2/companies/co/consumerinvoices")
     end
 
@@ -142,19 +142,25 @@ RSpec.describe Nfe::Resources::ConsumerInvoices do
     end
 
     it "returns a cursor-style ListResponse of hydrated models" do
-      result = consumer_invoices.list(company_id: "co", limit: 50, starting_after: "x")
+      result = consumer_invoices.list(company_id: "co", environment: "Test", limit: 50, starting_after: "x")
 
       expect(result).to be_a(Nfe::ListResponse)
       expect(result.data.map(&:id)).to eq(%w[a b])
       expect(result.data.first).to be_a(Nfe::ConsumerInvoice)
       expect(result.page.starting_after).to eq("a")
       expect(result.page.page_index).to be_nil
-      expect(last_request.url).to include("limit=50").and include("starting_after=x")
+      expect(last_request.url).to include("limit=50").and include("starting_after=x").and include("environment=Test")
     end
 
     it "iterates via Enumerable" do
-      result = consumer_invoices.list(company_id: "co")
+      result = consumer_invoices.list(company_id: "co", environment: "Test")
       expect(result.map(&:id)).to eq(%w[a b])
+    end
+
+    it "exige environment não-vazio antes de qualquer HTTP" do
+      expect { consumer_invoices.list(company_id: "co", environment: " ") }
+        .to raise_error(Nfe::InvalidRequestError)
+      expect(transport.requests).to be_empty
     end
   end
 
