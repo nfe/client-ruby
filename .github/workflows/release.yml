@@ -48,6 +48,9 @@ jobs:
       - name: RuboCop
         run: bundle exec rubocop
 
+      - name: RBS validate
+        run: bundle exec rbs validate
+
       - name: Steep type-check
         run: bundle exec steep check
 
