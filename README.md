@@ -49,6 +49,21 @@ Ou instalação direta:
 gem install nfe-io
 ```
 
+## Skill para agentes de IA
+
+Além do gem, este repositório publica uma **skill de agente** (`nfeio-ruby-sdk`) que
+ensina assistentes de IA (Claude Code, Cursor, Copilot, etc.) a usar o SDK corretamente.
+São **dois canais distintos**:
+
+| Canal | Comando | O quê |
+|---|---|---|
+| Código (RubyGems) | `gem install nfe-io` | O SDK Ruby |
+| Skill de agente ([skills.sh](https://www.skills.sh/)) | `npx skills add https://github.com/nfe/client-ruby --skill nfeio-ruby-sdk` | O guia de uso para agentes |
+
+O atalho `npx skills add nfe/client-ruby` também funciona. A skill é lida da árvore do
+GitHub (slug `nfe/client-ruby`); ela **não** vem no `gem install` — o gemspec empacota
+apenas `lib/`, `sig/` e os docs.
+
 ## Quickstart
 
 ```ruby
