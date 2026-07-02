@@ -169,7 +169,12 @@ jobs:
       - name: Configure RubyGems credentials (OIDC trusted publishing)
         id: oidc
         continue-on-error: true
-        uses: rubygems/configure-rubygems-credentials@v1.0.0
+        uses: rubygems/configure-rubygems-credentials@v2.1.0
+        with:
+          # OIDC API Key Role criada no RubyGems para o gem nfe-io. Não é um
+          # segredo (é um identificador; a autenticação é feita pela troca do
+          # token OIDC, restrita pelas condições da role no RubyGems).
+          role-to-assume: rg_oidc_akr_bbxoh7kfjgasscg7rjjr
 
       - name: Push gem to RubyGems (OIDC)
         if: steps.oidc.outcome == 'success'
