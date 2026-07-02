@@ -163,18 +163,16 @@ jobs:
           fi
           echo "notes_file=$notes_file" >> "$GITHUB_OUTPUT"
 
-      # ----- Publicação no RubyGems via OIDC (trusted publishing) ------------
-      # Caminho preferido: nenhuma API key de longa duração. Requer o repo
-      # registrado como trusted publisher na conta do gem nfe-io no RubyGems.
+      # ----- Publicação no RubyGems via OIDC (Trusted Publishing) ------------
+      # Nenhuma API key de longa duração. Requer um Trusted Publisher cadastrado
+      # na página do gem nfe-io no RubyGems, vinculado a:
+      #   repository = nfe/client-ruby   workflow = release.yml   environment = (vazio)
+      # A action troca o token OIDC do GitHub; o RubyGems confere os claims
+      # (repo + workflow) contra o Trusted Publisher — sem role-to-assume.
       - name: Configure RubyGems credentials (OIDC trusted publishing)
         id: oidc
         continue-on-error: true
         uses: rubygems/configure-rubygems-credentials@v2.1.0
-        with:
-          # OIDC API Key Role criada no RubyGems para o gem nfe-io. Não é um
-          # segredo (é um identificador; a autenticação é feita pela troca do
-          # token OIDC, restrita pelas condições da role no RubyGems).
-          role-to-assume: rg_oidc_akr_bbxoh7kfjgasscg7rjjr
 
       - name: Push gem to RubyGems (OIDC)
         if: steps.oidc.outcome == 'success'
