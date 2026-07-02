@@ -1,0 +1,23 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/nf-consumidor-v2.yaml
+# Hash: sha256:8c39e692ff794ccb2587ebe142be040e44d76cbf970f45e65b28d56a6165bdb5
+
+module Nfe
+  module Generated
+    module NfConsumidorV2
+      class PaymentDetailResource < Data
+        attr_reader amount: Float?
+        attr_reader card: CardResource
+        attr_reader federal_tax_number_pag: String?
+        attr_reader method: untyped
+        attr_reader method_description: String?
+        attr_reader payment_date: String?
+        attr_reader payment_type: untyped
+        attr_reader state_pag: String?
+        def self.new: (?amount: Float?, ?card: CardResource, ?federal_tax_number_pag: String?, ?method: untyped, ?method_description: String?, ?payment_date: String?, ?payment_type: untyped, ?state_pag: String?) -> instance
+        def initialize: (?amount: Float?, ?card: CardResource, ?federal_tax_number_pag: String?, ?method: untyped, ?method_description: String?, ?payment_date: String?, ?payment_type: untyped, ?state_pag: String?) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

@@ -1,0 +1,41 @@
+module Nfe
+  module Resources
+    class ServiceInvoices < AbstractResource
+      class StatusResult < Data
+        attr_reader status: String
+        attr_reader invoice: Nfe::ServiceInvoice?
+        attr_reader complete: bool
+        attr_reader failed: bool
+
+        def complete?: () -> bool
+        def failed?: () -> bool
+
+        def self.new: (status: String, invoice: Nfe::ServiceInvoice?, complete: bool, failed: bool) -> instance
+        def initialize: (status: String, invoice: Nfe::ServiceInvoice?, complete: bool, failed: bool) -> void
+      end
+
+      FAILED_STATUSES: Array[String]
+
+      def api_family: () -> Symbol
+
+      def create: (company_id: String, data: Hash[untyped, untyped], ?idempotency_key: String?, ?request_options: Nfe::RequestOptions?) -> (Nfe::Resources::ServiceInvoicePending | Nfe::Resources::ServiceInvoiceIssued)
+      def list: (company_id: String, **untyped options) -> Nfe::ListResponse
+      def retrieve: (company_id: String, invoice_id: String) -> Nfe::ServiceInvoice?
+      def cancel: (company_id: String, invoice_id: String) -> Nfe::ServiceInvoice?
+      def send_email: (company_id: String, invoice_id: String) -> { sent: untyped, message: untyped }
+      def download_pdf: (company_id: String, ?invoice_id: String?) -> String
+      def download_xml: (company_id: String, ?invoice_id: String?) -> String
+      def get_status: (company_id: String, invoice_id: String) -> Nfe::Resources::ServiceInvoices::StatusResult
+
+      private
+
+      def json_headers: () -> Hash[String, String]
+      def json_body: (untyped data) -> String
+      def list_query: (Hash[Symbol, untyped] options) -> Hash[Symbol, untyped]
+      def download_document: (company_id: String, invoice_id: String?, ext: String, accept: String) -> String
+      def discriminate: (Nfe::Http::Response response) -> (Nfe::Resources::ServiceInvoicePending | Nfe::Resources::ServiceInvoiceIssued)
+      def build_pending: (Nfe::Http::Response response) -> Nfe::Resources::ServiceInvoicePending
+      def extract_invoice_id: (String? location) -> String?
+    end
+  end
+end

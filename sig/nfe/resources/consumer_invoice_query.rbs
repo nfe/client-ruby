@@ -1,0 +1,11 @@
+module Nfe
+  module Resources
+    class ConsumerInvoiceQuery < AbstractResource
+      def api_family: () -> Symbol
+      def api_version: () -> String
+
+      def retrieve: (String access_key) -> Nfe::TaxCoupon?
+      def download_xml: (String access_key) -> String
+    end
+  end
+end

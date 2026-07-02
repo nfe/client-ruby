@@ -1,0 +1,42 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/nf-consumidor-v2.yaml
+# Hash: sha256:8c39e692ff794ccb2587ebe142be040e44d76cbf970f45e65b28d56a6165bdb5
+
+module Nfe
+  module Generated
+    module NfConsumidorV2
+      module StateCode
+        NA: String
+        RO: String
+        AC: String
+        AM: String
+        RR: String
+        PA: String
+        AP: String
+        TO: String
+        MA: String
+        PI: String
+        CE: String
+        RN: String
+        PB: String
+        PE: String
+        AL: String
+        SE: String
+        BA: String
+        MG: String
+        ES: String
+        RJ: String
+        SP: String
+        PR: String
+        SC: String
+        RS: String
+        MS: String
+        MT: String
+        GO: String
+        DF: String
+        EX: String
+        ALL: Array[String]
+      end
+    end
+  end
+end

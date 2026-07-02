@@ -1,0 +1,7 @@
+module Nfe
+  module Http
+    module UserAgent
+      def self?.build: (?String? suffix) -> String
+    end
+  end
+end

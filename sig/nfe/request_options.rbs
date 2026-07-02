@@ -1,0 +1,11 @@
+module Nfe
+  class RequestOptions < Data
+    attr_reader api_key: String?
+    attr_reader base_url: String?
+    attr_reader timeout: Numeric?
+
+    def self.new: (?api_key: String?, ?base_url: String?, ?timeout: Numeric?) -> instance
+
+    def initialize: (?api_key: String?, ?base_url: String?, ?timeout: Numeric?) -> void
+  end
+end

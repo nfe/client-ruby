@@ -1,0 +1,48 @@
+schema: spec-driven
+
+# Project context (shown to AI when creating artifacts).
+context: |
+  Project: NFE.io Ruby SDK (gem `nfe-io`), greenfield rewrite v1 (0.3.2 -> 1.0.0).
+  Legacy (rest-client, Ruby 2.4) is frozen on branch `0.x-legacy`; v1 lives on `master`, nothing reused.
+
+  Tech stack:
+  - Ruby >= 3.2 (Data.define requires it); CI matrix Ruby 3.2 / 3.3 / 3.4.
+  - Zero runtime dependencies: stdlib only (net/http, json, openssl, uri, securerandom, stringio, time, base64). No rest-client / faraday / httparty.
+  - Dev-only: RSpec + SimpleCov (gate >= 80%), RuboCop (+ rubocop-rspec), RBS signatures under sig/, Steep type-checker. Codegen deps confined to a :codegen Gemfile group, never in the published gem.
+
+  Conventions:
+  - Every .rb file starts with `# frozen_string_literal: true`.
+  - snake_case methods/accessors/files; CamelCase classes/modules; public API uses keyword arguments.
+  - Domain models are immutable `Data.define` value objects (never Struct/OpenStruct/method_missing).
+  - All calls synchronous (no Promises). The HTTP 202 async contract is modeled as discriminated `Pending`/`Issued` value objects; polling is a manual loop gated by `FlowStatus#terminal?`.
+  - Downloads return a binary-safe String (ASCII-8BIT) — Ruby has no Buffer.
+
+  Architecture:
+  - Single client, Stripe-style: `Nfe::Client.new(api_key:)` with lazy, memoized snake_case resource accessors (17-resource surface, parity-plus with Node/PHP SDKs).
+  - Multi-base-URL host map is the single source of truth in `Nfe::Configuration#base_url_for(family)`: main -> https://api.nfe.io, addresses -> https://address.api.nfe.io/v2, nfe-query -> https://nfe.api.nfe.io, legal-entity -> https://legalentity.api.nfe.io, natural-person -> https://naturalperson.api.nfe.io, cte -> https://api.nfse.io. No resource hard-codes a host; unknown family falls back to main.
+  - Generated models from OpenAPI: `lib/nfe/generated/` holds machine-generated Data.define DTOs (DO NOT EDIT) with .rbs under `sig/nfe/generated/`, synced from `nfeio-docs` (source of truth) via `rake openapi:sync`; hand-written DX layer lives outside generated/.
+  - Typed error hierarchy: `Nfe::Error` base + subclasses per HTTP status, raised via an ErrorFactory.
+
+  Domain: Brazilian electronic fiscal documents — NFS-e (service), NF-e (product), NFC-e (consumer), CT-e (transportation), inbound distribution, plus lookups (CNPJ/CPF/CEP/address, tax calc/codes, state taxes) and RTC (Reforma Tributaria — IBS/CBS groups, selected by payload shape). Webhooks use HMAC-SHA1 over raw body bytes, header `X-Hub-Signature`, format `sha1=<hex>`.
+
+  Spec & docs style: pt-BR narrative (proposal/README/design) with English spec deltas under specs/.
+
+# Per-artifact rules (optional)
+# Add custom rules for specific artifacts.
+# Example:
+#   rules:
+#     proposal:
+#       - Keep proposals under 500 words
+#       - Always include a "Non-goals" section
+#     tasks:
+#       - Break tasks into chunks of max 2 hours
+
+# Per-artifact rules (optional)
+# Add custom rules for specific artifacts.
+# Example:
+#   rules:
+#     proposal:
+#       - Keep proposals under 500 words
+#       - Always include a "Non-goals" section
+#     tasks:
+#       - Break tasks into chunks of max 2 hours

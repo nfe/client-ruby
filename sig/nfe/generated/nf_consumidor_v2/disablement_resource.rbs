@@ -1,0 +1,21 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/nf-consumidor-v2.yaml
+# Hash: sha256:8c39e692ff794ccb2587ebe142be040e44d76cbf970f45e65b28d56a6165bdb5
+
+module Nfe
+  module Generated
+    module NfConsumidorV2
+      class DisablementResource < Data
+        attr_reader begin_number: Integer
+        attr_reader environment: untyped
+        attr_reader last_number: Integer
+        attr_reader reason: String?
+        attr_reader serie: Integer
+        attr_reader state: untyped
+        def self.new: (?begin_number: Integer, ?environment: untyped, ?last_number: Integer, ?reason: String?, ?serie: Integer, ?state: untyped) -> instance
+        def initialize: (?begin_number: Integer, ?environment: untyped, ?last_number: Integer, ?reason: String?, ?serie: Integer, ?state: untyped) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

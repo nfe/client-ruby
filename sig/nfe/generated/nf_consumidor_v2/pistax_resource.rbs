@@ -1,0 +1,21 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/nf-consumidor-v2.yaml
+# Hash: sha256:8c39e692ff794ccb2587ebe142be040e44d76cbf970f45e65b28d56a6165bdb5
+
+module Nfe
+  module Generated
+    module NfConsumidorV2
+      class PISTaxResource < Data
+        attr_reader amount: Float?
+        attr_reader base_tax: Float?
+        attr_reader base_tax_product_quantity: Float?
+        attr_reader cst: String?
+        attr_reader product_rate: Float?
+        attr_reader rate: Float?
+        def self.new: (?amount: Float?, ?base_tax: Float?, ?base_tax_product_quantity: Float?, ?cst: String?, ?product_rate: Float?, ?rate: Float?) -> instance
+        def initialize: (?amount: Float?, ?base_tax: Float?, ?base_tax_product_quantity: Float?, ?cst: String?, ?product_rate: Float?, ?rate: Float?) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

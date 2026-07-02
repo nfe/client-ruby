@@ -1,0 +1,33 @@
+module Nfe
+  module Resources
+    class ConsumerInvoices < AbstractResource
+      ENVELOPE: String
+
+      def api_family: () -> Symbol
+      def api_version: () -> String
+
+      def create: (company_id: String, data: Hash[untyped, untyped], ?idempotency_key: String?, ?request_options: Nfe::RequestOptions?) -> (Nfe::Resources::ConsumerInvoicePending | Nfe::Resources::ConsumerInvoiceIssued)
+      def create_with_state_tax: (company_id: String, state_tax_id: String, data: Hash[untyped, untyped], ?idempotency_key: String?, ?request_options: Nfe::RequestOptions?) -> (Nfe::Resources::ConsumerInvoicePending | Nfe::Resources::ConsumerInvoiceIssued)
+      def list: (company_id: String, environment: String, **untyped options) -> Nfe::ListResponse
+      def retrieve: (company_id: String, invoice_id: String) -> Nfe::ConsumerInvoice?
+      def cancel: (company_id: String, invoice_id: String) -> Nfe::ConsumerInvoice?
+      def list_items: (company_id: String, invoice_id: String) -> Array[untyped]
+      def list_events: (company_id: String, invoice_id: String) -> Array[untyped]
+      def download_pdf: (company_id: String, invoice_id: String) -> String
+      def download_xml: (company_id: String, invoice_id: String) -> String
+      def download_rejection_xml: (company_id: String, invoice_id: String) -> String
+      def disable_range: (company_id: String, data: Hash[untyped, untyped]) -> Hash[untyped, untyped]
+
+      private
+
+      def require_environment: (untyped environment) -> void
+      def validate_pair: (String company_id, String invoice_id) -> Array[String]
+      def discriminate: (Nfe::Http::Response response) -> (Nfe::Resources::ConsumerInvoicePending | Nfe::Resources::ConsumerInvoiceIssued)
+      def issued_result: (Nfe::Http::Response response) -> Nfe::Resources::ConsumerInvoiceIssued
+      def extract_invoice_id: (String location) -> String?
+      def unwrap_collection: (untyped payload, String key) -> Array[untyped]
+      def json_headers: () -> Hash[String, String]
+      def json_body: (untyped data) -> String
+    end
+  end
+end

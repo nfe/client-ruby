@@ -1,0 +1,22 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/nf-consumidor-v2.yaml
+# Hash: sha256:8c39e692ff794ccb2587ebe142be040e44d76cbf970f45e65b28d56a6165bdb5
+
+module Nfe
+  module Generated
+    module NfConsumidorV2
+      class TotalsWithholdings < Data
+        attr_reader cofins_amount: Float?
+        attr_reader csll_amount: Float?
+        attr_reader irrf_amount: Float?
+        attr_reader irrf_basis: Float?
+        attr_reader pis_amount: Float?
+        attr_reader social_secutiry_amount: Float?
+        attr_reader social_secutiry_basis: Float?
+        def self.new: (?cofins_amount: Float?, ?csll_amount: Float?, ?irrf_amount: Float?, ?irrf_basis: Float?, ?pis_amount: Float?, ?social_secutiry_amount: Float?, ?social_secutiry_basis: Float?) -> instance
+        def initialize: (?cofins_amount: Float?, ?csll_amount: Float?, ?irrf_amount: Float?, ?irrf_basis: Float?, ?pis_amount: Float?, ?social_secutiry_amount: Float?, ?social_secutiry_basis: Float?) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

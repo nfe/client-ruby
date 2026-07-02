@@ -1,0 +1,21 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/nf-produto-v2.yaml
+# Hash: sha256:e565b47e4d8b17255f99efc2b6354d589d2903c4ba9b97caabd74f84de59e4e2
+
+module Nfe
+  module Generated
+    module NfProdutoV2
+      class DisablementResource < Data
+        attr_reader begin_number: Integer
+        attr_reader environment: untyped
+        attr_reader last_number: Integer
+        attr_reader reason: String?
+        attr_reader serie: Integer
+        attr_reader state: untyped
+        def self.new: (?begin_number: Integer, ?environment: untyped, ?last_number: Integer, ?reason: String?, ?serie: Integer, ?state: untyped) -> instance
+        def initialize: (?begin_number: Integer, ?environment: untyped, ?last_number: Integer, ?reason: String?, ?serie: Integer, ?state: untyped) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

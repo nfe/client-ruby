@@ -1,0 +1,3 @@
+# Generated artifacts (from the OpenAPI pipeline) — collapse diffs on GitHub.
+lib/nfe/generated/** linguist-generated=true
+sig/nfe/generated/** linguist-generated=true

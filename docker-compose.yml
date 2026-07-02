@@ -1,0 +1,65 @@
+# Docker-based dev environment for the NFE.io Ruby SDK.
+#
+# Quick start:
+#   cp .env.docker.example .env          # one-time, sets UID/GID
+#   docker compose build ruby34          # build the default (Ruby 3.4) image
+#   docker compose run --rm ruby34 bundle install
+#   docker compose run --rm ruby34 bundle exec rake     # spec + rubocop + steep + rbs
+#
+# Reproduce the CI matrix locally:
+#   docker compose run --rm ruby32 bundle exec rake
+#   docker compose run --rm ruby33 bundle exec rake
+#   docker compose run --rm ruby34 bundle exec rake
+#
+# ruby34 (matches .ruby-version) is the primary dev service; 3.2 is the floor.
+
+x-ruby-defaults: &ruby-defaults
+  volumes:
+    - .:/app
+    - bundle-cache:/home/app/bundle
+  working_dir: /app
+  init: true
+  tty: true
+  # Forward .env into the container so SDK env vars (NFE_API_KEY, NFE_DATA_API_KEY,
+  # etc.) are available to scripts running inside the container.
+  env_file:
+    - path: .env
+      required: false
+
+services:
+  ruby32:
+    <<: *ruby-defaults
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      args:
+        RUBY_VERSION: "3.2"
+        UID: "${UID:-1000}"
+        GID: "${GID:-1000}"
+    image: nfe-client-ruby:3.2
+
+  ruby33:
+    <<: *ruby-defaults
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      args:
+        RUBY_VERSION: "3.3"
+        UID: "${UID:-1000}"
+        GID: "${GID:-1000}"
+    image: nfe-client-ruby:3.3
+
+  ruby34:
+    <<: *ruby-defaults
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      args:
+        RUBY_VERSION: "3.4"
+        UID: "${UID:-1000}"
+        GID: "${GID:-1000}"
+    image: nfe-client-ruby:3.4
+
+volumes:
+  bundle-cache:
+    driver: local

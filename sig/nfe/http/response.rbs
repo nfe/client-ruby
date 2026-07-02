@@ -1,0 +1,27 @@
+module Nfe
+  module Http
+    class Response < Data
+      attr_reader status: Integer
+      attr_reader headers: Hash[String, String]
+      attr_reader body: String?
+
+      def self.new: (
+          status: Integer,
+          ?headers: Hash[String, String],
+          ?body: String?
+        ) -> instance
+
+      def initialize: (
+          status: Integer,
+          ?headers: Hash[String, String],
+          ?body: String?
+        ) -> void
+
+      def header: (String name) -> String?
+
+      def success?: () -> bool
+
+      def location: () -> String?
+    end
+  end
+end

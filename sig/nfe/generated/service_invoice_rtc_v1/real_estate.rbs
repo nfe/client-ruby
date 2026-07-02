@@ -1,0 +1,18 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/service-invoice-rtc-v1.yaml
+# Hash: sha256:5c3b751b63e6a0adabb185b974e141f1b06127934fa0bf05fc505676024db32b
+
+module Nfe
+  module Generated
+    module ServiceInvoiceRtcV1
+      class RealEstate < Data
+        attr_reader cib_code: String
+        attr_reader property_fiscal_registration: String
+        attr_reader site_address: AddressDefinition
+        def self.new: (?cib_code: String, ?property_fiscal_registration: String, ?site_address: AddressDefinition) -> instance
+        def initialize: (?cib_code: String, ?property_fiscal_registration: String, ?site_address: AddressDefinition) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

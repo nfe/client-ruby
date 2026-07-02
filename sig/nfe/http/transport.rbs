@@ -1,0 +1,11 @@
+module Nfe
+  module Http
+    interface _Transport
+      def call: (Nfe::Http::Request request) -> Nfe::Http::Response
+    end
+
+    module Transport : _Transport
+      def call: (Nfe::Http::Request request) -> Nfe::Http::Response
+    end
+  end
+end

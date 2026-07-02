@@ -1,0 +1,20 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/nf-consumidor-v2.yaml
+# Hash: sha256:8c39e692ff794ccb2587ebe142be040e44d76cbf970f45e65b28d56a6165bdb5
+
+module Nfe
+  module Generated
+    module NfConsumidorV2
+      class MonophaseWithholdingTaxResource < Data
+        attr_reader cbs_ad_rem_rate: Float?
+        attr_reader cbs_amount: Float?
+        attr_reader ibs_ad_rem_rate: Float?
+        attr_reader ibs_amount: Float?
+        attr_reader quantity_basis: Float?
+        def self.new: (?cbs_ad_rem_rate: Float?, ?cbs_amount: Float?, ?ibs_ad_rem_rate: Float?, ?ibs_amount: Float?, ?quantity_basis: Float?) -> instance
+        def initialize: (?cbs_ad_rem_rate: Float?, ?cbs_amount: Float?, ?ibs_ad_rem_rate: Float?, ?ibs_amount: Float?, ?quantity_basis: Float?) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

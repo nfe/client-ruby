@@ -1,0 +1,18 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/nf-produto-v2.yaml
+# Hash: sha256:e565b47e4d8b17255f99efc2b6354d589d2903c4ba9b97caabd74f84de59e4e2
+
+module Nfe
+  module Generated
+    module NfProdutoV2
+      class ExportHintResource < Data
+        attr_reader access_key: String?
+        attr_reader quantity: Float?
+        attr_reader registry_id: String?
+        def self.new: (?access_key: String?, ?quantity: Float?, ?registry_id: String?) -> instance
+        def initialize: (?access_key: String?, ?quantity: Float?, ?registry_id: String?) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

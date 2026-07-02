@@ -1,0 +1,41 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/calculo-impostos-v1.yaml
+# Hash: sha256:39f6c3a1112ff3c98d842e172be5007eaa4d0c5f63d300ad263b96c9299ece99
+
+module Nfe
+  module Generated
+    module CalculoImpostosV1
+      module State
+        AC: String
+        AL: String
+        AP: String
+        AM: String
+        BA: String
+        CE: String
+        DF: String
+        ES: String
+        GO: String
+        MA: String
+        MT: String
+        MS: String
+        MG: String
+        PA: String
+        PB: String
+        PR: String
+        PE: String
+        PI: String
+        RJ: String
+        RN: String
+        RS: String
+        RO: String
+        RR: String
+        SC: String
+        SP: String
+        SE: String
+        TO: String
+        EX: String
+        ALL: Array[String]
+      end
+    end
+  end
+end

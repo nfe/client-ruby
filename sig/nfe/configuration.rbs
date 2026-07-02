@@ -1,0 +1,46 @@
+module Nfe
+  class Configuration
+    HOSTS: Hash[Symbol, String]
+    FAMILY_ALIASES: Hash[Symbol, Symbol]
+    DATA_FAMILIES: Array[Symbol]
+    VALID_ENVIRONMENTS: Array[Symbol]
+    DEFAULT_TIMEOUT: Integer
+    DEFAULT_OPEN_TIMEOUT: Integer
+    DEFAULT_MAX_RETRIES: Integer
+
+    attr_reader api_key: String?
+    attr_reader data_api_key: String?
+    attr_reader environment: Symbol
+    attr_reader timeout: Integer
+    attr_reader open_timeout: Integer
+    attr_reader max_retries: Integer
+    attr_reader logger: untyped
+    attr_reader user_agent_suffix: String?
+    attr_reader base_url_overrides: Hash[Symbol, String]
+    attr_reader ca_file: String?
+    attr_reader ca_path: String?
+    attr_reader proxy: untyped
+
+    def initialize: (?api_key: String?, ?data_api_key: String?, ?environment: Symbol,
+                     ?timeout: Integer, ?open_timeout: Integer, ?max_retries: Integer,
+                     ?logger: untyped, ?user_agent_suffix: String?,
+                     ?base_url_overrides: Hash[Symbol, String],
+                     ?ca_file: String?, ?ca_path: String?, ?proxy: untyped) -> void
+
+    def base_url_for: (Symbol | String family) -> String
+
+    def api_key_for: (Symbol | String family) -> String
+
+    private
+
+    def resolve_key: (String? explicit, String env_name) -> String?
+
+    def validate!: () -> void
+
+    def validate_positive!: (Symbol name, untyped value) -> void
+
+    def blank?: (untyped value) -> bool
+
+    def canonical_family: (Symbol | String family) -> Symbol
+  end
+end

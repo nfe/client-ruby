@@ -1,0 +1,17 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/consulta-nfe-distribuicao-v1.yaml
+# Hash: sha256:c28db6c6fed93a58342537de8131850f266d0cdff71873a3bab126b3309e3ea7
+
+module Nfe
+  module Generated
+    module ConsultaNfeDistribuicaoV1
+      class Transportation < Data
+        attr_reader federal_tax_number: String
+        attr_reader name: String
+        def self.new: (federal_tax_number: String, name: String) -> instance
+        def initialize: (federal_tax_number: String, name: String) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

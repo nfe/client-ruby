@@ -1,0 +1,23 @@
+module Nfe
+  module Resources
+    class TransportationInvoices < AbstractResource
+      def api_family: () -> Symbol
+      def api_version: () -> String
+
+      def enable: (company_id: String, ?start_from_nsu: untyped, ?start_from_date: String?) -> Nfe::InboundSettings?
+      def disable: (company_id: String) -> Nfe::InboundSettings?
+      def get_settings: (company_id: String) -> Nfe::InboundSettings?
+      def retrieve: (company_id: String, access_key: String) -> Nfe::InboundInvoiceMetadata?
+      def download_xml: (company_id: String, access_key: String) -> String
+      def get_event: (company_id: String, access_key: String, event_key: String) -> Nfe::InboundInvoiceMetadata?
+      def download_event_xml: (company_id: String, access_key: String, event_key: String) -> String
+
+      private
+
+      def json_headers: () -> Hash[String, String]
+      def json_body: (untyped data) -> String
+      def xml_accept: () -> Hash[String, String]
+      def compact: (Hash[untyped, untyped] hash) -> Hash[untyped, untyped]
+    end
+  end
+end

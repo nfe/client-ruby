@@ -1,0 +1,20 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/contribuintes-v2.json
+# Hash: sha256:e2d215a19f5dc85c08067d51644e807aae32b6c4754390872670f2e18a938102
+
+module Nfe
+  module Generated
+    module ContribuintesV2
+      class Microsoft_OData_Edm_Vocabularies_IEdmVocabularyAnnotation < Data
+        attr_reader qualifier: String?
+        attr_reader target: Hash[String, untyped]
+        attr_reader term: Microsoft_OData_Edm_Vocabularies_IEdmTerm
+        attr_reader uses_default: bool
+        attr_reader value: Microsoft_OData_Edm_IEdmExpression
+        def self.new: (?qualifier: String?, ?target: Hash[String, untyped], ?term: Microsoft_OData_Edm_Vocabularies_IEdmTerm, ?uses_default: bool, ?value: Microsoft_OData_Edm_IEdmExpression) -> instance
+        def initialize: (?qualifier: String?, ?target: Hash[String, untyped], ?term: Microsoft_OData_Edm_Vocabularies_IEdmTerm, ?uses_default: bool, ?value: Microsoft_OData_Edm_IEdmExpression) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

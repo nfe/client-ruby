@@ -1,0 +1,13 @@
+module Nfe
+  module Resources
+    class ProductInvoiceRtcIssued < Data
+      attr_reader resource: untyped
+
+      def pending?: () -> bool
+      def issued?: () -> bool
+
+      def self.new: (resource: untyped) -> instance
+      def initialize: (resource: untyped) -> void
+    end
+  end
+end

@@ -1,0 +1,38 @@
+module Nfe
+  module Resources
+    class ProductInvoicesRtc < AbstractResource
+      def api_family: () -> Symbol
+      def api_version: () -> String
+
+      def create: (company_id: String, data: Hash[untyped, untyped], ?idempotency_key: String?, ?request_options: Nfe::RequestOptions?) -> (Nfe::Resources::ProductInvoiceRtcPending | Nfe::Resources::ProductInvoiceRtcIssued)
+      def create_with_state_tax: (company_id: String, state_tax_id: String, data: Hash[untyped, untyped], ?idempotency_key: String?, ?request_options: Nfe::RequestOptions?) -> (Nfe::Resources::ProductInvoiceRtcPending | Nfe::Resources::ProductInvoiceRtcIssued)
+      def list: (company_id: String, environment: String, ?starting_after: String?, ?ending_before: String?, ?limit: Integer?, ?q: String?) -> Nfe::ListResponse
+      def retrieve: (company_id: String, invoice_id: String) -> Nfe::Generated::ProductInvoiceRtcV1::InvoiceResource?
+      def cancel: (company_id: String, invoice_id: String, ?reason: String?) -> Nfe::Generated::ProductInvoiceRtcV1::RequestCancellationResource?
+      def list_items: (company_id: String, invoice_id: String) -> Nfe::Generated::ProductInvoiceRtcV1::InvoiceItemsResource?
+      def list_events: (company_id: String, invoice_id: String) -> Nfe::Generated::ProductInvoiceRtcV1::InvoiceEventsResource?
+      def download_pdf: (company_id: String, invoice_id: String, ?force: bool) -> Nfe::NfeFileResource?
+      def download_xml: (company_id: String, invoice_id: String) -> Nfe::NfeFileResource?
+      def download_rejection_xml: (company_id: String, invoice_id: String) -> Nfe::NfeFileResource?
+      def download_epec_xml: (company_id: String, invoice_id: String) -> Nfe::NfeFileResource?
+      def send_correction_letter: (company_id: String, invoice_id: String, reason: String) -> Nfe::Generated::ProductInvoiceRtcV1::RequestCancellationResource?
+      def download_correction_letter_pdf: (company_id: String, invoice_id: String) -> Nfe::NfeFileResource?
+      def download_correction_letter_xml: (company_id: String, invoice_id: String) -> Nfe::NfeFileResource?
+      def disable: (company_id: String, invoice_id: String, ?reason: String?) -> Nfe::Generated::ProductInvoiceRtcV1::DisablementResource?
+      def disable_range: (company_id: String, data: Hash[untyped, untyped]) -> Nfe::Generated::ProductInvoiceRtcV1::DisablementResource?
+
+      private
+
+      def base_path: (String company_id) -> String
+      def json_headers: () -> Hash[String, String]
+      def json_body: (untyped data) -> String
+      def require_environment: (untyped environment) -> void
+      def list_query: (starting_after: untyped, ending_before: untyped, limit: untyped, q: untyped) -> Hash[Symbol, untyped]
+      def validate_correction_reason: (untyped reason) -> void
+      def file_resource: (company_id: String, invoice_id: String, segment: String, ?query: Hash[untyped, untyped]) -> Nfe::NfeFileResource?
+      def discriminate: (Nfe::Http::Response response) -> (Nfe::Resources::ProductInvoiceRtcPending | Nfe::Resources::ProductInvoiceRtcIssued)
+      def build_pending: (Nfe::Http::Response response) -> Nfe::Resources::ProductInvoiceRtcPending
+      def extract_invoice_id: (String? location) -> String?
+    end
+  end
+end

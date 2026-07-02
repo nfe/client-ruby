@@ -1,0 +1,40 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/nf-produto-v2.yaml
+# Hash: sha256:e565b47e4d8b17255f99efc2b6354d589d2903c4ba9b97caabd74f84de59e4e2
+
+module Nfe
+  module Generated
+    module NfProdutoV2
+      class ProductInvoiceQueueIssueResource < Data
+        attr_reader additional_information: AdditionalInformationResource
+        attr_reader billing: BillingResource
+        attr_reader buyer: BuyerResource
+        attr_reader consumer_type: untyped
+        attr_reader contingency_justification: String?
+        attr_reader contingency_on: String?
+        attr_reader delivery: DeliveryInformationResource
+        attr_reader destination: untyped
+        attr_reader export: ExportResource
+        attr_reader id: String?
+        attr_reader issuer: IssuerFromRequestResource
+        attr_reader items: Array[InvoiceItemResource]
+        attr_reader number: Integer?
+        attr_reader operation_nature: String?
+        attr_reader operation_on: String?
+        attr_reader operation_type: untyped
+        attr_reader payment: Array[PaymentResource]
+        attr_reader presence_type: untyped
+        attr_reader print_type: untyped
+        attr_reader purpose_type: untyped
+        attr_reader serie: Integer?
+        attr_reader totals: Total
+        attr_reader transaction_intermediate: IntermediateResource
+        attr_reader transport: TransportInformationResource
+        attr_reader withdrawal: WithdrawalInformationResource
+        def self.new: (?additional_information: AdditionalInformationResource, ?billing: BillingResource, buyer: BuyerResource, ?consumer_type: untyped, ?contingency_justification: String?, ?contingency_on: String?, ?delivery: DeliveryInformationResource, ?destination: untyped, ?export: ExportResource, ?id: String?, ?issuer: IssuerFromRequestResource, items: Array[InvoiceItemResource], ?number: Integer?, ?operation_nature: String?, ?operation_on: String?, ?operation_type: untyped, payment: Array[PaymentResource], ?presence_type: untyped, ?print_type: untyped, ?purpose_type: untyped, ?serie: Integer?, ?totals: Total, ?transaction_intermediate: IntermediateResource, ?transport: TransportInformationResource, ?withdrawal: WithdrawalInformationResource) -> instance
+        def initialize: (?additional_information: AdditionalInformationResource, ?billing: BillingResource, buyer: BuyerResource, ?consumer_type: untyped, ?contingency_justification: String?, ?contingency_on: String?, ?delivery: DeliveryInformationResource, ?destination: untyped, ?export: ExportResource, ?id: String?, ?issuer: IssuerFromRequestResource, items: Array[InvoiceItemResource], ?number: Integer?, ?operation_nature: String?, ?operation_on: String?, ?operation_type: untyped, payment: Array[PaymentResource], ?presence_type: untyped, ?print_type: untyped, ?purpose_type: untyped, ?serie: Integer?, ?totals: Total, ?transaction_intermediate: IntermediateResource, ?transport: TransportInformationResource, ?withdrawal: WithdrawalInformationResource) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

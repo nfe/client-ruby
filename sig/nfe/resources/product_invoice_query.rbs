@@ -1,0 +1,13 @@
+module Nfe
+  module Resources
+    class ProductInvoiceQuery < AbstractResource
+      def retrieve: (untyped access_key) -> Nfe::ProductInvoiceDetails?
+      def download_pdf: (untyped access_key) -> String
+      def download_xml: (untyped access_key) -> String
+      def list_events: (untyped access_key) -> Nfe::ProductInvoiceEventsResponse?
+
+      def api_family: () -> Symbol
+      def api_version: () -> String
+    end
+  end
+end

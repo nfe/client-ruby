@@ -1,0 +1,19 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/contribuintes-v2.json
+# Hash: sha256:e2d215a19f5dc85c08067d51644e807aae32b6c4754390872670f2e18a938102
+
+module Nfe
+  module Generated
+    module ContribuintesV2
+      class Microsoft_OData_ODataServiceDocument < Data
+        attr_reader entity_sets: Array[Microsoft_OData_ODataEntitySetInfo]?
+        attr_reader function_imports: Array[Microsoft_OData_ODataFunctionImportInfo]?
+        attr_reader singletons: Array[Microsoft_OData_ODataSingletonInfo]?
+        attr_reader type_annotation: Microsoft_OData_ODataTypeAnnotation
+        def self.new: (?entity_sets: Array[Microsoft_OData_ODataEntitySetInfo]?, ?function_imports: Array[Microsoft_OData_ODataFunctionImportInfo]?, ?singletons: Array[Microsoft_OData_ODataSingletonInfo]?, ?type_annotation: Microsoft_OData_ODataTypeAnnotation) -> instance
+        def initialize: (?entity_sets: Array[Microsoft_OData_ODataEntitySetInfo]?, ?function_imports: Array[Microsoft_OData_ODataFunctionImportInfo]?, ?singletons: Array[Microsoft_OData_ODataSingletonInfo]?, ?type_annotation: Microsoft_OData_ODataTypeAnnotation) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

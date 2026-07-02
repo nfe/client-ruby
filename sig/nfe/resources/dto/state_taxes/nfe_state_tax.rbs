@@ -1,0 +1,17 @@
+module Nfe
+  class NfeStateTax < Data
+    attr_reader id: String?
+    attr_reader tax_number: untyped
+    attr_reader serie: untyped
+    attr_reader number: untyped
+    attr_reader code: untyped
+    attr_reader environment_type: untyped
+    attr_reader type: untyped
+    attr_reader status: untyped
+
+    def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::NfeStateTax?
+
+    def self.new: (id: String?, tax_number: untyped, serie: untyped, number: untyped, code: untyped, environment_type: untyped, type: untyped, status: untyped) -> instance
+    def initialize: (id: String?, tax_number: untyped, serie: untyped, number: untyped, code: untyped, environment_type: untyped, type: untyped, status: untyped) -> void
+  end
+end

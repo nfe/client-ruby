@@ -1,0 +1,32 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/contribuintes-v2.json
+# Hash: sha256:e2d215a19f5dc85c08067d51644e807aae32b6c4754390872670f2e18a938102
+
+module Nfe
+  module Generated
+    module ContribuintesV2
+      class DFeTech_TaxPayers_Resources_CreateMunicipalTaxResourceItem < Data
+        attr_reader auth_issue_value: String?
+        attr_reader city: DFeTech_TaxPayers_Domain_Entities_CityExtended
+        attr_reader company_registry_number: Integer?
+        attr_reader email: String?
+        attr_reader environment: untyped
+        attr_reader federal_tax_determination: untyped
+        attr_reader iss_rate: Float?
+        attr_reader last_rps_sent: Integer
+        attr_reader legal_nature: untyped
+        attr_reader login_name: String?
+        attr_reader login_password: String?
+        attr_reader municipal_tax_determination: untyped
+        attr_reader regional_tax_number: Integer?
+        attr_reader rps_number: Integer
+        attr_reader rps_serial_number: String?
+        attr_reader special_tax_regime: untyped
+        attr_reader tax_number: String?
+        def self.new: (?auth_issue_value: String?, ?city: DFeTech_TaxPayers_Domain_Entities_CityExtended, ?company_registry_number: Integer?, ?email: String?, ?environment: untyped, ?federal_tax_determination: untyped, ?iss_rate: Float?, ?last_rps_sent: Integer, ?legal_nature: untyped, ?login_name: String?, ?login_password: String?, ?municipal_tax_determination: untyped, ?regional_tax_number: Integer?, ?rps_number: Integer, ?rps_serial_number: String?, ?special_tax_regime: untyped, ?tax_number: String?) -> instance
+        def initialize: (?auth_issue_value: String?, ?city: DFeTech_TaxPayers_Domain_Entities_CityExtended, ?company_registry_number: Integer?, ?email: String?, ?environment: untyped, ?federal_tax_determination: untyped, ?iss_rate: Float?, ?last_rps_sent: Integer, ?legal_nature: untyped, ?login_name: String?, ?login_password: String?, ?municipal_tax_determination: untyped, ?regional_tax_number: Integer?, ?rps_number: Integer, ?rps_serial_number: String?, ?special_tax_regime: untyped, ?tax_number: String?) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

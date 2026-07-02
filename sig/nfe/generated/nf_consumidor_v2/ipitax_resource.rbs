@@ -1,0 +1,26 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/nf-consumidor-v2.yaml
+# Hash: sha256:8c39e692ff794ccb2587ebe142be040e44d76cbf970f45e65b28d56a6165bdb5
+
+module Nfe
+  module Generated
+    module NfConsumidorV2
+      class IPITaxResource < Data
+        attr_reader amount: Float?
+        attr_reader base: Float?
+        attr_reader classification: String?
+        attr_reader classification_code: String?
+        attr_reader cst: String?
+        attr_reader producer_cnpj: String?
+        attr_reader rate: Float?
+        attr_reader stamp_code: String?
+        attr_reader stamp_quantity: Float?
+        attr_reader unit_amount: Float?
+        attr_reader unit_quantity: Float?
+        def self.new: (?amount: Float?, ?base: Float?, ?classification: String?, ?classification_code: String?, ?cst: String?, ?producer_cnpj: String?, ?rate: Float?, ?stamp_code: String?, ?stamp_quantity: Float?, ?unit_amount: Float?, ?unit_quantity: Float?) -> instance
+        def initialize: (?amount: Float?, ?base: Float?, ?classification: String?, ?classification_code: String?, ?cst: String?, ?producer_cnpj: String?, ?rate: Float?, ?stamp_code: String?, ?stamp_quantity: Float?, ?unit_amount: Float?, ?unit_quantity: Float?) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

@@ -1,0 +1,18 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/nf-consumidor-v2.yaml
+# Hash: sha256:8c39e692ff794ccb2587ebe142be040e44d76cbf970f45e65b28d56a6165bdb5
+
+module Nfe
+  module Generated
+    module NfConsumidorV2
+      class TaxDocumentsReferenceResource < Data
+        attr_reader document_electronic_invoice: DocumentElectronicInvoiceResource
+        attr_reader document_invoice_reference: DocumentInvoiceReferenceResource
+        attr_reader tax_coupon_information: TaxCouponInformationResource
+        def self.new: (?document_electronic_invoice: DocumentElectronicInvoiceResource, ?document_invoice_reference: DocumentInvoiceReferenceResource, ?tax_coupon_information: TaxCouponInformationResource) -> instance
+        def initialize: (?document_electronic_invoice: DocumentElectronicInvoiceResource, ?document_invoice_reference: DocumentInvoiceReferenceResource, ?tax_coupon_information: TaxCouponInformationResource) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

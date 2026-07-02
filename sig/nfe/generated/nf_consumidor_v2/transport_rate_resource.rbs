@@ -1,0 +1,21 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/nf-consumidor-v2.yaml
+# Hash: sha256:8c39e692ff794ccb2587ebe142be040e44d76cbf970f45e65b28d56a6165bdb5
+
+module Nfe
+  module Generated
+    module NfConsumidorV2
+      class TransportRateResource < Data
+        attr_reader bc_retention_amount: Float?
+        attr_reader cfop: Integer?
+        attr_reader city_generator_fact_code: Integer?
+        attr_reader icms_retention_amount: Float?
+        attr_reader icms_retention_rate: Float?
+        attr_reader service_amount: Float?
+        def self.new: (?bc_retention_amount: Float?, ?cfop: Integer?, ?city_generator_fact_code: Integer?, ?icms_retention_amount: Float?, ?icms_retention_rate: Float?, ?service_amount: Float?) -> instance
+        def initialize: (?bc_retention_amount: Float?, ?cfop: Integer?, ?city_generator_fact_code: Integer?, ?icms_retention_amount: Float?, ?icms_retention_rate: Float?, ?service_amount: Float?) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

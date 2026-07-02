@@ -1,0 +1,19 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/calculo-impostos-v1.yaml
+# Hash: sha256:39f6c3a1112ff3c98d842e172be5007eaa4d0c5f63d300ad263b96c9299ece99
+
+module Nfe
+  module Generated
+    module CalculoImpostosV1
+      class TaxCodePaginatedResponse < Data
+        attr_reader current_page: Integer
+        attr_reader items: Array[TaxCode]?
+        attr_reader total_count: Integer
+        attr_reader total_pages: Integer
+        def self.new: (?current_page: Integer, ?items: Array[TaxCode]?, ?total_count: Integer, ?total_pages: Integer) -> instance
+        def initialize: (?current_page: Integer, ?items: Array[TaxCode]?, ?total_count: Integer, ?total_pages: Integer) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

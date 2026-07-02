@@ -1,0 +1,61 @@
+module Nfe
+  class LegalEntity < Data
+    attr_reader federal_tax_number: String?
+    attr_reader name: String?
+    attr_reader trade_name: String?
+    attr_reader status: untyped
+    attr_reader status_on: String?
+    attr_reader status_reason: String?
+    attr_reader legal_nature: untyped
+    attr_reader size: untyped
+    attr_reader opened_on: String?
+    attr_reader issued_on: String?
+    attr_reader special_status: String?
+    attr_reader special_status_on: String?
+    attr_reader responsable_entity: String?
+    attr_reader share_capital: untyped
+    attr_reader registration_unit: String?
+    attr_reader unit: untyped
+    attr_reader address: untyped
+    attr_reader phones: untyped
+    attr_reader email: String?
+    attr_reader economic_activities: untyped
+    attr_reader partners: untyped
+
+    def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::LegalEntity?
+
+    def self.new: (federal_tax_number: String?, name: String?, trade_name: String?, status: untyped, status_on: String?, status_reason: String?, legal_nature: untyped, size: untyped, opened_on: String?, issued_on: String?, special_status: String?, special_status_on: String?, responsable_entity: String?, share_capital: untyped, registration_unit: String?, unit: untyped, address: untyped, phones: untyped, email: String?, economic_activities: untyped, partners: untyped) -> instance
+
+    def initialize: (federal_tax_number: String?, name: String?, trade_name: String?, status: untyped, status_on: String?, status_reason: String?, legal_nature: untyped, size: untyped, opened_on: String?, issued_on: String?, special_status: String?, special_status_on: String?, responsable_entity: String?, share_capital: untyped, registration_unit: String?, unit: untyped, address: untyped, phones: untyped, email: String?, economic_activities: untyped, partners: untyped) -> void
+  end
+
+  class LegalEntityBasicInfoResponse < Data
+    attr_reader legal_entity: Nfe::LegalEntity?
+
+    def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::LegalEntityBasicInfoResponse?
+
+    def self.new: (legal_entity: Nfe::LegalEntity?) -> instance
+
+    def initialize: (legal_entity: Nfe::LegalEntity?) -> void
+  end
+
+  class LegalEntityStateTaxResponse < Data
+    attr_reader legal_entity: Nfe::StateTaxLegalEntity?
+
+    def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::LegalEntityStateTaxResponse?
+
+    def self.new: (legal_entity: Nfe::StateTaxLegalEntity?) -> instance
+
+    def initialize: (legal_entity: Nfe::StateTaxLegalEntity?) -> void
+  end
+
+  class LegalEntityStateTaxForInvoiceResponse < Data
+    attr_reader legal_entity: Nfe::StateTaxLegalEntity?
+
+    def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::LegalEntityStateTaxForInvoiceResponse?
+
+    def self.new: (legal_entity: Nfe::StateTaxLegalEntity?) -> instance
+
+    def initialize: (legal_entity: Nfe::StateTaxLegalEntity?) -> void
+  end
+end

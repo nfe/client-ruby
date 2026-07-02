@@ -1,4 +1,6 @@
-source 'https://rubygems.org'
+# frozen_string_literal: true
 
-# Specify your gem's dependencies in nfe.gemspec
+source "https://rubygems.org"
+
+# Runtime + development dependencies are declared in nfe-io.gemspec.
 gemspec

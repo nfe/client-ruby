@@ -1,0 +1,34 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/consulta-dfe-distribuicao-v2.yaml
+# Hash: sha256:f607124386b9d5210012cd4ac84ed7a0e359939e4176cebe4103b5a525321bdd
+
+module Nfe
+  module Generated
+    module ConsultaDfeDistribuicaoV2
+      class NFeMetadataResource < Data
+        attr_reader access_key: String
+        attr_reader buyer: BuyerResource
+        attr_reader company: InboundCompanyResource
+        attr_reader created_on: String
+        attr_reader description: String
+        attr_reader federal_tax_number_sender: String
+        attr_reader issued_on: String
+        attr_reader issuer: IssuerResource
+        attr_reader name_sender: String
+        attr_reader nfe_number: String
+        attr_reader nfe_serial_number: String
+        attr_reader nsu: String
+        attr_reader nsu_parent: String
+        attr_reader operation_type: String
+        attr_reader parent_access_key: String
+        attr_reader total_invoice_amount: String
+        attr_reader transportation: TransportationResource
+        attr_reader type: String
+        attr_reader xml_url: String
+        def self.new: (?access_key: String, ?buyer: BuyerResource, ?company: InboundCompanyResource, ?created_on: String, ?description: String, ?federal_tax_number_sender: String, ?issued_on: String, ?issuer: IssuerResource, ?name_sender: String, ?nfe_number: String, ?nfe_serial_number: String, ?nsu: String, ?nsu_parent: String, ?operation_type: String, ?parent_access_key: String, ?total_invoice_amount: String, ?transportation: TransportationResource, ?type: String, ?xml_url: String) -> instance
+        def initialize: (?access_key: String, ?buyer: BuyerResource, ?company: InboundCompanyResource, ?created_on: String, ?description: String, ?federal_tax_number_sender: String, ?issued_on: String, ?issuer: IssuerResource, ?name_sender: String, ?nfe_number: String, ?nfe_serial_number: String, ?nsu: String, ?nsu_parent: String, ?operation_type: String, ?parent_access_key: String, ?total_invoice_amount: String, ?transportation: TransportationResource, ?type: String, ?xml_url: String) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

@@ -1,0 +1,18 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/calculo-impostos-v1.yaml
+# Hash: sha256:39f6c3a1112ff3c98d842e172be5007eaa4d0c5f63d300ad263b96c9299ece99
+
+module Nfe
+  module Generated
+    module CalculoImpostosV1
+      class CalculateRequestRecipient < Data
+        attr_reader state: untyped
+        attr_reader tax_profile: String?
+        attr_reader tax_regime: untyped
+        def self.new: (state: untyped, ?tax_profile: String?, ?tax_regime: untyped) -> instance
+        def initialize: (state: untyped, ?tax_profile: String?, ?tax_regime: untyped) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

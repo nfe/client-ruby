@@ -1,0 +1,43 @@
+module Nfe
+  module Http
+    class Request < Data
+      attr_reader method: String
+      attr_reader base_url: String
+      attr_reader path: String
+      attr_reader headers: Hash[String, untyped]
+      attr_reader query: Hash[untyped, untyped]
+      attr_reader body: String?
+      attr_reader open_timeout: Numeric?
+      attr_reader read_timeout: Numeric?
+      attr_reader idempotency_key: String?
+
+      def self.new: (
+          method: String,
+          base_url: String,
+          path: String,
+          ?headers: Hash[String, untyped],
+          ?query: Hash[untyped, untyped],
+          ?body: String?,
+          ?open_timeout: Numeric?,
+          ?read_timeout: Numeric?,
+          ?idempotency_key: String?
+        ) -> instance
+
+      def initialize: (
+          method: String,
+          base_url: String,
+          path: String,
+          ?headers: Hash[String, untyped],
+          ?query: Hash[untyped, untyped],
+          ?body: String?,
+          ?open_timeout: Numeric?,
+          ?read_timeout: Numeric?,
+          ?idempotency_key: String?
+        ) -> void
+
+      def url: () -> String
+
+      def idempotent?: () -> bool
+    end
+  end
+end

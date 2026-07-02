@@ -1,0 +1,117 @@
+module Nfe
+  class TaxCoupon < Data
+    class Issuer < Data
+      attr_reader federal_tax_number: untyped
+      attr_reader name: String?
+      attr_reader trade_name: String?
+      attr_reader state_tax_number: untyped
+
+      def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::TaxCoupon::Issuer?
+      def self.new: (federal_tax_number: untyped, name: String?, trade_name: String?, state_tax_number: untyped) -> instance
+      def initialize: (federal_tax_number: untyped, name: String?, trade_name: String?, state_tax_number: untyped) -> void
+    end
+
+    class Buyer < Data
+      attr_reader federal_tax_number: untyped
+      attr_reader name: String?
+
+      def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::TaxCoupon::Buyer?
+      def self.new: (federal_tax_number: untyped, name: String?) -> instance
+      def initialize: (federal_tax_number: untyped, name: String?) -> void
+    end
+
+    class Total < Data
+      attr_reader total_amount: untyped
+      attr_reader coupon_amount: untyped
+
+      def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::TaxCoupon::Total?
+      def self.new: (total_amount: untyped, coupon_amount: untyped) -> instance
+      def initialize: (total_amount: untyped, coupon_amount: untyped) -> void
+    end
+
+    class Delivery < Data
+      attr_reader address: Nfe::TaxCoupon::Address?
+
+      def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::TaxCoupon::Delivery?
+      def self.new: (address: Nfe::TaxCoupon::Address?) -> instance
+      def initialize: (address: Nfe::TaxCoupon::Address?) -> void
+    end
+
+    class Address < Data
+      attr_reader street: String?
+      attr_reader number: untyped
+      attr_reader district: String?
+      attr_reader postal_code: untyped
+      attr_reader city: untyped
+      attr_reader state: String?
+      attr_reader country: String?
+
+      def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::TaxCoupon::Address?
+      def self.new: (street: String?, number: untyped, district: String?, postal_code: untyped, city: untyped, state: String?, country: String?) -> instance
+      def initialize: (street: String?, number: untyped, district: String?, postal_code: untyped, city: untyped, state: String?, country: String?) -> void
+    end
+
+    class AdditionalInformation < Data
+      attr_reader taxpayer: untyped
+
+      def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::TaxCoupon::AdditionalInformation?
+      def self.new: (taxpayer: untyped) -> instance
+      def initialize: (taxpayer: untyped) -> void
+    end
+
+    class Item < Data
+      attr_reader code: untyped
+      attr_reader description: String?
+      attr_reader quantity: untyped
+      attr_reader unit_amount: untyped
+      attr_reader net_amount: untyped
+      attr_reader gross_amount: untyped
+      attr_reader cfop: untyped
+
+      def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::TaxCoupon::Item?
+      def self.new: (code: untyped, description: String?, quantity: untyped, unit_amount: untyped, net_amount: untyped, gross_amount: untyped, cfop: untyped) -> instance
+      def initialize: (code: untyped, description: String?, quantity: untyped, unit_amount: untyped, net_amount: untyped, gross_amount: untyped, cfop: untyped) -> void
+    end
+
+    class PaymentDetail < Data
+      attr_reader method: untyped
+      attr_reader amount: untyped
+      attr_reader card: untyped
+
+      def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::TaxCoupon::PaymentDetail?
+      def self.new: (method: untyped, amount: untyped, card: untyped) -> instance
+      def initialize: (method: untyped, amount: untyped, card: untyped) -> void
+    end
+
+    class Payment < Data
+      attr_reader pay_back: untyped
+      attr_reader payment_details: Array[Nfe::TaxCoupon::PaymentDetail?]
+
+      def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::TaxCoupon::Payment?
+      def self.new: (pay_back: untyped, payment_details: Array[Nfe::TaxCoupon::PaymentDetail?]) -> instance
+      def initialize: (pay_back: untyped, payment_details: Array[Nfe::TaxCoupon::PaymentDetail?]) -> void
+    end
+
+    attr_reader current_status: untyped
+    attr_reader number: untyped
+    attr_reader sat_serie: untyped
+    attr_reader software_version: String?
+    attr_reader software_federal_tax_number: untyped
+    attr_reader access_key: untyped
+    attr_reader cashier: untyped
+    attr_reader issued_on: String?
+    attr_reader created_on: String?
+    attr_reader xml_version: String?
+    attr_reader issuer: Nfe::TaxCoupon::Issuer?
+    attr_reader buyer: Nfe::TaxCoupon::Buyer?
+    attr_reader totals: Nfe::TaxCoupon::Total?
+    attr_reader delivery: Nfe::TaxCoupon::Delivery?
+    attr_reader additional_information: Nfe::TaxCoupon::AdditionalInformation?
+    attr_reader items: Array[Nfe::TaxCoupon::Item?]
+    attr_reader payment: Nfe::TaxCoupon::Payment?
+
+    def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::TaxCoupon?
+    def self.new: (current_status: untyped, number: untyped, sat_serie: untyped, software_version: String?, software_federal_tax_number: untyped, access_key: untyped, cashier: untyped, issued_on: String?, created_on: String?, xml_version: String?, issuer: Nfe::TaxCoupon::Issuer?, buyer: Nfe::TaxCoupon::Buyer?, totals: Nfe::TaxCoupon::Total?, delivery: Nfe::TaxCoupon::Delivery?, additional_information: Nfe::TaxCoupon::AdditionalInformation?, items: Array[Nfe::TaxCoupon::Item?], payment: Nfe::TaxCoupon::Payment?) -> instance
+    def initialize: (current_status: untyped, number: untyped, sat_serie: untyped, software_version: String?, software_federal_tax_number: untyped, access_key: untyped, cashier: untyped, issued_on: String?, created_on: String?, xml_version: String?, issuer: Nfe::TaxCoupon::Issuer?, buyer: Nfe::TaxCoupon::Buyer?, totals: Nfe::TaxCoupon::Total?, delivery: Nfe::TaxCoupon::Delivery?, additional_information: Nfe::TaxCoupon::AdditionalInformation?, items: Array[Nfe::TaxCoupon::Item?], payment: Nfe::TaxCoupon::Payment?) -> void
+  end
+end

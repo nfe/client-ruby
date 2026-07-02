@@ -1,0 +1,26 @@
+module Nfe
+  class ProductInvoice < Data
+    attr_reader id: String?
+    attr_reader flow_status: String?
+    attr_reader flow_message: String?
+    attr_reader status: untyped
+    attr_reader environment: untyped
+    attr_reader serie: untyped
+    attr_reader number: untyped
+    attr_reader operation_nature: untyped
+    attr_reader operation_type: untyped
+    attr_reader access_key: String?
+    attr_reader protocol: untyped
+    attr_reader buyer: untyped
+    attr_reader items: untyped
+    attr_reader totals: untyped
+    attr_reader issued_on: String?
+    attr_reader created_on: String?
+    attr_reader modified_on: String?
+
+    def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::ProductInvoice?
+
+    def self.new: (id: String?, flow_status: String?, flow_message: String?, status: untyped, environment: untyped, serie: untyped, number: untyped, operation_nature: untyped, operation_type: untyped, access_key: String?, protocol: untyped, buyer: untyped, items: untyped, totals: untyped, issued_on: String?, created_on: String?, modified_on: String?) -> instance
+    def initialize: (id: String?, flow_status: String?, flow_message: String?, status: untyped, environment: untyped, serie: untyped, number: untyped, operation_nature: untyped, operation_type: untyped, access_key: String?, protocol: untyped, buyer: untyped, items: untyped, totals: untyped, issued_on: String?, created_on: String?, modified_on: String?) -> void
+  end
+end

@@ -1,0 +1,62 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/nf-consumidor-v2.yaml
+# Hash: sha256:8c39e692ff794ccb2587ebe142be040e44d76cbf970f45e65b28d56a6165bdb5
+
+module Nfe
+  module Generated
+    module NfConsumidorV2
+      class IcmsTaxResource < Data
+        attr_reader amount: Float?
+        attr_reader amount_operation: String?
+        attr_reader amount_streason: String?
+        attr_reader base_deferred: String?
+        attr_reader base_snretention_amount: String?
+        attr_reader base_stretention_amount: String?
+        attr_reader base_tax: Float?
+        attr_reader base_tax_fcpstamount: Float?
+        attr_reader base_tax_modality: String?
+        attr_reader base_tax_operation_percentual: String?
+        attr_reader base_tax_reduction: Float?
+        attr_reader base_tax_st: Float?
+        attr_reader base_tax_stmodality: String?
+        attr_reader base_tax_streduction: String?
+        attr_reader basis_benefit_code: String?
+        attr_reader csosn: String?
+        attr_reader cst: String?
+        attr_reader deduction_indicator: untyped
+        attr_reader effective_amount: Float?
+        attr_reader effective_base_tax_amount: Float?
+        attr_reader effective_base_tax_reduction_rate: Float?
+        attr_reader effective_rate: Float?
+        attr_reader exempt_amount: Float?
+        attr_reader exempt_amount_st: Float?
+        attr_reader exempt_reason: untyped
+        attr_reader exempt_reason_st: untyped
+        attr_reader fcp_amount: Float?
+        attr_reader fcp_rate: Float?
+        attr_reader fcpst_amount: Float?
+        attr_reader fcpst_rate: Float?
+        attr_reader fcpst_ret_amount: Float?
+        attr_reader fcpst_ret_rate: Float?
+        attr_reader origin: String?
+        attr_reader percentual: Float?
+        attr_reader percentual_deferment: String?
+        attr_reader rate: Float?
+        attr_reader sn_credit_amount: Float?
+        attr_reader sn_credit_rate: Float?
+        attr_reader sn_retention_amount: String?
+        attr_reader st_amount: Float?
+        attr_reader st_final_consumer_rate: Float?
+        attr_reader st_margin_added_amount: String?
+        attr_reader st_margin_amount: Float?
+        attr_reader st_rate: Float?
+        attr_reader st_retention_amount: String?
+        attr_reader substitute_amount: Float?
+        attr_reader ufst: String?
+        def self.new: (?amount: Float?, ?amount_operation: String?, ?amount_streason: String?, ?base_deferred: String?, ?base_snretention_amount: String?, ?base_stretention_amount: String?, ?base_tax: Float?, ?base_tax_fcpstamount: Float?, ?base_tax_modality: String?, ?base_tax_operation_percentual: String?, ?base_tax_reduction: Float?, ?base_tax_st: Float?, ?base_tax_stmodality: String?, ?base_tax_streduction: String?, ?basis_benefit_code: String?, ?csosn: String?, ?cst: String?, ?deduction_indicator: untyped, ?effective_amount: Float?, ?effective_base_tax_amount: Float?, ?effective_base_tax_reduction_rate: Float?, ?effective_rate: Float?, ?exempt_amount: Float?, ?exempt_amount_st: Float?, ?exempt_reason: untyped, ?exempt_reason_st: untyped, ?fcp_amount: Float?, ?fcp_rate: Float?, ?fcpst_amount: Float?, ?fcpst_rate: Float?, ?fcpst_ret_amount: Float?, ?fcpst_ret_rate: Float?, ?origin: String?, ?percentual: Float?, ?percentual_deferment: String?, ?rate: Float?, ?sn_credit_amount: Float?, ?sn_credit_rate: Float?, ?sn_retention_amount: String?, ?st_amount: Float?, ?st_final_consumer_rate: Float?, ?st_margin_added_amount: String?, ?st_margin_amount: Float?, ?st_rate: Float?, ?st_retention_amount: String?, ?substitute_amount: Float?, ?ufst: String?) -> instance
+        def initialize: (?amount: Float?, ?amount_operation: String?, ?amount_streason: String?, ?base_deferred: String?, ?base_snretention_amount: String?, ?base_stretention_amount: String?, ?base_tax: Float?, ?base_tax_fcpstamount: Float?, ?base_tax_modality: String?, ?base_tax_operation_percentual: String?, ?base_tax_reduction: Float?, ?base_tax_st: Float?, ?base_tax_stmodality: String?, ?base_tax_streduction: String?, ?basis_benefit_code: String?, ?csosn: String?, ?cst: String?, ?deduction_indicator: untyped, ?effective_amount: Float?, ?effective_base_tax_amount: Float?, ?effective_base_tax_reduction_rate: Float?, ?effective_rate: Float?, ?exempt_amount: Float?, ?exempt_amount_st: Float?, ?exempt_reason: untyped, ?exempt_reason_st: untyped, ?fcp_amount: Float?, ?fcp_rate: Float?, ?fcpst_amount: Float?, ?fcpst_rate: Float?, ?fcpst_ret_amount: Float?, ?fcpst_ret_rate: Float?, ?origin: String?, ?percentual: Float?, ?percentual_deferment: String?, ?rate: Float?, ?sn_credit_amount: Float?, ?sn_credit_rate: Float?, ?sn_retention_amount: String?, ?st_amount: Float?, ?st_final_consumer_rate: Float?, ?st_margin_added_amount: String?, ?st_margin_amount: Float?, ?st_rate: Float?, ?st_retention_amount: String?, ?substitute_amount: Float?, ?ufst: String?) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

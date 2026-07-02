@@ -1,0 +1,21 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/nfeio.yaml
+# Hash: sha256:813bda287538f8599c3565485eb523d1b1311b26b5be94ead62ba0b7a17f6af3
+
+module Nfe
+  module Generated
+    module Nfeio
+      class BatchProcessResponse < Data
+        attr_reader created_at: String
+        attr_reader input: String?
+        attr_reader out_puts: Array[OutPutResponse]?
+        attr_reader status: String?
+        attr_reader status_reason: String?
+        attr_reader updated_at: String?
+        def self.new: (created_at: String, ?input: String?, ?out_puts: Array[OutPutResponse]?, ?status: String?, ?status_reason: String?, ?updated_at: String?) -> instance
+        def initialize: (created_at: String, ?input: String?, ?out_puts: Array[OutPutResponse]?, ?status: String?, ?status_reason: String?, ?updated_at: String?) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

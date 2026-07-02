@@ -1,0 +1,51 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/nf-produto-v2.yaml
+# Hash: sha256:e565b47e4d8b17255f99efc2b6354d589d2903c4ba9b97caabd74f84de59e4e2
+
+module Nfe
+  module Generated
+    module NfProdutoV2
+      module LegalNature
+        EmpresaPublica: String
+        SociedadeEconomiaMista: String
+        SociedadeAnonimaAberta: String
+        SociedadeAnonimaFechada: String
+        SociedadeEmpresariaLimitada: String
+        SociedadeEmpresariaEmNomeColetivo: String
+        SociedadeEmpresariaEmComanditaSimples: String
+        SociedadeEmpresariaEmComanditaporAcoes: String
+        SociedadeemContaParticipacao: String
+        Empresario: String
+        Cooperativa: String
+        ConsorcioSociedades: String
+        GrupoSociedades: String
+        EmpresaDomiciliadaExterior: String
+        ClubeFundoInvestimento: String
+        SociedadeSimplesPura: String
+        SociedadeSimplesLimitada: String
+        SociedadeSimplesEmNomeColetivo: String
+        SociedadeSimplesEmComanditaSimples: String
+        EmpresaBinacional: String
+        ConsorcioEmpregadores: String
+        ConsorcioSimples: String
+        EireliNaturezaEmpresaria: String
+        EireliNaturezaSimples: String
+        ServicoNotarial: String
+        FundacaoPrivada: String
+        ServicoSocialAutonomo: String
+        CondominioEdilicio: String
+        ComissaoConciliacaoPrevia: String
+        EntidadeMediacaoArbitragem: String
+        PartidoPolitico: String
+        EntidadeSindical: String
+        EstabelecimentoBrasilFundacaoAssociacaoEstrangeiras: String
+        FundacaoAssociacaoDomiciliadaExterior: String
+        OrganizacaoReligiosa: String
+        ComunidadeIndigena: String
+        FundoPrivado: String
+        AssociacaoPrivada: String
+        ALL: Array[String]
+      end
+    end
+  end
+end

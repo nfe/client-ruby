@@ -1,0 +1,22 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/nf-consumidor-v2.yaml
+# Hash: sha256:8c39e692ff794ccb2587ebe142be040e44d76cbf970f45e65b28d56a6165bdb5
+
+module Nfe
+  module Generated
+    module NfConsumidorV2
+      class TransportInformationResource < Data
+        attr_reader freight_modality: untyped
+        attr_reader reboque: ReboqueResource
+        attr_reader seal_number: String?
+        attr_reader transp_rate: TransportRateResource
+        attr_reader transport_group: TransportGroupResource
+        attr_reader transport_vehicle: TransportVehicleResource
+        attr_reader volume: VolumeResource
+        def self.new: (?freight_modality: untyped, ?reboque: ReboqueResource, ?seal_number: String?, ?transp_rate: TransportRateResource, ?transport_group: TransportGroupResource, ?transport_vehicle: TransportVehicleResource, ?volume: VolumeResource) -> instance
+        def initialize: (?freight_modality: untyped, ?reboque: ReboqueResource, ?seal_number: String?, ?transp_rate: TransportRateResource, ?transport_group: TransportGroupResource, ?transport_vehicle: TransportVehicleResource, ?volume: VolumeResource) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

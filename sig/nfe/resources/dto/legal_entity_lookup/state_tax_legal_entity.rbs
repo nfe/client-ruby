@@ -1,0 +1,71 @@
+module Nfe
+  class StateTaxLegalEntity < Data
+    class Address < Data
+      attr_reader street: String?
+      attr_reader number: String?
+      attr_reader district: String?
+      attr_reader postal_code: String?
+      attr_reader city: untyped
+      attr_reader state: String?
+      attr_reader country: String?
+
+      def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::StateTaxLegalEntity::Address?
+      def self.new: (street: String?, number: String?, district: String?, postal_code: String?, city: untyped, state: String?, country: String?) -> instance
+      def initialize: (street: String?, number: String?, district: String?, postal_code: String?, city: untyped, state: String?, country: String?) -> void
+    end
+
+    class EconomicActivity < Data
+      attr_reader type: untyped
+      attr_reader code: String?
+      attr_reader description: String?
+
+      def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::StateTaxLegalEntity::EconomicActivity?
+      def self.new: (type: untyped, code: String?, description: String?) -> instance
+      def initialize: (type: untyped, code: String?, description: String?) -> void
+    end
+
+    class FiscalDocumentInfo < Data
+      attr_reader status: untyped
+      attr_reader description: String?
+
+      def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::StateTaxLegalEntity::FiscalDocumentInfo?
+      def self.new: (status: untyped, description: String?) -> instance
+      def initialize: (status: untyped, description: String?) -> void
+    end
+
+    class StateTax < Data
+      attr_reader status: untyped
+      attr_reader tax_number: String?
+      attr_reader status_on: String?
+      attr_reader opened_on: String?
+      attr_reader closed_on: String?
+      attr_reader additional_information: String?
+      attr_reader code: String?
+      attr_reader address: Nfe::StateTaxLegalEntity::Address?
+      attr_reader economic_activities: untyped
+      attr_reader nfe: Nfe::StateTaxLegalEntity::FiscalDocumentInfo?
+      attr_reader nfse: Nfe::StateTaxLegalEntity::FiscalDocumentInfo?
+      attr_reader cte: Nfe::StateTaxLegalEntity::FiscalDocumentInfo?
+      attr_reader nfce: Nfe::StateTaxLegalEntity::FiscalDocumentInfo?
+
+      def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::StateTaxLegalEntity::StateTax?
+      def self.new: (status: untyped, tax_number: String?, status_on: String?, opened_on: String?, closed_on: String?, additional_information: String?, code: String?, address: Nfe::StateTaxLegalEntity::Address?, economic_activities: untyped, nfe: Nfe::StateTaxLegalEntity::FiscalDocumentInfo?, nfse: Nfe::StateTaxLegalEntity::FiscalDocumentInfo?, cte: Nfe::StateTaxLegalEntity::FiscalDocumentInfo?, nfce: Nfe::StateTaxLegalEntity::FiscalDocumentInfo?) -> instance
+      def initialize: (status: untyped, tax_number: String?, status_on: String?, opened_on: String?, closed_on: String?, additional_information: String?, code: String?, address: Nfe::StateTaxLegalEntity::Address?, economic_activities: untyped, nfe: Nfe::StateTaxLegalEntity::FiscalDocumentInfo?, nfse: Nfe::StateTaxLegalEntity::FiscalDocumentInfo?, cte: Nfe::StateTaxLegalEntity::FiscalDocumentInfo?, nfce: Nfe::StateTaxLegalEntity::FiscalDocumentInfo?) -> void
+    end
+
+    attr_reader federal_tax_number: String?
+    attr_reader name: String?
+    attr_reader trade_name: String?
+    attr_reader tax_regime: untyped
+    attr_reader legal_nature: untyped
+    attr_reader fiscal_unit: String?
+    attr_reader created_unit: String?
+    attr_reader created_on: String?
+    attr_reader check_code: String?
+    attr_reader state_taxes: untyped
+
+    def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::StateTaxLegalEntity?
+    def self.new: (federal_tax_number: String?, name: String?, trade_name: String?, tax_regime: untyped, legal_nature: untyped, fiscal_unit: String?, created_unit: String?, created_on: String?, check_code: String?, state_taxes: untyped) -> instance
+    def initialize: (federal_tax_number: String?, name: String?, trade_name: String?, tax_regime: untyped, legal_nature: untyped, fiscal_unit: String?, created_unit: String?, created_on: String?, check_code: String?, state_taxes: untyped) -> void
+  end
+end

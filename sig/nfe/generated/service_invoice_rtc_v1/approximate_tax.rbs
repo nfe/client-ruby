@@ -1,0 +1,19 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/service-invoice-rtc-v1.yaml
+# Hash: sha256:5c3b751b63e6a0adabb185b974e141f1b06127934fa0bf05fc505676024db32b
+
+module Nfe
+  module Generated
+    module ServiceInvoiceRtcV1
+      class ApproximateTax < Data
+        attr_reader source: String
+        attr_reader total_amount: Float
+        attr_reader total_rate: Float
+        attr_reader version: String
+        def self.new: (?source: String, ?total_amount: Float, ?total_rate: Float, ?version: String) -> instance
+        def initialize: (?source: String, ?total_amount: Float, ?total_rate: Float, ?version: String) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

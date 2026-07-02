@@ -1,0 +1,20 @@
+module Nfe
+  class InboundSettings < Data
+    attr_reader id: String?
+    attr_reader status: untyped
+    attr_reader start_from_nsu: untyped
+    attr_reader start_from_date: String?
+    attr_reader environment_sefaz: String?
+    attr_reader automatic_manifesting: untyped
+    attr_reader webhook_version: untyped
+    attr_reader created_on: String?
+    attr_reader modified_on: String?
+    attr_reader details: untyped
+
+    def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::InboundSettings?
+
+    def self.new: (id: String?, status: untyped, start_from_nsu: untyped, start_from_date: String?, environment_sefaz: String?, automatic_manifesting: untyped, webhook_version: untyped, created_on: String?, modified_on: String?, details: untyped) -> instance
+
+    def initialize: (id: String?, status: untyped, start_from_nsu: untyped, start_from_date: String?, environment_sefaz: String?, automatic_manifesting: untyped, webhook_version: untyped, created_on: String?, modified_on: String?, details: untyped) -> void
+  end
+end

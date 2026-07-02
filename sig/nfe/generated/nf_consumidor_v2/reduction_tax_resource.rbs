@@ -1,0 +1,17 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/nf-consumidor-v2.yaml
+# Hash: sha256:8c39e692ff794ccb2587ebe142be040e44d76cbf970f45e65b28d56a6165bdb5
+
+module Nfe
+  module Generated
+    module NfConsumidorV2
+      class ReductionTaxResource < Data
+        attr_reader effective_rate: Float?
+        attr_reader rate_reduction: Float?
+        def self.new: (?effective_rate: Float?, ?rate_reduction: Float?) -> instance
+        def initialize: (?effective_rate: Float?, ?rate_reduction: Float?) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

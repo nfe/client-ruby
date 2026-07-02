@@ -1,0 +1,23 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/nf-consumidor-v2.yaml
+# Hash: sha256:8c39e692ff794ccb2587ebe142be040e44d76cbf970f45e65b28d56a6165bdb5
+
+module Nfe
+  module Generated
+    module NfConsumidorV2
+      class WithdrawalInformationResource < Data
+        attr_reader account_id: String?
+        attr_reader address: AddressResource
+        attr_reader email: String?
+        attr_reader federal_tax_number: Integer?
+        attr_reader id: String?
+        attr_reader name: String?
+        attr_reader state_tax_number: String?
+        attr_reader type: untyped
+        def self.new: (?account_id: String?, ?address: AddressResource, ?email: String?, ?federal_tax_number: Integer?, ?id: String?, ?name: String?, ?state_tax_number: String?, ?type: untyped) -> instance
+        def initialize: (?account_id: String?, ?address: AddressResource, ?email: String?, ?federal_tax_number: Integer?, ?id: String?, ?name: String?, ?state_tax_number: String?, ?type: untyped) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

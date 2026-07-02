@@ -1,0 +1,42 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/nf-consumidor-v2.yaml
+# Hash: sha256:8c39e692ff794ccb2587ebe142be040e44d76cbf970f45e65b28d56a6165bdb5
+
+module Nfe
+  module Generated
+    module NfConsumidorV2
+      module FlagCard
+        None: String
+        Visa: String
+        Mastercard: String
+        AmericanExpress: String
+        Sorocred: String
+        DinersClub: String
+        Elo: String
+        Hipercard: String
+        Aura: String
+        Cabal: String
+        Alelo: String
+        BanesCard: String
+        CalCard: String
+        Credz: String
+        Discover: String
+        GoodCard: String
+        GreenCard: String
+        Hiper: String
+        JCB: String
+        Mais: String
+        MaxVan: String
+        Policard: String
+        RedeCompras: String
+        Sodexo: String
+        ValeCard: String
+        Verocheque: String
+        VR: String
+        Ticket: String
+        Other: String
+        ALL: Array[String]
+      end
+    end
+  end
+end

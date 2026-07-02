@@ -1,0 +1,33 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/nf-produto-v2.yaml
+# Hash: sha256:e565b47e4d8b17255f99efc2b6354d589d2903c4ba9b97caabd74f84de59e4e2
+
+module Nfe
+  module Generated
+    module NfProdutoV2
+      class IssuerResource < Data
+        attr_reader account_id: String?
+        attr_reader address: AddressResource
+        attr_reader company_registry_number: Integer?
+        attr_reader economic_activities: Array[EconomicActivityResource]?
+        attr_reader email: String?
+        attr_reader federal_tax_number: Integer?
+        attr_reader id: String?
+        attr_reader legal_nature: untyped
+        attr_reader municipal_tax_number: String?
+        attr_reader name: String?
+        attr_reader openning_date: String?
+        attr_reader regional_sttax_number: Integer?
+        attr_reader regional_tax_number: Integer?
+        attr_reader special_tax_regime: untyped
+        attr_reader st_state_tax_number: String?
+        attr_reader tax_regime: untyped
+        attr_reader trade_name: String?
+        attr_reader type: untyped
+        def self.new: (?account_id: String?, ?address: AddressResource, ?company_registry_number: Integer?, ?economic_activities: Array[EconomicActivityResource]?, ?email: String?, ?federal_tax_number: Integer?, ?id: String?, ?legal_nature: untyped, ?municipal_tax_number: String?, ?name: String?, ?openning_date: String?, ?regional_sttax_number: Integer?, ?regional_tax_number: Integer?, ?special_tax_regime: untyped, ?st_state_tax_number: String?, ?tax_regime: untyped, ?trade_name: String?, ?type: untyped) -> instance
+        def initialize: (?account_id: String?, ?address: AddressResource, ?company_registry_number: Integer?, ?economic_activities: Array[EconomicActivityResource]?, ?email: String?, ?federal_tax_number: Integer?, ?id: String?, ?legal_nature: untyped, ?municipal_tax_number: String?, ?name: String?, ?openning_date: String?, ?regional_sttax_number: Integer?, ?regional_tax_number: Integer?, ?special_tax_regime: untyped, ?st_state_tax_number: String?, ?tax_regime: untyped, ?trade_name: String?, ?type: untyped) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

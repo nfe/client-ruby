@@ -1,0 +1,24 @@
+module Nfe
+  class ConsumerInvoice < Data
+    attr_reader id: String?
+    attr_reader status: untyped
+    attr_reader flow_status: String?
+    attr_reader flow_message: String?
+    attr_reader environment: String?
+    attr_reader access_key: String?
+    attr_reader number: untyped
+    attr_reader serie: untyped
+    attr_reader total_amount: untyped
+    attr_reader issued_on: String?
+    attr_reader created_on: String?
+    attr_reader modified_on: String?
+    attr_reader cancelled_on: String?
+    attr_reader raw: Hash[untyped, untyped]?
+
+    def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::ConsumerInvoice?
+
+    def self.new: (id: String?, status: untyped, flow_status: String?, flow_message: String?, environment: String?, access_key: String?, number: untyped, serie: untyped, total_amount: untyped, issued_on: String?, created_on: String?, modified_on: String?, cancelled_on: String?, raw: Hash[untyped, untyped]?) -> instance
+
+    def initialize: (id: String?, status: untyped, flow_status: String?, flow_message: String?, environment: String?, access_key: String?, number: untyped, serie: untyped, total_amount: untyped, issued_on: String?, created_on: String?, modified_on: String?, cancelled_on: String?, raw: Hash[untyped, untyped]?) -> void
+  end
+end

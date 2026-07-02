@@ -1,0 +1,39 @@
+module Nfe
+  module Resources
+    class ProductInvoices < AbstractResource
+      def api_family: () -> Symbol
+      def api_version: () -> String
+
+      def create: (company_id: String, data: Hash[untyped, untyped], ?idempotency_key: String?, ?request_options: Nfe::RequestOptions?) -> (Nfe::Resources::ProductInvoicePending | Nfe::Resources::ProductInvoiceIssued)
+      def create_with_state_tax: (company_id: String, state_tax_id: String, data: Hash[untyped, untyped], ?idempotency_key: String?, ?request_options: Nfe::RequestOptions?) -> (Nfe::Resources::ProductInvoicePending | Nfe::Resources::ProductInvoiceIssued)
+      def list: (company_id: String, environment: String, **untyped options) -> Nfe::ListResponse
+      def retrieve: (company_id: String, invoice_id: String) -> Nfe::ProductInvoice?
+      def cancel: (company_id: String, invoice_id: String, ?reason: String?) -> Hash[untyped, untyped]
+      def list_items: (company_id: String, invoice_id: String, ?limit: Integer?, ?starting_after: String?) -> Nfe::ListResponse
+      def list_events: (company_id: String, invoice_id: String, ?limit: Integer?, ?starting_after: String?) -> Nfe::ListResponse
+      def download_pdf: (company_id: String, invoice_id: String, ?force: bool?) -> Nfe::NfeFileResource?
+      def download_xml: (company_id: String, invoice_id: String) -> Nfe::NfeFileResource?
+      def download_rejection_xml: (company_id: String, invoice_id: String) -> Nfe::NfeFileResource?
+      def download_epec_xml: (company_id: String, invoice_id: String) -> Nfe::NfeFileResource?
+      def send_correction_letter: (company_id: String, invoice_id: String, reason: String) -> Hash[untyped, untyped]
+      def download_correction_letter_pdf: (company_id: String, invoice_id: String) -> Nfe::NfeFileResource?
+      def download_correction_letter_xml: (company_id: String, invoice_id: String) -> Nfe::NfeFileResource?
+      def disable: (company_id: String, invoice_id: String, ?reason: String?) -> Hash[untyped, untyped]
+      def disable_range: (company_id: String, data: Hash[untyped, untyped]) -> Hash[untyped, untyped]
+
+      private
+
+      def base_path: (String company_id) -> String
+      def json_headers: () -> Hash[String, String]
+      def json_body: (untyped data) -> String
+      def require_environment: (untyped environment) -> void
+      def cursor_query: (Hash[Symbol, untyped] options) -> Hash[Symbol, untyped]
+      def validate_correction_reason: (untyped reason) -> void
+      def sub_list: (company_id: String, invoice_id: String, segment: String, limit: untyped, starting_after: untyped, wrapper_key: String) -> Nfe::ListResponse
+      def file_resource: (company_id: String, invoice_id: String, segment: String, ?query: Hash[untyped, untyped]) -> Nfe::NfeFileResource?
+      def discriminate: (Nfe::Http::Response response) -> (Nfe::Resources::ProductInvoicePending | Nfe::Resources::ProductInvoiceIssued)
+      def build_pending: (Nfe::Http::Response response) -> Nfe::Resources::ProductInvoicePending
+      def extract_invoice_id: (String? location) -> String?
+    end
+  end
+end

@@ -1,0 +1,9 @@
+module Nfe
+  module FlowStatus
+    TERMINAL: Array[String]
+    NON_TERMINAL: Array[String]
+    ALL: Array[String]
+
+    def self?.terminal?: (untyped status) -> bool
+  end
+end

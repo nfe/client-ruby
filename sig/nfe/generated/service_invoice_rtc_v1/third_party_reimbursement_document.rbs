@@ -1,0 +1,27 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/service-invoice-rtc-v1.yaml
+# Hash: sha256:5c3b751b63e6a0adabb185b974e141f1b06127934fa0bf05fc505676024db32b
+
+module Nfe
+  module Generated
+    module ServiceInvoiceRtcV1
+      class ThirdPartyReimbursementDocument < Data
+        attr_reader accrual_on: String
+        attr_reader amount: Float
+        attr_reader cte_key: String
+        attr_reader issue_date: String
+        attr_reader nfe_key: String
+        attr_reader nfse_key: String
+        attr_reader other_doc: Hash[String, untyped]
+        attr_reader other_fiscal_doc: Hash[String, untyped]
+        attr_reader other_national_dfe: Hash[String, untyped]
+        attr_reader reimbursement_type: String
+        attr_reader reimbursement_type_text: String
+        attr_reader supplier: PartyDefinition
+        def self.new: (accrual_on: String, amount: Float, ?cte_key: String, issue_date: String, ?nfe_key: String, ?nfse_key: String, ?other_doc: Hash[String, untyped], ?other_fiscal_doc: Hash[String, untyped], ?other_national_dfe: Hash[String, untyped], reimbursement_type: String, ?reimbursement_type_text: String, ?supplier: PartyDefinition) -> instance
+        def initialize: (accrual_on: String, amount: Float, ?cte_key: String, issue_date: String, ?nfe_key: String, ?nfse_key: String, ?other_doc: Hash[String, untyped], ?other_fiscal_doc: Hash[String, untyped], ?other_national_dfe: Hash[String, untyped], reimbursement_type: String, ?reimbursement_type_text: String, ?supplier: PartyDefinition) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

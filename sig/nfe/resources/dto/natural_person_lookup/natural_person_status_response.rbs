@@ -1,0 +1,15 @@
+module Nfe
+  class NaturalPersonStatusResponse < Data
+    attr_reader name: String?
+    attr_reader federal_tax_number: String?
+    attr_reader birth_on: String?
+    attr_reader status: String?
+    attr_reader created_on: String?
+
+    def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::NaturalPersonStatusResponse?
+
+    def self.new: (name: String?, federal_tax_number: String?, birth_on: String?, status: String?, created_on: String?) -> instance
+
+    def initialize: (name: String?, federal_tax_number: String?, birth_on: String?, status: String?, created_on: String?) -> void
+  end
+end

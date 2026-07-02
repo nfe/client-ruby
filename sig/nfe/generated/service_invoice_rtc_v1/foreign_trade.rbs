@@ -1,0 +1,25 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/service-invoice-rtc-v1.yaml
+# Hash: sha256:5c3b751b63e6a0adabb185b974e141f1b06127934fa0bf05fc505676024db32b
+
+module Nfe
+  module Generated
+    module ServiceInvoiceRtcV1
+      class ForeignTrade < Data
+        attr_reader currency: String
+        attr_reader export_registration: String
+        attr_reader import_declaration: String
+        attr_reader mdic_delivery: bool
+        attr_reader relation_ship: String
+        attr_reader service_amount_in_currency: Float
+        attr_reader service_mode: String
+        attr_reader support_mechanism_provider: String
+        attr_reader support_mechanism_receiver: String
+        attr_reader temporary_goods: String
+        def self.new: (?currency: String, ?export_registration: String, ?import_declaration: String, ?mdic_delivery: bool, ?relation_ship: String, ?service_amount_in_currency: Float, ?service_mode: String, ?support_mechanism_provider: String, ?support_mechanism_receiver: String, ?temporary_goods: String) -> instance
+        def initialize: (?currency: String, ?export_registration: String, ?import_declaration: String, ?mdic_delivery: bool, ?relation_ship: String, ?service_amount_in_currency: Float, ?service_mode: String, ?support_mechanism_provider: String, ?support_mechanism_receiver: String, ?temporary_goods: String) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

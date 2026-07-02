@@ -1,0 +1,20 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/consulta-nfe-distribuicao-v1.yaml
+# Hash: sha256:c28db6c6fed93a58342537de8131850f266d0cdff71873a3bab126b3309e3ea7
+
+module Nfe
+  module Generated
+    module ConsultaNfeDistribuicaoV1
+      class AtivarbuscaautomticadedocumentoseEventosrelacionadosaNotaFiscalEletrnicaNF_eRequest < Data
+        attr_reader automatic_manifesting: AutomaticManifesting
+        attr_reader environment_sefaz: String
+        attr_reader start_from_date: String
+        attr_reader start_from_nsu: String
+        attr_reader webhook_version: String
+        def self.new: (automatic_manifesting: AutomaticManifesting, environment_sefaz: String, start_from_date: String, start_from_nsu: String, webhook_version: String) -> instance
+        def initialize: (automatic_manifesting: AutomaticManifesting, environment_sefaz: String, start_from_date: String, start_from_nsu: String, webhook_version: String) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

@@ -1,0 +1,21 @@
+module Nfe
+  class InboundInvoiceMetadata < Data
+    attr_reader access_key: String?
+    attr_reader nsu: untyped
+    attr_reader status: untyped
+    attr_reader name_sender: String?
+    attr_reader federal_tax_number_sender: String?
+    attr_reader total_invoice_amount: untyped
+    attr_reader issued_on: String?
+    attr_reader product_invoices: untyped
+    attr_reader details: untyped
+
+    def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::InboundInvoiceMetadata?
+
+    def self.stringify: (untyped value) -> String?
+
+    def self.new: (access_key: String?, nsu: untyped, status: untyped, name_sender: String?, federal_tax_number_sender: String?, total_invoice_amount: untyped, issued_on: String?, product_invoices: untyped, details: untyped) -> instance
+
+    def initialize: (access_key: String?, nsu: untyped, status: untyped, name_sender: String?, federal_tax_number_sender: String?, total_invoice_amount: untyped, issued_on: String?, product_invoices: untyped, details: untyped) -> void
+  end
+end

@@ -1,0 +1,12 @@
+module Nfe
+  module Resources
+    class Addresses < AbstractResource
+      def lookup_by_postal_code: (untyped postal_code) -> Nfe::AddressLookupResponse?
+      def search: (?filter: untyped) -> Nfe::AddressLookupResponse?
+      def lookup_by_term: (untyped term) -> Nfe::AddressLookupResponse?
+
+      def api_family: () -> Symbol
+      def api_version: () -> String
+    end
+  end
+end

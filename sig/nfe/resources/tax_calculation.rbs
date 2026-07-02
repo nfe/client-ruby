@@ -1,0 +1,18 @@
+module Nfe
+  module Resources
+    class TaxCalculation < AbstractResource
+      def api_family: () -> Symbol
+      def api_version: () -> String
+
+      # +request+ accepts a plain Hash; build it from
+      # Nfe::Generated::CalculoImpostosV1::CalculateRequest#to_h for type-safety.
+      def calculate: (String tenant_id, Hash[untyped, untyped] request) -> Nfe::Generated::CalculoImpostosV1::CalculateResponse?
+
+      private
+
+      def validate_calculate!: (String tenant_id, untyped request) -> void
+      def operation_type?: (Hash[untyped, untyped] request) -> bool
+      def items?: (Hash[untyped, untyped] request) -> bool
+    end
+  end
+end

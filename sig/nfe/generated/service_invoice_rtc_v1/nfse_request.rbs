@@ -1,0 +1,73 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/service-invoice-rtc-v1.yaml
+# Hash: sha256:5c3b751b63e6a0adabb185b974e141f1b06127934fa0bf05fc505676024db32b
+
+module Nfe
+  module Generated
+    module ServiceInvoiceRtcV1
+      class NFSeRequest < Data
+        attr_reader reference_substitution: ReferenceSubstitution
+        attr_reader accrual_on: String
+        attr_reader activity_event: ActivityEvent
+        attr_reader additional_information: String
+        attr_reader additional_information_group: Hash[String, untyped]
+        attr_reader approximate_tax: ApproximateTax
+        attr_reader approximate_totals: ApproximateTotals
+        attr_reader benefit: Benefit
+        attr_reader borrower: PartyDefinition
+        attr_reader city_service_code: String
+        attr_reader cnae_code: String
+        attr_reader cofins_amount: Float
+        attr_reader cofins_amount_withheld: Float
+        attr_reader cofins_rate: Float
+        attr_reader construction: Construction
+        attr_reader csll_amount: Float
+        attr_reader csll_amount_withheld: Float
+        attr_reader csll_rate: Float
+        attr_reader cst_pis_cofins: String
+        attr_reader deduction: Deduction
+        attr_reader deductions_amount: Float
+        attr_reader description: String
+        attr_reader discount_conditioned_amount: Float
+        attr_reader discount_unconditioned_amount: Float
+        attr_reader external_id: String
+        attr_reader federal_service_code: String
+        attr_reader foreign_trade: ForeignTrade
+        attr_reader ibs_cbs: IbsCbs
+        attr_reader immunity_type: String
+        attr_reader inss_amount_withheld: Float
+        attr_reader intermediary: PartyDefinition
+        attr_reader ipi_amount: Float
+        attr_reader ipi_rate: Float
+        attr_reader ir_amount_withheld: Float
+        attr_reader is_early_installment_payment: bool
+        attr_reader iss_amount_withheld: Float
+        attr_reader iss_rate: Float
+        attr_reader iss_tax_amount: Float
+        attr_reader issued_on: String
+        attr_reader lease: Lease
+        attr_reader location: AddressDefinition
+        attr_reader nbs_code: String
+        attr_reader ncm_code: String
+        attr_reader others_amount_withheld: Float
+        attr_reader paid_amount: Float
+        attr_reader pis_amount: Float
+        attr_reader pis_amount_withheld: Float
+        attr_reader pis_cofins_base_tax: Float
+        attr_reader pis_rate: Float
+        attr_reader real_estate: RealEstate
+        attr_reader recipient: PartyDefinition
+        attr_reader retention_type: String
+        attr_reader rps_number: Float
+        attr_reader rps_serial_number: String
+        attr_reader service_amount_details: ServiceAmountDefinitions
+        attr_reader services_amount: Float
+        attr_reader suspension: Suspension
+        attr_reader taxation_type: String
+        def self.new: (?reference_substitution: ReferenceSubstitution, ?accrual_on: String, ?activity_event: ActivityEvent, ?additional_information: String, ?additional_information_group: Hash[String, untyped], ?approximate_tax: ApproximateTax, ?approximate_totals: ApproximateTotals, ?benefit: Benefit, ?borrower: PartyDefinition, city_service_code: String, ?cnae_code: String, ?cofins_amount: Float, ?cofins_amount_withheld: Float, ?cofins_rate: Float, ?construction: Construction, ?csll_amount: Float, ?csll_amount_withheld: Float, ?csll_rate: Float, ?cst_pis_cofins: String, ?deduction: Deduction, ?deductions_amount: Float, description: String, ?discount_conditioned_amount: Float, ?discount_unconditioned_amount: Float, ?external_id: String, ?federal_service_code: String, ?foreign_trade: ForeignTrade, ?ibs_cbs: IbsCbs, ?immunity_type: String, ?inss_amount_withheld: Float, ?intermediary: PartyDefinition, ?ipi_amount: Float, ?ipi_rate: Float, ?ir_amount_withheld: Float, ?is_early_installment_payment: bool, ?iss_amount_withheld: Float, ?iss_rate: Float, ?iss_tax_amount: Float, ?issued_on: String, ?lease: Lease, ?location: AddressDefinition, nbs_code: String, ?ncm_code: String, ?others_amount_withheld: Float, ?paid_amount: Float, ?pis_amount: Float, ?pis_amount_withheld: Float, ?pis_cofins_base_tax: Float, ?pis_rate: Float, ?real_estate: RealEstate, ?recipient: PartyDefinition, ?retention_type: String, ?rps_number: Float, ?rps_serial_number: String, ?service_amount_details: ServiceAmountDefinitions, services_amount: Float, ?suspension: Suspension, ?taxation_type: String) -> instance
+        def initialize: (?reference_substitution: ReferenceSubstitution, ?accrual_on: String, ?activity_event: ActivityEvent, ?additional_information: String, ?additional_information_group: Hash[String, untyped], ?approximate_tax: ApproximateTax, ?approximate_totals: ApproximateTotals, ?benefit: Benefit, ?borrower: PartyDefinition, city_service_code: String, ?cnae_code: String, ?cofins_amount: Float, ?cofins_amount_withheld: Float, ?cofins_rate: Float, ?construction: Construction, ?csll_amount: Float, ?csll_amount_withheld: Float, ?csll_rate: Float, ?cst_pis_cofins: String, ?deduction: Deduction, ?deductions_amount: Float, description: String, ?discount_conditioned_amount: Float, ?discount_unconditioned_amount: Float, ?external_id: String, ?federal_service_code: String, ?foreign_trade: ForeignTrade, ?ibs_cbs: IbsCbs, ?immunity_type: String, ?inss_amount_withheld: Float, ?intermediary: PartyDefinition, ?ipi_amount: Float, ?ipi_rate: Float, ?ir_amount_withheld: Float, ?is_early_installment_payment: bool, ?iss_amount_withheld: Float, ?iss_rate: Float, ?iss_tax_amount: Float, ?issued_on: String, ?lease: Lease, ?location: AddressDefinition, nbs_code: String, ?ncm_code: String, ?others_amount_withheld: Float, ?paid_amount: Float, ?pis_amount: Float, ?pis_amount_withheld: Float, ?pis_cofins_base_tax: Float, ?pis_rate: Float, ?real_estate: RealEstate, ?recipient: PartyDefinition, ?retention_type: String, ?rps_number: Float, ?rps_serial_number: String, ?service_amount_details: ServiceAmountDefinitions, services_amount: Float, ?suspension: Suspension, ?taxation_type: String) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

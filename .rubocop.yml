@@ -1,0 +1,126 @@
+plugins:
+  - rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 3.2
+  NewCops: enable
+  SuggestExtensions: false
+  Exclude:
+    - "lib/nfe/generated/**/*"
+    - "lib/nfe/generated.rb"
+    - "samples/**/*"
+    - "docs/**/*"
+    - "bin/**/*"
+    - "vendor/**/*"
+    - "client-nodejs/**/*"
+    - "client-php/**/*"
+    - "nfeio-docs/**/*"
+
+# Double quotes throughout — consistent, matches the existing code, and avoids
+# churn when string interpolation is later introduced.
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/QuotedSymbols:
+  EnforcedStyle: double_quotes
+
+# Every source file must declare frozen string literals (zero-dep, immutable-first).
+Style/FrozenStringLiteralComment:
+  Enabled: true
+  EnforcedStyle: always
+
+# Public API is documented with RDoc prose, not enforced per-class by RuboCop.
+Style/Documentation:
+  Enabled: false
+
+# Allow Steep/RBS inline type annotations (`#: Type`), which by design have no
+# space after the `#`.
+Layout/LeadingCommentSpace:
+  AllowRBSInlineAnnotation: true
+
+# Keyword-argument constructors (Configuration, Client) are config objects whose
+# named options are intentionally many and self-documenting.
+Metrics/ParameterLists:
+  CountKeywordArgs: false
+
+Metrics/MethodLength:
+  Max: 25
+
+Metrics/AbcSize:
+  Max: 25
+
+Metrics/ClassLength:
+  Max: 250
+
+Metrics/ModuleLength:
+  Max: 120
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+Metrics/PerceivedComplexity:
+  Max: 10
+
+# get_* method names intentionally mirror the Node SDK surface (parity).
+Naming/AccessorMethodName:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"
+    - "*.gemspec"
+    - "Rakefile"
+
+# Development dependencies live in the gemspec by design (single source of truth).
+Gemspec/DevelopmentDependencies:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Max: 20
+
+RSpec/MultipleExpectations:
+  Max: 10
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 8
+
+# Spec files are organized by unit (version_spec, client_spec, ...), not strictly
+# by the described constant.
+RSpec/SpecFilePathFormat:
+  Enabled: false
+
+# Collaborators (logger, transport) are intentionally duck-typed; a verifying
+# double cannot be built against a duck type.
+RSpec/VerifiedDoubles:
+  Enabled: false
+
+# Value objects use `class X < Data.define(...)` (not the `X = Data.define do…end`
+# block form) because Steep resolves instance methods to the class only in the
+# inheritance form. This cop prefers the block form, so it is disabled.
+Style/DataInheritance:
+  Enabled: false
+
+# The HTTP Request value object exposes the verb as `request.method`, which
+# intentionally shadows Object#method (never relied upon by the value object).
+Lint/DataDefineOverride:
+  Enabled: false
+
+# `q` is the API's documented free-text search query parameter (productinvoices
+# list); allow it as a short keyword-argument name alongside RuboCop's defaults.
+Naming/MethodParameterName:
+  AllowedNames:
+    - q
+    - id
+    - io
+    - to
+    - by
+    - on
+    - in
+    - at
+    - ip
+    - db
+    - os
+    - pp
+    - ce
+    - cc
+    - ph

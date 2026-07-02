@@ -1,0 +1,28 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/contribuintes-v2.json
+# Hash: sha256:e2d215a19f5dc85c08067d51644e807aae32b6c4754390872670f2e18a938102
+
+module Nfe
+  module Generated
+    module ContribuintesV2
+      class DFeTech_TaxPayers_Resources_CompanyResourceItem < Data
+        attr_reader account_id: String?
+        attr_reader address: DFeTech_TaxPayers_Resources_AddressResource
+        attr_reader created_on: String
+        attr_reader federal_tax_number: Integer
+        attr_reader id: String?
+        attr_reader modified_on: String?
+        attr_reader municipal_tax_number: String?
+        attr_reader municipal_taxes: Array[String]?
+        attr_reader name: String
+        attr_reader state_taxes: Array[String]?
+        attr_reader status: untyped
+        attr_reader tax_regime: untyped
+        attr_reader trade_name: String?
+        def self.new: (?account_id: String?, address: DFeTech_TaxPayers_Resources_AddressResource, ?created_on: String, federal_tax_number: Integer, ?id: String?, ?modified_on: String?, ?municipal_tax_number: String?, ?municipal_taxes: Array[String]?, name: String, ?state_taxes: Array[String]?, ?status: untyped, tax_regime: untyped, ?trade_name: String?) -> instance
+        def initialize: (?account_id: String?, address: DFeTech_TaxPayers_Resources_AddressResource, ?created_on: String, federal_tax_number: Integer, ?id: String?, ?modified_on: String?, ?municipal_tax_number: String?, ?municipal_taxes: Array[String]?, name: String, ?state_taxes: Array[String]?, ?status: untyped, tax_regime: untyped, ?trade_name: String?) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

@@ -1,0 +1,24 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/contribuintes-v2.json
+# Hash: sha256:e2d215a19f5dc85c08067d51644e807aae32b6c4754390872670f2e18a938102
+
+module Nfe
+  module Generated
+    module ContribuintesV2
+      class DFeTech_TaxPayers_Domain_Entities_Address < Data
+        attr_reader additional_information: String?
+        attr_reader city: DFeTech_TaxPayers_Domain_Entities_CityBase
+        attr_reader country: String?
+        attr_reader district: String?
+        attr_reader number: String?
+        attr_reader postal_code: String?
+        attr_reader state: String?
+        attr_reader street: String?
+        attr_reader street_prefix: String?
+        def self.new: (?additional_information: String?, ?city: DFeTech_TaxPayers_Domain_Entities_CityBase, ?country: String?, ?district: String?, ?number: String?, ?postal_code: String?, ?state: String?, ?street: String?, ?street_prefix: String?) -> instance
+        def initialize: (?additional_information: String?, ?city: DFeTech_TaxPayers_Domain_Entities_CityBase, ?country: String?, ?district: String?, ?number: String?, ?postal_code: String?, ?state: String?, ?street: String?, ?street_prefix: String?) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

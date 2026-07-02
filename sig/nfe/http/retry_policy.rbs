@@ -1,0 +1,18 @@
+module Nfe
+  module Http
+    class RetryPolicy < Data
+      attr_reader max_retries: Integer
+      attr_reader base_delay: Float
+      attr_reader max_delay: Float
+      attr_reader jitter: Float
+
+      def self.new: (max_retries: Integer, base_delay: Float, max_delay: Float, jitter: Float) -> RetryPolicy
+      def initialize: (max_retries: Integer, base_delay: Float, max_delay: Float, jitter: Float) -> void
+
+      def self.default: () -> RetryPolicy
+      def self.none: () -> RetryPolicy
+
+      def delay_for: (Integer attempt) -> Float
+    end
+  end
+end

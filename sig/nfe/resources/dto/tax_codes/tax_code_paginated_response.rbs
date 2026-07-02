@@ -1,0 +1,23 @@
+module Nfe
+  class TaxCode < Data
+    attr_reader code: String?
+    attr_reader description: String?
+
+    def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::TaxCode?
+
+    def self.new: (code: String?, description: String?) -> instance
+    def initialize: (code: String?, description: String?) -> void
+  end
+
+  class TaxCodePaginatedResponse < Data
+    attr_reader current_page: untyped
+    attr_reader total_pages: untyped
+    attr_reader total_count: untyped
+    attr_reader items: Array[Nfe::TaxCode?]
+
+    def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::TaxCodePaginatedResponse?
+
+    def self.new: (current_page: untyped, total_pages: untyped, total_count: untyped, items: Array[Nfe::TaxCode?]) -> instance
+    def initialize: (current_page: untyped, total_pages: untyped, total_count: untyped, items: Array[Nfe::TaxCode?]) -> void
+  end
+end

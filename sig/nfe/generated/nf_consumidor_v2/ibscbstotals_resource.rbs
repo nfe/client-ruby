@@ -1,0 +1,20 @@
+# AUTO-GENERATED — do not edit
+# Source: openapi/nf-consumidor-v2.yaml
+# Hash: sha256:8c39e692ff794ccb2587ebe142be040e44d76cbf970f45e65b28d56a6165bdb5
+
+module Nfe
+  module Generated
+    module NfConsumidorV2
+      class IBSCBSTotalsResource < Data
+        attr_reader basis: Float?
+        attr_reader cbs: CBSTotalsResource
+        attr_reader credit_reversal: CreditReversalTotalsResource
+        attr_reader ibs: IBSTotalsResource
+        attr_reader monophase: MonophaseTotalsResource
+        def self.new: (?basis: Float?, ?cbs: CBSTotalsResource, ?credit_reversal: CreditReversalTotalsResource, ?ibs: IBSTotalsResource, ?monophase: MonophaseTotalsResource) -> instance
+        def initialize: (?basis: Float?, ?cbs: CBSTotalsResource, ?credit_reversal: CreditReversalTotalsResource, ?ibs: IBSTotalsResource, ?monophase: MonophaseTotalsResource) -> void
+        def self.from_api: (Hash[String, untyped]? payload) -> instance?
+      end
+    end
+  end
+end

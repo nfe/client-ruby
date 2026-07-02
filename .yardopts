@@ -1,0 +1,11 @@
+--template-path docs/yard-theme
+--output-dir docs/api
+--markup markdown
+--readme README.md
+--no-private
+--title "nfe-io 1.0.0 - SDK Ruby (API)"
+--exclude lib/nfe/generated/.*
+lib/**/*.rb
+-
+CHANGELOG.md
+MIGRATION.md

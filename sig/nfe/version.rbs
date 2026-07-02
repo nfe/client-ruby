@@ -1,0 +1,3 @@
+module Nfe
+  VERSION: String
+end

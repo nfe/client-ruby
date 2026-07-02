@@ -1,0 +1,76 @@
+# frozen_string_literal: true
+# AUTO-GENERATED — do not edit
+# Source: openapi/contribuintes-v2.json
+# Hash: sha256:e2d215a19f5dc85c08067d51644e807aae32b6c4754390872670f2e18a938102
+
+module Nfe
+  module Generated
+    module ContribuintesV2
+      module DFeTech_TaxPayers_Domain_Entities_LegalNature
+        None = "None"
+        EmpresaPublica = "EmpresaPublica"
+        SociedadeEconomiaMista = "SociedadeEconomiaMista"
+        SociedadeAnonimaAberta = "SociedadeAnonimaAberta"
+        SociedadeAnonimaFechada = "SociedadeAnonimaFechada"
+        SociedadeEmpresariaLimitada = "SociedadeEmpresariaLimitada"
+        SociedadeEmpresariaEmNomeColetivo = "SociedadeEmpresariaEmNomeColetivo"
+        SociedadeEmpresariaEmComanditaSimples = "SociedadeEmpresariaEmComanditaSimples"
+        SociedadeEmpresariaEmComanditaporAcoes = "SociedadeEmpresariaEmComanditaporAcoes"
+        SociedadeemContaParticipacao = "SociedadeemContaParticipacao"
+        Empresario = "Empresario"
+        Cooperativa = "Cooperativa"
+        ConsorcioSociedades = "ConsorcioSociedades"
+        GrupoSociedades = "GrupoSociedades"
+        SociedadeEstrangeiraNoBrasil = "SociedadeEstrangeiraNoBrasil"
+        EmpresaBinacionalArgentinoBrasileira = "EmpresaBinacionalArgentinoBrasileira"
+        EmpresaDomiciliadaExterior = "EmpresaDomiciliadaExterior"
+        ClubeFundoInvestimento = "ClubeFundoInvestimento"
+        SociedadeSimplesPura = "SociedadeSimplesPura"
+        SociedadeSimplesLimitada = "SociedadeSimplesLimitada"
+        SociedadeSimplesEmNomeColetivo = "SociedadeSimplesEmNomeColetivo"
+        SociedadeSimplesEmComanditaSimples = "SociedadeSimplesEmComanditaSimples"
+        EmpresaBinacional = "EmpresaBinacional"
+        ConsorcioEmpregadores = "ConsorcioEmpregadores"
+        ConsorcioSimples = "ConsorcioSimples"
+        EireliNaturezaEmpresaria = "EireliNaturezaEmpresaria"
+        EireliNaturezaSimples = "EireliNaturezaSimples"
+        SociedadeUnipessoaldeAdvogados = "SociedadeUnipessoaldeAdvogados"
+        CooperativaDeConsumo = "CooperativaDeConsumo"
+        EmpresaSimplesDeInovacao = "EmpresaSimplesDeInovacao"
+        InvestidorNaoResidente = "InvestidorNaoResidente"
+        ServicoNotarial = "ServicoNotarial"
+        FundacaoPrivada = "FundacaoPrivada"
+        ServicoSocialAutonomo = "ServicoSocialAutonomo"
+        CondominioEdilicio = "CondominioEdilicio"
+        ComissaoConciliacaoPrevia = "ComissaoConciliacaoPrevia"
+        EntidadeMediacaoArbitragem = "EntidadeMediacaoArbitragem"
+        PartidoPolitico = "PartidoPolitico"
+        EntidadeSindical = "EntidadeSindical"
+        EstabelecimentoBrasilFundacaoAssociacaoEstrangeiras = "EstabelecimentoBrasilFundacaoAssociacaoEstrangeiras"
+        FundacaoAssociacaoDomiciliadaExterior = "FundacaoAssociacaoDomiciliadaExterior"
+        OrganizacaoReligiosa = "OrganizacaoReligiosa"
+        ComunidadeIndigena = "ComunidadeIndigena"
+        FundoPrivado = "FundoPrivado"
+        OrgaoDirecaoNacionalPartidoPolitico = "OrgaoDirecaoNacionalPartidoPolitico"
+        OrgaoDirecaoRegionalPartidoPolitico = "OrgaoDirecaoRegionalPartidoPolitico"
+        OrgaoDirecaoLocalPartidoPolitico = "OrgaoDirecaoLocalPartidoPolitico"
+        ComiteFinanceiroDePartidoPolitico = "ComiteFinanceiroDePartidoPolitico"
+        FrentePlebiscitariaOuReferendaria = "FrentePlebiscitariaOuReferendaria"
+        OrganizacaoSocial = "OrganizacaoSocial"
+        DemaisCondominios = "DemaisCondominios"
+        PlanoBeneficiosPrevidenciaComplementarFechada = "PlanoBeneficiosPrevidenciaComplementarFechada"
+        AssociacaoPrivada = "AssociacaoPrivada"
+        EmpresaIndividualImobiliaria = "EmpresaIndividualImobiliaria"
+        SeguradoEspecial = "SeguradoEspecial"
+        ContribuinteIndividual = "ContribuinteIndividual"
+        CandidatoCargoPoliticoEletivo = "CandidatoCargoPoliticoEletivo"
+        Leiloeiro = "Leiloeiro"
+        ProdutorRural = "ProdutorRural"
+        OrganizacaoInternacional = "OrganizacaoInternacional"
+        RepresentacaoDiplomaticaEstrangeira = "RepresentacaoDiplomaticaEstrangeira"
+        OutrasInstituicoesExtraterritoriais = "OutrasInstituicoesExtraterritoriais"
+        ALL = [None, EmpresaPublica, SociedadeEconomiaMista, SociedadeAnonimaAberta, SociedadeAnonimaFechada, SociedadeEmpresariaLimitada, SociedadeEmpresariaEmNomeColetivo, SociedadeEmpresariaEmComanditaSimples, SociedadeEmpresariaEmComanditaporAcoes, SociedadeemContaParticipacao, Empresario, Cooperativa, ConsorcioSociedades, GrupoSociedades, SociedadeEstrangeiraNoBrasil, EmpresaBinacionalArgentinoBrasileira, EmpresaDomiciliadaExterior, ClubeFundoInvestimento, SociedadeSimplesPura, SociedadeSimplesLimitada, SociedadeSimplesEmNomeColetivo, SociedadeSimplesEmComanditaSimples, EmpresaBinacional, ConsorcioEmpregadores, ConsorcioSimples, EireliNaturezaEmpresaria, EireliNaturezaSimples, SociedadeUnipessoaldeAdvogados, CooperativaDeConsumo, EmpresaSimplesDeInovacao, InvestidorNaoResidente, ServicoNotarial, FundacaoPrivada, ServicoSocialAutonomo, CondominioEdilicio, ComissaoConciliacaoPrevia, EntidadeMediacaoArbitragem, PartidoPolitico, EntidadeSindical, EstabelecimentoBrasilFundacaoAssociacaoEstrangeiras, FundacaoAssociacaoDomiciliadaExterior, OrganizacaoReligiosa, ComunidadeIndigena, FundoPrivado, OrgaoDirecaoNacionalPartidoPolitico, OrgaoDirecaoRegionalPartidoPolitico, OrgaoDirecaoLocalPartidoPolitico, ComiteFinanceiroDePartidoPolitico, FrentePlebiscitariaOuReferendaria, OrganizacaoSocial, DemaisCondominios, PlanoBeneficiosPrevidenciaComplementarFechada, AssociacaoPrivada, EmpresaIndividualImobiliaria, SeguradoEspecial, ContribuinteIndividual, CandidatoCargoPoliticoEletivo, Leiloeiro, ProdutorRural, OrganizacaoInternacional, RepresentacaoDiplomaticaEstrangeira, OutrasInstituicoesExtraterritoriais].freeze
+      end
+    end
+  end
+end
