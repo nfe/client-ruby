@@ -278,9 +278,24 @@ module Nfe
 
         email = data[:email] || data["email"]
         return if email.nil?
-        return if /\A[^\s@]+@[^\s@]+\.[^\s@]+\z/.match?(email.to_s)
+        return if valid_email?(email.to_s)
 
         raise Nfe::InvalidRequestError, "e-mail (email) com formato inválido"
+      end
+
+      # Structural e-mail check without a backtracking-prone regex (avoids the
+      # polynomial ReDoS in +[^\s@]+@[^\s@]+\.[^\s@]++). Equivalent semantics:
+      # exactly one "@", no whitespace, and a dotted domain with non-empty
+      # leading/trailing labels. Every step is linear in the input length.
+      def valid_email?(value)
+        return false if value.match?(/\s/)
+
+        local, separator, domain = value.partition("@")
+        return false if separator.empty? || local.empty? || domain.empty?
+        return false if domain.include?("@")
+        return false if domain.start_with?(".") || domain.end_with?(".")
+
+        domain.include?(".")
       end
 
       def normalize_tax_number(value)

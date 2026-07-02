@@ -28,6 +28,7 @@ module Nfe
       def json_body: (untyped data) -> String
       def resolve_page_index: (Hash[untyped, untyped] payload, Integer requested_index) -> Integer
       def validate_company_data: (Hash[untyped, untyped] data) -> void
+      def valid_email?: (String value) -> bool
       def normalize_tax_number: (untyped value) -> String
       def read_certificate_bytes: (String file) -> String
       def build_certificate_status: (Hash[untyped, untyped] details) -> Nfe::CertificateStatus
