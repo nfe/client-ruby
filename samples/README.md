@@ -65,7 +65,7 @@ instalar a gem para experimentar.
 ## Notas
 
 - A emissão é **assíncrona** (HTTP 202). Não há `create_and_wait`/`create_batch`
-  na v1.0 — faça polling chamando `retrieve` em laço até
+  na v1.x — faça polling chamando `retrieve` em laço até
   `Nfe::FlowStatus.terminal?(invoice.flow_status)` (estados terminais:
   `Issued`, `IssueFailed`, `Cancelled`, `CancelFailed`).
 - Downloads de NFS-e/NFC-e retornam **bytes** (`ASCII-8BIT`) — grave com

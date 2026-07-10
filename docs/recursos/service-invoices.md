@@ -15,7 +15,7 @@ e-mail e download de PDF/XML.
 
 A emissão segue o **contrato 202 discriminado**: `create` devolve um de dois
 tipos, e você acompanha o processamento com `retrieve` (ou `get_status`) até um
-estado terminal. Não existe `create_and_wait` nem `create_batch` na `v1.0`.
+estado terminal. Não existe `create_and_wait` nem `create_batch` na `v1.x`.
 
 :::note Host e versão
 Todas as URLs efetivas ficam sob `https://api.nfe.io/v1/...`. Este é o único

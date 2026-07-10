@@ -76,7 +76,7 @@ end
 
 ## 5. Acompanhe até um estado terminal (polling)
 
-Não existe `create_and_wait` na `v1.0` — faça polling com `retrieve` até um
+Não existe `create_and_wait` na `v1.x` — faça polling com `retrieve` até um
 estado terminal, usando `Nfe::FlowStatus.terminal?`:
 
 ```ruby

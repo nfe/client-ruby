@@ -34,7 +34,7 @@ funcionando). `pdf`/`xml` são fantasmas **deprecated** (sempre `nil`) — use
 
 ## Emitir + esperar (polling manual)
 
-Não há `create_and_wait` em v1.0. Padrão recomendado:
+Não há `create_and_wait` na v1.x. Padrão recomendado:
 
 ```ruby
 result = client.service_invoices.create(
