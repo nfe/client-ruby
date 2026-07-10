@@ -7,6 +7,8 @@ e o projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
 ## [Não lançado]
 
+## [1.1.0] - 2026-07-09
+
 > Duas correções de contrato contra a API real: o CRUD de webhooks (provado por
 > sonda ao vivo, 2026-07-02/03, três contas) e a cobertura do retrieve de NFS-e
 > (o DTO descartava mais da metade dos campos). Em ambas, o contrato correto
@@ -133,6 +135,7 @@ e o projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
 - Última versão da série `0.x` (legada, baseada em `rest-client`). Congelada, sem manutenção.
 
-[Não lançado]: https://github.com/nfe/client-ruby/compare/v1.0.0...HEAD
+[Não lançado]: https://github.com/nfe/client-ruby/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/nfe/client-ruby/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/nfe/client-ruby/compare/v0.3.2...v1.0.0
 [0.3.2]: https://github.com/nfe/client-ruby/releases/tag/v0.3.2
