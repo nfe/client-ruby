@@ -282,7 +282,7 @@ discriminado**:
   `pending?` ⇒ `true`, `issued?` ⇒ `false`.
 - `*Issued` (HTTP 201, já materializado) — expõe `resource`; `issued?` ⇒ `true`.
 
-Não há `create_and_wait` nem `create_batch` na v1.0 — faça **polling** chamando
+Não há `create_and_wait` nem `create_batch` na v1.x — faça **polling** chamando
 `retrieve` até um estado terminal, usando `Nfe::FlowStatus.terminal?`. Os estados
 terminais são: `Issued`, `IssueFailed`, `Cancelled`, `CancelFailed`.
 

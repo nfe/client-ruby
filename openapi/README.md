@@ -6,7 +6,7 @@ objects under `lib/nfe/generated/` (and their signatures under
 documentation repository after review — never hand-edited here.
 
 - **Source:** `nfeio-docs` → `docs/static/api/` (https://nfe.io).
-- **Snapshot:** 2026-06-24.
+- **Snapshot:** 2026-07-09 (verificado contra `nfe/docs` `main`; specs idênticos byte a byte).
 - **Sync:** `rake openapi:sync` copies the spec set from `nfeio-docs`
   (path configurable via `NFEIO_DOCS_PATH`) into this directory and reports the
   diff. It does **not** run `rake generate` or commit — that is a deliberate
@@ -26,5 +26,11 @@ directly — JSON is valid YAML, so the loader (Psych) reads both.
 Some specs declare their request/response shapes inline under `operations[...]`
 rather than in `components.schemas`. Those produce **no** generated namespace;
 the DTOs they would need are hand-written in the resource changes instead. The
-generator logs each skipped spec. (Known examples include `nf-servico-v1.yaml`
-and `cpf-api.yaml` — the definitive list is reported by `rake generate`.)
+generator logs each skipped spec. (Known example: `cpf-api.yaml` — the
+definitive list is reported by `rake generate`.)
+
+A spec can also be only **partially** componentized: `nf-servico-v1.yaml`
+declares `ErrorsResource` in `components.schemas` (so it generates the
+errors-only `nf_servico_v1` namespace), while its success responses remain
+inline — the `Nfe::ServiceInvoice` DTO stays hand-written, pinned to the spec
+by an alignment test.

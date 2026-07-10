@@ -186,7 +186,7 @@ The spec loader SHALL parse each spec, verify it is a YAML/JSON document declari
 - **THEN** the generator SHALL raise with a message naming the offending file, and SHALL NOT write partial output
 
 #### Scenario: Spec without schemas produces nothing
-- **WHEN** a spec has no `components.schemas` (e.g., `nf-servico-v1.yaml` deriving its type from `operations[...]`, or `cpf-api.yaml`)
+- **WHEN** a spec has no `components.schemas` (e.g., `cpf-api.yaml` deriving its type from `operations[...]`)
 - **THEN** the generator SHALL skip it without error, and the missing DTOs SHALL be hand-written by the resource changes (not under `lib/nfe/generated/`)
 
 ### Requirement: Specs are synced from nfeio-docs via a documented manual mechanism

@@ -11,7 +11,7 @@ description: >-
   zero dependências de runtime (stdlib only).
 ---
 
-# NFE.io Ruby SDK (gem `nfe-io`, v1.0)
+# NFE.io Ruby SDK (gem `nfe-io`, v1.x)
 
 SDK oficial da NFE.io para Ruby. Cliente estilo Stripe, **thread-safe**, **zero
 dependências de runtime** (só stdlib: `net/http`, `json`, `openssl`, `uri`,
@@ -135,7 +135,7 @@ Emissão é tipicamente **assíncrona**. `create` retorna um resultado
 - **`*Pending`** (HTTP 202): `#invoice_id`, `#location`; `pending? => true`, `issued? => false`.
 - **`*Issued`** (HTTP 201/200): `#resource` (DTO hidratado); `issued? => true`, `pending? => false`.
 
-Não existe `create_and_wait`/`create_batch` para notas em v1.0. Faça polling:
+Não existe `create_and_wait`/`create_batch` para notas na v1.x. Faça polling:
 
 ```ruby
 result = client.service_invoices.create(company_id: id, data: payload)

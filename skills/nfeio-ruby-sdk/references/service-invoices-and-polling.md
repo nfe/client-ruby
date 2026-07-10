@@ -22,13 +22,19 @@ client.service_invoices.get_status(company_id:, invoice_id:)    # => StatusResul
 
 `data` é um `Hash` com chaves **camelCase** (serializado como JSON cru). Campos
 do DTO de leitura `Nfe::ServiceInvoice`: `id`, `flow_status`, `flow_message`,
-`status`, `environment`, `rps_number`, `number`, `check_code`, `issued_on`,
-`cancelled_on`, `amount_net`, `services_amount`, `borrower`, `city_service_code`,
-`federal_service_code`, `description`, `pdf`, `xml`, `created_on`, `modified_on`.
+`status`, `environment`, `rps_number`, `rps_serial_number`, `number`,
+`check_code`, `issued_on`, `cancelled_on`, `amount_net`, `services_amount`,
+`borrower`, `city_service_code`, `federal_service_code`, `description`,
+`created_on`, `modified_on`, `base_tax_amount`, `iss_rate`, `iss_tax_amount` e
+`raw` (payload completo — retenções, `provider`, `taxationType` etc. via
+`invoice.raw["..."]`). `borrower` é `Nfe::ServiceInvoiceBorrower` tipado
+(`federal_tax_number` sempre String; leituras Hash `borrower["..."]` seguem
+funcionando). `pdf`/`xml` são fantasmas **deprecated** (sempre `nil`) — use
+`download_pdf`/`download_xml`.
 
 ## Emitir + esperar (polling manual)
 
-Não há `create_and_wait` em v1.0. Padrão recomendado:
+Não há `create_and_wait` na v1.x. Padrão recomendado:
 
 ```ruby
 result = client.service_invoices.create(

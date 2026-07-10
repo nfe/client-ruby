@@ -15,7 +15,7 @@ e-mail e download de PDF/XML.
 
 A emissão segue o **contrato 202 discriminado**: `create` devolve um de dois
 tipos, e você acompanha o processamento com `retrieve` (ou `get_status`) até um
-estado terminal. Não existe `create_and_wait` nem `create_batch` na `v1.0`.
+estado terminal. Não existe `create_and_wait` nem `create_batch` na `v1.x`.
 
 :::note Host e versão
 Todas as URLs efetivas ficam sob `https://api.nfe.io/v1/...`. Este é o único
@@ -98,6 +98,46 @@ end
 
 Como alternativa, você pode chamar `retrieve` diretamente e testar
 `Nfe::FlowStatus.terminal?(invoice.flow_status)`.
+
+## Ler os campos da nota (tipados + `raw`)
+
+`Nfe::ServiceInvoice` tipa os campos de maior valor — incluindo o trio de ISS
+`base_tax_amount`, `iss_rate` e `iss_tax_amount` — e preserva **o payload
+completo** da API em `invoice.raw`. Campos sem membro tipado (a árvore de
+retenções, `provider`, `taxationType`, `location`, `approximateTax`, ...)
+ficam acessíveis por ali:
+
+```ruby
+invoice = client.service_invoices.retrieve(
+  company_id: company_id,
+  invoice_id: invoice_id
+)
+
+invoice.number            # número fiscal
+invoice.iss_rate          # 0.05
+invoice.iss_tax_amount    # 50.0
+
+invoice.raw["taxationType"]           # "WithinCity"
+invoice.raw["issAmountWithheld"]      # retenção de ISS
+invoice.raw.dig("provider", "name")   # prestador (21 campos via raw)
+```
+
+O `borrower` (tomador) é um `Nfe::ServiceInvoiceBorrower` tipado, com
+`federal_tax_number` sempre `String` (tolerante ao CNPJ alfanumérico da
+IN RFB 2.229/2024). Leituras estilo Hash continuam funcionando (delegam ao
+payload cru, chaves camelCase):
+
+```ruby
+invoice.borrower.name                  # tipado
+invoice.borrower.federal_tax_number    # "191" (String, mesmo se o fio mandar Integer)
+invoice.borrower["federalTaxNumber"]   # 191 (valor cru do fio)
+invoice.borrower.dig("address", "city", "name")
+```
+
+:::warning `pdf` e `xml` estão deprecated
+Os membros `invoice.pdf` e `invoice.xml` são campos-fantasma — a resposta do
+retrieve não os traz (sempre `nil`). Use `download_pdf`/`download_xml`.
+:::
 
 ## Baixar PDF e XML (bytes binários)
 

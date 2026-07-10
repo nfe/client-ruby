@@ -116,7 +116,7 @@ HTTP extra), como atalho para inspecionar o estado atual.
 
 ## Por que não existe `create_and_wait`?
 
-A `v1.0` **não** implementa `create_and_wait`, `create_batch` nem
+A `v1.x` **não** implementa `create_and_wait`, `create_batch` nem
 `poll_until_complete`. O contrato discriminado `*Pending` / `*Issued` somado a
 `Nfe::FlowStatus.terminal?` é suficiente para escrever loops de polling manuais,
 e esses auxiliares ficam deliberadamente adiados para uma versão futura — sem
@@ -124,7 +124,7 @@ quebrar o contrato público.
 
 :::warning Não chame helpers inexistentes
 Referenciar `client.poll_until_complete(...)` ou `resource.create_and_wait(...)`
-na `v1.0` levanta `NoMethodError`, pois o método não está definido.
+na `v1.x` levanta `NoMethodError`, pois o método não está definido.
 :::
 
 ## Próximos passos
