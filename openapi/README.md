@@ -6,7 +6,7 @@ objects under `lib/nfe/generated/` (and their signatures under
 documentation repository after review — never hand-edited here.
 
 - **Source:** `nfeio-docs` → `docs/static/api/` (https://nfe.io).
-- **Snapshot:** 2026-06-24.
+- **Snapshot:** 2026-07-09 (verificado contra `nfe/docs` `main`; specs idênticos byte a byte).
 - **Sync:** `rake openapi:sync` copies the spec set from `nfeio-docs`
   (path configurable via `NFEIO_DOCS_PATH`) into this directory and reports the
   diff. It does **not** run `rake generate` or commit — that is a deliberate
