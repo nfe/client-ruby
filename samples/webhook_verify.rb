@@ -33,7 +33,7 @@ abort "Defina NFE_WEBHOOK_SECRET." if secret.nil? || secret.strip.empty?
 raw_payload = JSON.generate(
   {
     "id" => "evt_123",
-    "action" => "invoice.issued",
+    "action" => "service_invoice.issued_successfully",
     "payload" => { "id" => "inv_456", "flowStatus" => "Issued" }
   }
 )

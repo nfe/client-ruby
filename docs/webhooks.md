@@ -72,7 +72,7 @@ event = Nfe::Webhook.construct_event(
   secret: ENV.fetch("NFE_WEBHOOK_SECRET")
 )
 
-event.type       # ex.: "invoice.issued"
+event.type       # ex.: "service_invoice.issued_successfully"
 event.data       # Hash com o payload (a chave "payload" ou "data" do envelope)
 event.id         # id estável para deduplicação, ou nil
 event.created_at # timestamp da entrega como String, ou nil
@@ -151,6 +151,10 @@ pode gerar efeitos colaterais duplicados.
 
 ## Próximos passos
 
+- [Webhooks (recurso)](./recursos/webhooks.md) — crie e gerencie os webhooks da
+  conta (`/v2/webhooks`), descubra os tipos de eventos ao vivo com
+  `fetch_event_types` e veja os cuidados do create (ping 2xx na URI) e do
+  update (PUT é substituição integral).
 - [Primeiros passos](./getting-started.md) — emissão e polling como alternativa ao push.
 - [Paginação](./pagination.md) — percorra listas de notas.
 - [Downloads](./downloads.md) — baixe PDF/XML das notas.

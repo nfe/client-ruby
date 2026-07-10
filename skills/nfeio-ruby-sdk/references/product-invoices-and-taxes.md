@@ -28,7 +28,8 @@ client.product_invoices.download_correction_letter_xml(company_id:, invoice_id:)
 
 `create`/`create_with_state_tax` retornam `ProductInvoicePending` (202, comum —
 conclusão chega por **webhook**) ou `ProductInvoiceIssued` (201). Faça polling
-com `retrieve` + `Nfe::FlowStatus.terminal?`, ou trate o webhook `invoice.issued`.
+com `retrieve` + `Nfe::FlowStatus.terminal?`, ou trate o webhook
+`product_invoice.issued` (filtros reais via `webhooks.fetch_event_types`).
 
 ```ruby
 res = client.product_invoices.create(company_id: id, data: nfe_payload)

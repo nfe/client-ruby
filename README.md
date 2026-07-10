@@ -184,7 +184,7 @@ A `v1` expõe **17 recursos canônicos** no `Nfe::Client` (mais 2 addons RTC).
 | `companies` | `api.nfe.io` (`/v1`) | Empresas + certificado | `create`, `retrieve`, `list`, `update`, `remove`, `upload_certificate`, `get_certificate_status` |
 | `legal_people` | `api.nfe.io` (`/v1`) | Pessoas jurídicas (tomadores) | `create`, `retrieve`, `list`, `update`, `delete`, `create_batch`, `find_by_tax_number` |
 | `natural_people` | `api.nfe.io` (`/v1`) | Pessoas físicas (tomadores) | `create`, `retrieve`, `list`, `update`, `delete`, `create_batch`, `find_by_tax_number` |
-| `webhooks` | `api.nfe.io` (`/v1`) | Assinaturas de webhook | `create`, `retrieve`, `list`, `update`, `delete`, `test`, `verify_signature` |
+| `webhooks` | `api.nfe.io` (`/v2`, conta) | Webhooks da conta | `create_account_webhook`, `retrieve_account_webhook`, `list_account_webhooks`, `update_account_webhook`, `delete_account_webhook`, `ping_account_webhook`, `fetch_event_types`, `verify_signature` |
 | `product_invoices` | `api.nfse.io` (`/v2`) | NF-e | `create`, `create_with_state_tax`, `list`, `retrieve`, `cancel`, `send_correction_letter`, `disable`, `download_*` |
 | `consumer_invoices` | `api.nfse.io` (`/v2`) | NFC-e | `create`, `create_with_state_tax`, `list`, `retrieve`, `cancel`, `disable_range`, `download_pdf`/`download_xml` |
 | `transportation_invoices` | `api.nfse.io` (`/v2`) | CT-e (recepção) | `enable`, `disable`, `get_settings`, `retrieve`, `download_xml`, `get_event` |
@@ -374,15 +374,25 @@ Devolvem bytes: `service_invoices`, `consumer_invoices`,
 
 ## Webhooks
 
-Crie a assinatura e **verifique a assinatura** de cada entrega.
+Crie o webhook (escopo da **conta**, `/v2/webhooks`) e **verifique a
+assinatura** de cada entrega. A NFE.io pinga a `uri` na criação e exige 2xx;
+descubra os filtros válidos com `fetch_event_types`.
 
 ```ruby
-client.webhooks.create("co_1", {
-  url: "https://minha-app.com/webhooks/nfe",
-  events: ["invoice.issued", "invoice.cancelled", "invoice.failed"],
-  secret: ENV["NFE_WEBHOOK_SECRET"]
-})
+client.webhooks.create_account_webhook(
+  uri: "https://minha-app.com/webhooks/nfe",
+  contentType: "json",
+  secret: ENV["NFE_WEBHOOK_SECRET"],   # 32–64 caracteres
+  filters: ["service_invoice.issued_successfully", "service_invoice.issued_error"],
+  status: "Active"
+)
 ```
+
+> ⚠️ `update_account_webhook` faz **PUT integral**: campos omitidos voltam ao
+> padrão — um update sem `status` desativa o webhook. Parta do
+> `retrieve_account_webhook` e envie o objeto completo. Os métodos
+> company-scoped (`create`/`list`/... com `company_id`) estão **deprecated** —
+> a rota `/v1/companies/{id}/webhooks` retorna 404 na API atual.
 
 A verificação é **HMAC-SHA1 sobre os bytes crus** da requisição (header
 `X-Hub-Signature`, comparação case-insensitive e timing-safe). Leia o corpo bruto

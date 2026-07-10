@@ -13,6 +13,12 @@ module Nfe
   #
   # {from_api} maps API camelCase onto snake_case, drops unknown keys, and is
   # nil-tolerant (+from_api(nil)+ returns +nil+).
+  #
+  # @deprecated This shape (+url+/+events+/+active+) is rejected by the live
+  #   API (+400 "The Uri field is required"+), and the company-scoped route
+  #   that would return it responds 404 (confirmed on three accounts,
+  #   2026-07-02/03). Use {Nfe::AccountWebhook} with the account-scoped
+  #   methods on {Nfe::Resources::Webhooks}.
   class WebhookSubscription < Data.define(
     :id,
     :url,

@@ -1,0 +1,21 @@
+module Nfe
+  class AccountWebhook < Data
+    attr_reader id: String?
+    attr_reader uri: String?
+    attr_reader content_type: String?
+    attr_reader secret: String?
+    attr_reader filters: Array[String]?
+    attr_reader insecure_ssl: bool?
+    attr_reader headers: untyped
+    attr_reader properties: untyped
+    attr_reader status: String?
+    attr_reader created_on: String?
+    attr_reader modified_on: String?
+
+    def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::AccountWebhook?
+
+    def self.new: (id: String?, uri: String?, content_type: String?, secret: String?, filters: Array[String]?, insecure_ssl: bool?, headers: untyped, properties: untyped, status: String?, created_on: String?, modified_on: String?) -> instance
+
+    def initialize: (id: String?, uri: String?, content_type: String?, secret: String?, filters: Array[String]?, insecure_ssl: bool?, headers: untyped, properties: untyped, status: String?, created_on: String?, modified_on: String?) -> void
+  end
+end
