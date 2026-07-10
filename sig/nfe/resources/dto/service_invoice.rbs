@@ -13,7 +13,7 @@ module Nfe
     attr_reader cancelled_on: String?
     attr_reader amount_net: untyped
     attr_reader services_amount: untyped
-    attr_reader borrower: untyped
+    attr_reader borrower: Nfe::ServiceInvoiceBorrower?
     attr_reader city_service_code: untyped
     attr_reader federal_service_code: untyped
     attr_reader description: String?
@@ -21,10 +21,14 @@ module Nfe
     attr_reader xml: untyped
     attr_reader created_on: String?
     attr_reader modified_on: String?
+    attr_reader base_tax_amount: (Float | Integer)?
+    attr_reader iss_rate: (Float | Integer)?
+    attr_reader iss_tax_amount: (Float | Integer)?
+    attr_reader raw: Hash[untyped, untyped]?
 
     def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::ServiceInvoice?
 
-    def self.new: (id: String?, flow_status: String?, flow_message: String?, status: untyped, environment: untyped, rps_number: untyped, rps_serial_number: untyped, number: untyped, check_code: String?, issued_on: String?, cancelled_on: String?, amount_net: untyped, services_amount: untyped, borrower: untyped, city_service_code: untyped, federal_service_code: untyped, description: String?, pdf: untyped, xml: untyped, created_on: String?, modified_on: String?) -> instance
-    def initialize: (id: String?, flow_status: String?, flow_message: String?, status: untyped, environment: untyped, rps_number: untyped, rps_serial_number: untyped, number: untyped, check_code: String?, issued_on: String?, cancelled_on: String?, amount_net: untyped, services_amount: untyped, borrower: untyped, city_service_code: untyped, federal_service_code: untyped, description: String?, pdf: untyped, xml: untyped, created_on: String?, modified_on: String?) -> void
+    def self.new: (id: String?, flow_status: String?, flow_message: String?, status: untyped, environment: untyped, rps_number: untyped, rps_serial_number: untyped, number: untyped, check_code: String?, issued_on: String?, cancelled_on: String?, amount_net: untyped, services_amount: untyped, borrower: Nfe::ServiceInvoiceBorrower?, city_service_code: untyped, federal_service_code: untyped, description: String?, pdf: untyped, xml: untyped, created_on: String?, modified_on: String?, base_tax_amount: (Float | Integer)?, iss_rate: (Float | Integer)?, iss_tax_amount: (Float | Integer)?, raw: Hash[untyped, untyped]?) -> instance
+    def initialize: (id: String?, flow_status: String?, flow_message: String?, status: untyped, environment: untyped, rps_number: untyped, rps_serial_number: untyped, number: untyped, check_code: String?, issued_on: String?, cancelled_on: String?, amount_net: untyped, services_amount: untyped, borrower: Nfe::ServiceInvoiceBorrower?, city_service_code: untyped, federal_service_code: untyped, description: String?, pdf: untyped, xml: untyped, created_on: String?, modified_on: String?, base_tax_amount: (Float | Integer)?, iss_rate: (Float | Integer)?, iss_tax_amount: (Float | Integer)?, raw: Hash[untyped, untyped]?) -> void
   end
 end

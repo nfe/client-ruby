@@ -1,0 +1,21 @@
+module Nfe
+  class ServiceInvoiceBorrower < Data
+    attr_reader id: String?
+    attr_reader name: String?
+    attr_reader federal_tax_number: String?
+    attr_reader email: String?
+    attr_reader phone_number: String?
+    attr_reader address: untyped
+    attr_reader parent_id: String?
+    attr_reader raw: Hash[untyped, untyped]?
+
+    def self.from_api: (Hash[untyped, untyped]? payload) -> Nfe::ServiceInvoiceBorrower?
+
+    def self.new: (id: String?, name: String?, federal_tax_number: String?, email: String?, phone_number: String?, address: untyped, parent_id: String?, raw: Hash[untyped, untyped]?) -> instance
+
+    def initialize: (id: String?, name: String?, federal_tax_number: String?, email: String?, phone_number: String?, address: untyped, parent_id: String?, raw: Hash[untyped, untyped]?) -> void
+
+    def []: (untyped key) -> untyped
+    def dig: (*untyped keys) -> untyped
+  end
+end

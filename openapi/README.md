@@ -26,5 +26,11 @@ directly — JSON is valid YAML, so the loader (Psych) reads both.
 Some specs declare their request/response shapes inline under `operations[...]`
 rather than in `components.schemas`. Those produce **no** generated namespace;
 the DTOs they would need are hand-written in the resource changes instead. The
-generator logs each skipped spec. (Known examples include `nf-servico-v1.yaml`
-and `cpf-api.yaml` — the definitive list is reported by `rake generate`.)
+generator logs each skipped spec. (Known example: `cpf-api.yaml` — the
+definitive list is reported by `rake generate`.)
+
+A spec can also be only **partially** componentized: `nf-servico-v1.yaml`
+declares `ErrorsResource` in `components.schemas` (so it generates the
+errors-only `nf_servico_v1` namespace), while its success responses remain
+inline — the `Nfe::ServiceInvoice` DTO stays hand-written, pinned to the spec
+by an alignment test.

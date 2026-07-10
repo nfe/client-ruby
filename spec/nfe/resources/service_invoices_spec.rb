@@ -102,6 +102,12 @@ RSpec.describe Nfe::Resources::ServiceInvoices do
       expect(last_request.url).to eq("https://api.nfe.io/v1/companies/co_1/serviceinvoices/si_1")
     end
 
+    it "preserves the complete wire payload under raw" do
+      transport.enqueue(json(body: { "id" => "si_1", "taxationType" => "WithinCity" }.to_json))
+      invoice = invoices.retrieve(company_id: "co_1", invoice_id: "si_1")
+      expect(invoice.raw).to eq({ "id" => "si_1", "taxationType" => "WithinCity" })
+    end
+
     it "raises NotFoundError on 404" do
       transport.enqueue(json(status: 404, body: "{}"))
       expect { invoices.retrieve(company_id: "co_1", invoice_id: "missing") }

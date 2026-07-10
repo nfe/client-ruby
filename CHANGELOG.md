@@ -7,10 +7,11 @@ e o projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
 ## [Não lançado]
 
-> Correção do contrato de webhooks contra a API real, provado por sonda ao vivo
-> (2026-07-02/03, três contas). O contrato correto sempre esteve nos specs oficiais
-> (`openapi/nf-servico-v1.yaml` e equivalentes) — o recurso manuscrito havia
-> divergido deles.
+> Duas correções de contrato contra a API real: o CRUD de webhooks (provado por
+> sonda ao vivo, 2026-07-02/03, três contas) e a cobertura do retrieve de NFS-e
+> (o DTO descartava mais da metade dos campos). Em ambas, o contrato correto
+> sempre esteve nos specs oficiais (`openapi/nf-servico-v1.yaml` e equivalentes) —
+> o código manuscrito havia divergido deles.
 
 ### Corrigido
 
@@ -22,6 +23,11 @@ e o projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
   envelopada. Os novos métodos account-scoped envelopam o request
   (create/update) e desembrulham as respostas (create/retrieve/update/list),
   com fallback defensivo para corpo cru.
+- **`Nfe::ServiceInvoice` descartava ~25 dos 44 campos do retrieve de NFS-e**
+  (toda a árvore de retenções, `provider`, `taxationType`, `location`,
+  `approximateTax`, ...): o `from_api` agora preserva o payload completo em
+  `invoice.raw` (padrão do `ConsumerInvoice`), em todas as leituras
+  (list/retrieve/cancel/201-issued).
 
 ### Adicionado
 
@@ -48,6 +54,22 @@ e o projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
   integral (confirmado ao vivo em 2026-07-03): campos omitidos voltam ao
   padrão — update sem `status` **desativa o webhook**. Envie o objeto completo
   (parta do retrieve).
+- Campos de ISS tipados em `Nfe::ServiceInvoice`: `base_tax_amount`,
+  `iss_rate`, `iss_tax_amount`.
+- Value object **`Nfe::ServiceInvoiceBorrower`** (tomador, com RBS):
+  `federal_tax_number` sempre `String` (tolerante ao CNPJ alfanumérico da
+  IN RFB 2.229/2024, fio Integer ou String) e **ponte Hash** — leituras
+  `borrower["..."]`/`borrower.dig(...)` continuam funcionando (delegam ao
+  payload cru), agora ao lado dos leitores tipados.
+- Teste de alinhamento (RSpec + Psych) amarrando `Nfe::ServiceInvoice` ao
+  schema inline do retrieve em `openapi/nf-servico-v1.yaml`, **ancorado por
+  path** (há colisão de `operationId` no spec) — também serve de gatilho de
+  migração: quando a resposta for componentizada upstream, o teste falha e
+  sinaliza migrar para o modelo gerado.
+- Spec `nf-servico-v1.yaml` atualizado (respostas de erro tipadas com
+  `ErrorsResource` em `components.schemas`) + namespace gerado
+  `Nfe::Generated::NfServicoV1` (somente o modelo de erros; a resposta de
+  sucesso segue inline e o DTO manuscrito).
 
 ### Deprecado
 
@@ -59,6 +81,9 @@ e o projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
   `get_available_events`/`AVAILABLE_EVENTS` (literais `invoice.*`): shapes e
   eventos que a API real rejeita ou desconhece. Use `Nfe::AccountWebhook` e
   `fetch_event_types`.
+- `Nfe::ServiceInvoice#pdf` e `#xml`: campos-fantasma — a resposta do retrieve
+  não os traz (sempre `nil`). Use `download_pdf`/`download_xml`. Remoção na
+  próxima major.
 
 ## [1.0.0] - 2026-07-02
 
