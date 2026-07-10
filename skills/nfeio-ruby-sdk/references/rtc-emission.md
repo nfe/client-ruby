@@ -129,5 +129,6 @@ end
 ```
 
 Para NF-e (mod 55) a conclusão normalmente chega por **webhook** — combine
-`invoice.issued`/`invoice.failed` com o polling acima como fallback. CC-e segue a
+`product_invoice.issued`/`product_invoice.issued_error` (filtros reais via
+`webhooks.fetch_event_types`) com o polling acima como fallback. CC-e segue a
 regra de **15..1000 caracteres**, validada client-side.

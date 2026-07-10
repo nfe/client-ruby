@@ -4,6 +4,16 @@ module Nfe
       AVAILABLE_EVENTS: Array[String]
 
       def api_family: () -> Symbol
+      def full_path: (String path) -> String
+
+      def list_account_webhooks: () -> Nfe::ListResponse
+      def create_account_webhook: (Hash[untyped, untyped] data) -> Nfe::AccountWebhook?
+      def retrieve_account_webhook: (String webhook_id) -> Nfe::AccountWebhook?
+      def update_account_webhook: (String webhook_id, Hash[untyped, untyped] data) -> Nfe::AccountWebhook?
+      def delete_account_webhook: (String webhook_id) -> nil
+      def delete_all_account_webhooks: () -> nil
+      def ping_account_webhook: (String webhook_id) -> nil
+      def fetch_event_types: () -> Array[String]
 
       def list: (String company_id) -> Nfe::ListResponse
       def create: (String company_id, Hash[untyped, untyped] data) -> Nfe::WebhookSubscription?
@@ -16,6 +26,8 @@ module Nfe
 
       private
 
+      def http_delete: (String path, ?query: Hash[untyped, untyped], ?request_options: Nfe::RequestOptions?, ?headers: Hash[String, String]) -> Nfe::Http::Response
+      def hydrate_account_webhook: (Nfe::Http::Response response) -> Nfe::AccountWebhook?
       def json_headers: () -> Hash[String, String]
       def json_body: (untyped data) -> String
       def webhook_items: (untyped payload) -> Array[untyped]

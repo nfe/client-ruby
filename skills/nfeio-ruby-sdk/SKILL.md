@@ -106,7 +106,7 @@ client.product_invoices.list(company_id: id, environment: "Test")   # String!
 | `companies` | api.nfe.io `/v1` | empresas + certificado A1 | create, list, retrieve, update, **remove**, find_by_*, upload_certificate, get_certificate_status |
 | `legal_people` | api.nfe.io `/v1` | PJ (tomadores) | list, create, retrieve, update, delete, create_batch, find_by_tax_number |
 | `natural_people` | api.nfe.io `/v1` | PF (tomadores) | list, create, retrieve, update, delete, create_batch, find_by_tax_number |
-| `webhooks` | api.nfe.io `/v1` | assinaturas de webhook | list, create, retrieve, update, delete, test, get_available_events |
+| `webhooks` | api.nfe.io `/v2` (conta) | webhooks da conta | create_account_webhook, list_account_webhooks, retrieve_account_webhook, update_account_webhook, delete_account_webhook, ping_account_webhook, fetch_event_types (company-scoped list/create/... deprecated: rota 404) |
 | `addresses` | address.api.nfe.io `/v2` | consulta de CEP | lookup_by_postal_code, search, lookup_by_term |
 | `legal_entity_lookup` | legalentity.api.nfe.io | consulta CNPJ | get_basic_info, get_state_tax_info, get_state_tax_for_invoice, get_suggested_state_tax_for_invoice |
 | `natural_person_lookup` | naturalperson.api.nfe.io | consulta CPF | get_status(cpf, birth_date) |
@@ -260,7 +260,14 @@ end
 ## Pitfalls idiomáticos
 
 - `companies` apaga com `#remove(company_id)` (retorna `{ deleted:, id: }`), **não**
-  `#delete`. Já `legal_people`/`natural_people`/`state_taxes`/`webhooks` usam `#delete`.
+  `#delete`. Já `legal_people`/`natural_people`/`state_taxes` usam `#delete`; `webhooks`
+  usa `#delete_account_webhook(id)` (e `#delete_all_account_webhooks` apaga TODOS — destrutivo).
+- Webhooks são **account-scoped** (`/v2/webhooks`): o create pinga a `uri` e exige 2xx
+  (endpoint no ar antes); `secret` 32–64 chars (ecoado só no create); o
+  `update_account_webhook` é **PUT integral** — sem `status`, o hook é desativado
+  (parta do retrieve). Filtros válidos via `fetch_event_types`
+  (`service_invoice.*`/`product_invoice.*`/`consumer_invoice.*`; os literais
+  `invoice.*` de `get_available_events` estão deprecated e não existem na API).
 - Recursos de emissão usam **keyword args**; entidades/lookups usam **posicionais**
   (ver nota no Mapa de recursos).
 - Objetos de valor são `Data.define` **imutáveis** (Pending/Issued, ServiceInvoice,
@@ -290,6 +297,9 @@ end
   `addresses` → `references/data-services-and-lookups.md`.
 - **Calcular impostos** → `tax_calculation.calculate(tenant_id, request)`.
 - **Verificar webhook** → `Nfe::Webhook.verify_signature(...)`.
+- **Criar/gerenciar webhooks da conta** → `webhooks.create_account_webhook(...)`
+  (envelope `webHook` automático; filtros via `fetch_event_types`) →
+  `references/error-handling-and-patterns.md`.
 - **Tratar erros / retry / multi-tenant** → `references/error-handling-and-patterns.md`.
 
 ## Referências

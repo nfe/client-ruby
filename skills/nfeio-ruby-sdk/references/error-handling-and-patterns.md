@@ -127,9 +127,16 @@ Pontos-chave:
 - **Validade ≠ frescor:** não há timestamp/nonce anti-replay. Assinatura válida
   prova autenticidade, **não** frescor → handler DEVE ser **idempotente** e
   **deduplicar** por `event.id` (ou id da nota).
-- Eventos disponíveis (`client.webhooks.get_available_events`): `invoice.issued`,
-  `invoice.cancelled`, `invoice.failed`, `invoice.processing`, `company.created`,
-  `company.updated`, `company.deleted`.
+- Tipos de evento **ao vivo** (`client.webhooks.fetch_event_types`): padrão
+  `service_invoice.*`/`product_invoice.*`/`consumer_invoice.*` (46 ids). Os
+  literais `invoice.*` do deprecated `get_available_events` **não existem** na API.
+- Gerenciamento é **account-scoped** (`/v2/webhooks`, envelope `webHook`
+  automático): `create_account_webhook` (a NFE.io pinga a `uri` e exige 2xx;
+  `secret` 32–64 chars, ecoado só no create), `update_account_webhook` (**PUT
+  integral** — sem `status` o hook é desativado; parta do retrieve),
+  `delete_all_account_webhooks` (destrutivo, apaga TODOS). Os métodos
+  company-scoped (`list`/`create`/... com `company_id`) estão deprecated —
+  rota `/v1/companies/{id}/webhooks` retorna 404.
 - Esquema legado `X-NFe-Signature`/SHA-256/Base64 **não** é suportado.
 
 ## Concorrência
